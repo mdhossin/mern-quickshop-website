@@ -1,0 +1,164 @@
+/*=============== VARIABLES CSS ===============*/
+:root {
+  // text Colors ---------------
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey: #f6f7f8;
+  --color-red: #f6f7f8;
+  --color-green: #f6f7f8;
+
+  // bg Colors ---------------
+  --bg-white: #ffffff;
+  --bg-black: #000000;
+  --bg-grey: #f6f6f8;
+  --bg-purple: #f0e0ff;
+
+  --theme-light-blue: #4a68aa;
+  // Heading Color
+  --heading-color: #000000;
+
+  // Theme Color
+  // --theme-color: #a749ff;
+  // --theme-color: #ff9800;
+  --theme-color: #f3b632;
+
+  --header-height: 3.5rem;
+
+  --theme-white: #f6f7f8;
+
+  --bodyBg: #f3f4fa;
+  --mainBg: #fff;
+  --mainColor: #8624db;
+  --txtColor: #4e4d4f;
+  --purple: #8624db;
+  --orange: #ff9066;
+  --white: #fff;
+  --black: #000;
+  --green: #4caf50;
+  --red: #db190c;
+
+  --fontSizeNormal: 1.125rem;
+  --fontSizeMedium: 1.25rem;
+  --fontSizeLarge: 1.5625rem;
+
+  --sideBarWidth: 280px;
+  --sideBarLogoHeight: 171px;
+  --spacing: 24px;
+  --mobileSpacing: 24px;
+  --borderRadius: 30px;
+
+  --mobile-width: 600px;
+  --tablet-width: 1340px;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+              Purple: hsl(250, 66%, 75%)
+              Blue: hsl(207, 90%, 72%)
+              Pink: hsl(356, 66%, 75%)
+              Teal: hsl(174, 63%, 62%)
+        */
+  --first-hue: 250;
+  --sat: 66%;
+  --lig: 75%;
+  --second-hue: 219;
+
+  --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
+  --first-color-alt: hsl(var(--first-hue), var(--sat), 71%); /* -4% */
+  --title-color: hsl(var(--second-hue), 15%, 95%);
+  --text-color: hsl(var(--second-hue), 8%, 75%);
+  --text-color-light: hsl(var(--second-hue), 4%, 55%);
+  --body-color: hsl(var(--second-hue), 48%, 8%);
+  --container-color: hsl(var(--second-hue), 32%, 12%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Raleway", sans-serif;
+  --biggest-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.3rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semibold: 600;
+
+  /*========== z index ==========*/
+  --transition: all 400ms ease;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+
+  --font-size-x-small: 12px;
+  --font-size-small: 13px;
+  --font-size-medium: 14px;
+  --font-size-large: 15px;
+  --font-size-x-large: 16px;
+  --font-size-xx-large: 18px;
+  --font-size-huge: 20px;
+  --font-size-x-huge: 24px;
+  --font-size-heading-xsmall: 14px;
+  --font-size-heading-small: 16px;
+  --font-size-heading-medium: 18px;
+  --font-size-heading-large: 20px;
+  --font-size-heading-x-large: 24px;
+  --font-weight-normal: normal;
+  --font-weight-bold-one: 500;
+  --font-weight-bold-two: 600;
+  --font-weight-bold-three: 700;
+
+  --secondary-color: #f8f9fa;
+  --secondary-bg: #f8f9fa;
+
+  // layout variables
+  --btn-bg: --white;
+  --btn-bg-hover: --primary-bg;
+  --font-color: #65676b;
+  --font-light-color: #00000026;
+  --font-custom-color: --theme-black;
+  --font-custom-hover-color: --theme-blue;
+  --font-hover-color: --black;
+  --font-focus-color: --black;
+  --font-heading-color: #262626;
+  --border-color-default: #e4e6eb;
+  --border-color-primary: #eceef3;
+  --border-hover-color: #ced9de;
+  --border-focus-color: #bdcbd2;
+  --separator-color: #e6e5ea;
+  --dark-overflow-bg: #0006;
+  --transparent-bg: #3232321f;
+  --transparent-gray-bg: #f1f3f4f5;
+  --transparent-white-bg: #f1f1f170;
+  --hover-bg: #e3e8ea;
+  --badge: --red;
+  --stars: #adb5bd;
+  --stars-active: #ffb302;
+  --disabled-bg: #d9dbdea1;
+
+  --outline-color: #7aacfe;
+  --validation-color: #dc3545;
+  --outline-box-shadow: 0 0 0 3px #159ce466;
+  --box-shadow: 0 0 10px 0 #e6e5ea;
+  --box-shadow-custom: 0 1px #e6e5ea;
+  --box-shadow-primary: 0 1px 2px #00000033;
+  --box-shadow-secondary: 0 0 2px #00000033;
+  --border-radius-default: 3px;
+  --border-radius-primary: 5px;
+  --border-radius-circle: 50px;
+  --line-height: 1.5;
+  --letter-spacing: 0.5px;
+  --border-default: 1px solid #e4e6eb;
+  --border-primary: 1px solid #eceef3;
+  --layout-max-width: 1200px;
+  --layout-transition-speed: 0.3s;
+  --layout-transition-higher-speed: 0.6s;
+
+  // Responsive Variables
+  --xx-layout: "only screen and (min-width: 1366px) and (max-width: 1600px)";
+  --xl-layout: "only screen and (min-width: 1200px) and (max-width: 1365px)";
+  --lg-layout: "only screen and (min-width: 992px) and (max-width: 1199px)";
+  --md-layout: "only screen and (min-width: 768px) and (max-width: 991px)";
+  --xs-layout: "only screen and (max-width: 767px)";
+  --sm-layout: "only screen and (min-width: 576px) and (max-width: 767px)";
+  --xxs-layout: "only screen and (min-width: 320px) and (max-width: 479px)";
+}

@@ -1,0 +1,100 @@
+@mixin flex($alignItem, $justifyContent) {
+  display: flex;
+  align-items: $alignItem;
+  justify-content: $justifyContent;
+}
+
+// // max-width = 1024px
+
+//375px, 576px, 767px, 1024px, 1200px / 1rem
+
+$breakpoints-up: (
+  "small": "23.4375em",
+  "medium": "36em",
+  "large": "47.9375em",
+  "xlarge": "64em",
+  "xxlarge": "75em",
+);
+
+//320px, 375px,  576px, 1024px, 1399px
+
+$breakpoints-down: (
+  "xs": "20em",
+  "xm": "23.4375em",
+
+  "small": "36em",
+  "medium": "64em",
+);
+
+@mixin breakpoint-up($size) {
+  // map-get(key, value)
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoints-down($size) {
+  @media (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+// dark overflow
+@mixin dark-overflow {
+  background-color: var(--dark-overflow-bg);
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+@mixin transition($speed: $layout-transition-speed) {
+  -webkit-transition: all $speed ease;
+  -moz-transition: all $speed ease;
+  -o-transition: all $speed ease;
+  transition: all $speed ease;
+}
+
+@mixin overlay {
+  background-color: rgba($color: #000000, $alpha: 0.6);
+}
+
+@mixin appearance($value: none) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  -ms-appearance: $value;
+  -o-appearance: $value;
+  appearance: $value;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+
+  ::-moz-placeholder {
+    @content;
+  }
+
+  :-moz-placeholder {
+    @content;
+  }
+
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}

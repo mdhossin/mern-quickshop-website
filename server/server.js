@@ -6,6 +6,7 @@ import fileUpload from "express-fileupload";
 import path from "path";
 dotenv.config();
 import { fileURLToPath } from "url";
+import errorHandler from "./middlewares/errorHandler.js";
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -40,7 +41,7 @@ import "./config/database.js";
 const PORT = process.env.PORT || 5000;
 
 // custom error handler
-//   app.use(errorHandler);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
