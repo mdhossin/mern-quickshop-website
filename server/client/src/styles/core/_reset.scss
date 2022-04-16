@@ -10,20 +10,20 @@ html {
   scroll-behavior: smooth;
 }
 /* hide the scollbar when scrolling useing the mouse right side */
-// ::-webkit-scrollbar {
-//   width: 0.6rem;
-//   border-radius: 0.5rem;
-//   background-color: hsla(var(--second-hue), 8%, 38%);
-// }
+::-webkit-scrollbar {
+  width: 0.6rem;
+  border-radius: 0.5rem;
+  background-color: hsla(var(--second-hue), 8%, 38%);
+}
 
-// ::-webkit-scrollbar-thumb {
-//   background-color: hsla(var(--second-hue), 8%, 26%);
-//   transition: var(--transition);
+::-webkit-scrollbar-thumb {
+  background-color: hsla(var(--second-hue), 8%, 26%);
+  transition: var(--transition);
 
-//   &:hover {
-//     background-color: hsla(var(--second-hue), 8%, 20%);
-//   }
-// }
+  &:hover {
+    background-color: hsla(var(--second-hue), 8%, 20%);
+  }
+}
 html {
   overflow-x: hidden;
 }

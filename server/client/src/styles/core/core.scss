@@ -2,3 +2,9 @@
 @use "./reset" as *;
 @use "./utils/" as *;
 //components
+
+// header
+@use "./header";
+// cart
+@use "./cart";
+@use "./checkout";

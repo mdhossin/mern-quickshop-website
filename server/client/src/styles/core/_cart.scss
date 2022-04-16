@@ -1,0 +1,226 @@
+@use "./utils/" as *;
+// mini cart
+// mini cart
+.mini-cart {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  background-color: var(--color-white);
+  height: 100%;
+  width: 470px;
+  z-index: 1000;
+  // -webkit-box-shadow: $box-shadow;
+  // box-shadow: $box-shadow;
+  @include transition(var(--layout-transition-higher-speed));
+
+  @include breakpoints-down("small") {
+    width: 88%;
+    top: 0;
+  }
+}
+
+// show hidden cart popup
+.mini-cart-open {
+  .mini-cart {
+    visibility: visible;
+    right: 0;
+    @include transition(var(--layout-transition-higher-speed));
+  }
+
+  .dark-overflow {
+    @include dark-overflow();
+    @include breakpoints-down("small") {
+      width: 100%;
+      top: 0;
+    }
+  }
+}
+
+.cart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__empty {
+    height: 100%;
+    @include flex(center, center);
+
+    flex-direction: column;
+
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+
+    p {
+      font-weight: var(--font-weight-bold-one);
+      margin-top: 12px;
+    }
+  }
+
+  &__checkout {
+    background-color: var(--color-white);
+
+    .cart-summary {
+      padding: 10px;
+      background-color: var(--theme-white);
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__header {
+    border-bottom: var(--border-default);
+    padding: 22px 20px;
+
+    @include flex(center, space-between);
+    background-color: #ebeeee;
+
+    &-title {
+      font-size: 18px;
+      margin-bottom: 0;
+    }
+    &-icon {
+      font-size: 1.1rem;
+
+      color: #2c2c2c;
+
+      &:hover {
+        color: var(--font-custom-color);
+      }
+
+      @include breakpoint-up("large") {
+        font-size: 1.3rem;
+      }
+    }
+
+    &__body {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 100%;
+      background-color: var(--color-white);
+
+      &__list {
+        padding: 30px 20px 50px;
+        color: #2c2c2c;
+        &__item {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          padding: 20px 0;
+
+          &:not(:first-child) {
+            border-top: 1px solid #ebeeee;
+          }
+
+          &-img {
+            display: block;
+            width: 80px;
+            height: auto;
+
+            margin: 0 50px 0 0;
+            padding: 0.5rem;
+
+            @include breakpoints-down("small") {
+              margin: 0 20px 0 0;
+            }
+            @include breakpoints-down("xm") {
+              margin: 0 10px 0 0;
+              width: 60px;
+            }
+          }
+
+          &__details {
+            flex: 1;
+
+            &__name {
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+
+              &-title {
+                color: #333;
+                font-size: 18px;
+
+                font-weight: 500;
+              }
+
+              &-delete {
+                color: #2c2c2c;
+                font-size: 16px;
+              }
+            }
+
+            &__price {
+              &__wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                gap: 1rem;
+                margin-top: 16px;
+
+                &__buttons {
+                  font-family: "Roboto", sans-serif;
+                  &-quantity {
+                    display: flex;
+
+                    .add {
+                      flex: 1;
+                      font-size: 18px;
+                      font-weight: 500;
+                      background-color: #2c2c2c;
+
+                      color: #fff;
+                    }
+                    .minus {
+                      flex: 1;
+                      font-size: 25px;
+                      font-weight: 500;
+                      background-color: #2c2c2c;
+
+                      color: #fff;
+                    }
+                    .input {
+                      flex: 1;
+                      text-align: center;
+                      height: 45px;
+                    }
+                  }
+                }
+
+                &-price {
+                  font-weight: 400;
+                  font-size: 16px;
+                  color: #2c2c2c;
+                  font-family: "Roboto", sans-serif;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* start cart common styles */
+.summary-item {
+  .summary-label {
+    color: #2c2c2c;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 18px;
+  }
+
+  .summary-value {
+    color: #2c2c2c;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+  }
+}
+/* end cart common styles */

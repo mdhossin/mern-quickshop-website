@@ -1,0 +1,233 @@
+@use "./utils/" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-white);
+  z-index: 300;
+}
+
+.nav {
+  height: var(--header-height);
+
+  @include flex(center, space-between);
+
+  @include breakpoints-down("medium") {
+    margin: 0.5rem 1rem;
+  }
+
+  &__logo {
+    @include flex(center, center);
+  }
+
+  &__menu {
+    @include breakpoints-down("medium") {
+      position: fixed;
+      background-color: blue;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      padding: 6rem 2rem 3.5rem;
+      transition: var(--transition);
+
+      background-color: var(--color-grey);
+      background-size: cover;
+      background-repeat: repeat;
+      z-index: 999;
+    }
+
+    &__list {
+      li {
+        padding: 5px 0;
+        font-weight: 700;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          transition: width 0.5s ease;
+          height: 2px;
+          background-color: #2c2c2c;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+
+      @include breakpoints-down("medium") {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2rem;
+      }
+    }
+  }
+
+  &__icons {
+    @include breakpoints-down("xs") {
+      padding: 1rem 1.5rem;
+    }
+
+    @include breakpoints-down("medium") {
+      position: fixed;
+      bottom: 0;
+      background-color: var(--color-grey);
+      width: 100%;
+      box-shadow: 0 0 6px rgb(0 0 0 / 10%);
+      padding: 1rem 2.5rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+
+    li {
+      a {
+        font-size: 1.2rem;
+      }
+    }
+
+    //
+  }
+
+  &__list {
+    @include flex(center, space-between);
+  }
+  &__item {
+    @include breakpoint-up("xlarge") {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &__link {
+    padding: 0.4rem;
+    display: flex;
+
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    text-align: left;
+    text-transform: capitalize;
+
+    color: #333;
+  }
+
+  &__close {
+    font-size: 2rem;
+    position: absolute;
+    top: 0.9rem;
+    right: 1.25rem;
+    cursor: pointer;
+    svg {
+      width: 35px;
+      height: 35px;
+      color: #2c2c2c;
+      margin: 0.5rem 1rem;
+
+      @include breakpoint-up("xlarge") {
+        display: none;
+      }
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    @include breakpoint-up("xlarge") {
+      display: none;
+    }
+
+    &__toggle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      position: relative;
+
+      @include flex(center, center);
+      background-color: var(--color-white);
+
+      svg {
+        width: 75%;
+        height: 75%;
+      }
+      @include breakpoint-up("xlarge") {
+        display: none;
+      }
+    }
+  }
+
+  &__mobileMenu {
+    @include breakpoint-up("xlarge") {
+      display: none;
+    }
+  }
+
+  //
+  &__wrapper {
+    position: relative;
+
+    span {
+      font-size: 15px;
+      font-weight: 600;
+      position: absolute;
+      top: -7px;
+      right: -8px;
+      background-color: #2c2c2c;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      @include flex(center, center);
+      color: #fff;
+    }
+  }
+
+  &__dropdown {
+    &__item {
+      &:focus {
+        background-color: transparent !important;
+      }
+    }
+    &-icon {
+      color: #2c2c2c;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.scroll-header {
+  box-shadow: 0 2px 4px hsla(0, 4%, 15%, 0.1);
+}
+/* Show menu */
+.show-menu {
+  right: 0;
+}
+
+// override default style
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0 10px 0 #e6e5ea;
+  padding: 10px;
+  color: #2c2c2c;
+}
+.dropdown-item {
+  padding: 0.5rem 1rem;
+}
+.nav-link {
+  color: #2c2c2c;
+  font-weight: 500;
+  font-size: 13px;
+}
+.dropdown-toggle::after {
+  color: #2c2c2c;
+}
