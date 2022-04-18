@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/login",
+      "https://mern-quickshop-ecommerce.herokuapp.com/api/login",
       { email, password },
       config
     );
@@ -39,7 +39,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
     // set the firtlogin true when the user first login
-    localStorage.setItem("logged", "camera-shop");
+    localStorage.setItem("logged", "quickshop");
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -65,7 +65,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/register",
+      "https://mern-quickshop-ecommerce.herokuapp.com/api/register",
       { name, email, password },
       config
     );
@@ -88,7 +88,7 @@ export const register = (name, email, password) => async (dispatch) => {
 // refresh token action
 export const refreshToken = () => async (dispatch) => {
   const logged = localStorage.getItem("logged");
-  if (logged !== "camera-shop") return;
+  if (logged !== "quickshop") return;
 
   try {
     dispatch({
@@ -101,7 +101,10 @@ export const refreshToken = () => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/refresh_token", config);
+    const { data } = await axios.get(
+      "https://mern-quickshop-ecommerce.herokuapp.com/api/refresh_token",
+      config
+    );
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -137,7 +140,10 @@ export const logout = (token) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/logout", config);
+    const { data } = await axios.get(
+      "https://mern-quickshop-ecommerce.herokuapp.com/api/logout",
+      config
+    );
 
     dispatch({
       type: USER_LOGOUT_SUCCESS,
@@ -170,14 +176,17 @@ export const googleLogin = (id_token) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post("/api/google_login", config);
+    const { data } = await axios.post(
+      "https://mern-quickshop-ecommerce.herokuapp.com/api/google_login",
+      config
+    );
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
     });
 
-    localStorage.setItem("logged", "camera-shop");
+    localStorage.setItem("logged", "quickshop");
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,

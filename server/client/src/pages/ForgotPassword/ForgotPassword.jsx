@@ -26,7 +26,10 @@ const ForgotPassword = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("/api/user/forgot_password", { email });
+      const res = await axios.post(
+        "https://mern-quickshop-ecommerce.herokuapp.com/api/user/forgot_password",
+        { email }
+      );
       setLoading(false);
       setData({ ...data, error: "", success: res.data.message });
     } catch (error) {

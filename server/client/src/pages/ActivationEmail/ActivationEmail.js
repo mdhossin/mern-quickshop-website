@@ -12,9 +12,12 @@ const ActivationEmail = () => {
     if (activation_token) {
       const activationEmail = async () => {
         try {
-          const res = await axios.post("/api/active", {
-            activation_token,
-          });
+          const res = await axios.post(
+            "https://mern-quickshop-ecommerce.herokuapp.com/api/active",
+            {
+              activation_token,
+            }
+          );
           setSuccess(res.data.message);
           setError("");
         } catch (error) {

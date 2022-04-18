@@ -17,8 +17,8 @@ import { OAuth2Client } from "google-auth-library";
 // import fetch from 'node-fetch'
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
-const CLIENT_URL = `http://localhost:3000`;
-// const CLIENT_URL = `https://quick-shop-mern.herokuapp.com`;
+// const CLIENT_URL = `http://localhost:3000`;
+const CLIENT_URL = `https://mern-quickshop-ecommerce.herokuapp.com`;
 
 const authController = {
   async register(req, res, next) {
