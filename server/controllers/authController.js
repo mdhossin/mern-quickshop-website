@@ -317,8 +317,10 @@ const authController = {
   async forgotPassword(req, res, next) {
     try {
       const { email } = req.body;
+      console.log(email);
 
       const user = await Users.findOne({ email });
+      console.log(user, "uiser");
       if (!user)
         return res
           .status(400)
@@ -334,7 +336,7 @@ const authController = {
       const url = `${CLIENT_URL}/user/reset/${access_token}`;
 
       if (validateEmail(email)) {
-        sendEmail(email, url, "Forgot password?");
+        sendMail(email, url, "Forgot password?");
         return res.json({ message: "Success! Please check your email." });
       }
     } catch (err) {

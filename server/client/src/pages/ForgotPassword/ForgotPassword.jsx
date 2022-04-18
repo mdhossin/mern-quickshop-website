@@ -1,6 +1,69 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
+import { useToasts } from "react-toast-notifications";
+import { isEmail } from "../../utils/validation";
 
 const ForgotPassword = () => {
+  const [data, setData] = useState({
+    email: "",
+    error: "",
+    success: "",
+  });
+
+  const { addToast } = useToasts();
+  const { email, error, success } = data;
+  const [loading, setLoading] = useState(false);
+
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value, error: "", success: "" });
+  };
+
+  const forgotPassword = async () => {
+    if (!isEmail(email))
+      return setData({ ...data, error: "Invalid emails.", success: "" });
+
+    try {
+      setLoading(true);
+      const res = await axios.post("/api/user/forgot_password", { email });
+      setLoading(false);
+      setData({ ...data, error: "", success: res.data.message });
+    } catch (error) {
+      console.log(error.message);
+      setLoading(false);
+      error.response.data.message &&
+        setData({
+          ...data,
+          error:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
+          success: "",
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (error) {
+      addToast(error, { appearance: "error", autoDismiss: true });
+      setData({
+        email: "",
+        error: "",
+        success: "",
+      });
+    } else if (success) {
+      addToast(success, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      setData({
+        email: "",
+        error: "",
+        success: "",
+      });
+    }
+  }, [error, success, addToast]);
   return (
     <section className="login-section forgot">
       <div className="login container-div">
@@ -12,12 +75,23 @@ const ForgotPassword = () => {
               className="login__form__input"
               type="email"
               name="email"
+              id="email"
+              value={email}
+              onChange={handleChangeInput}
               placeholder="Your email"
             />
           </div>
 
-          <button className="login__form__submit" type="submit">
-            Verify Your Email
+          <button
+            className="login__form__submit"
+            type="button"
+            onClick={forgotPassword}
+          >
+            {loading ? (
+              <Spinner animation="border" size="sm" />
+            ) : (
+              "Verify your email"
+            )}
           </button>
         </form>
       </div>

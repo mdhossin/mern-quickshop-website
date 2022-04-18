@@ -1,24 +1,95 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useToasts } from "react-toast-notifications";
-import { validRegister } from "../../utils/validation";
+import { checkPassword, isLength, validRegister } from "../../utils/validation";
+import axios from "axios";
+import { Spinner } from "react-bootstrap";
 const ResetPassword = () => {
-  const { addToast } = useToasts();
-  const [newUser, setNewUser] = useState({
-    name: "",
+  const [data, setData] = useState({
+    password: "",
     cf_password: "",
+    error: "",
+    success: "",
   });
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
-  const { name, email, password, cf_password } = newUser;
+  const [loading, setLoading] = useState(false);
+
+  const { token } = useParams();
+  const { addToast } = useToasts();
+
+  const { password, cf_password, error, success } = data;
 
   const handleChangeInput = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value, error: "", success: "" });
   };
 
-  const handleSubmit = (e) => {};
+  const handleResetPass = async () => {
+    if (isLength(password))
+      return setData({
+        ...data,
+        error: "Password must be at least 6 characters.",
+        success: "",
+      });
+
+    if (checkPassword(password, cf_password))
+      return setData({
+        ...data,
+        error: "Password did not match.",
+        success: "",
+      });
+
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        "/api/user/reset",
+        { password },
+        {
+          headers: { Authorization: token },
+        }
+      );
+      setLoading(false);
+
+      setData({ ...data, error: "", success: res.data.message });
+    } catch (error) {
+      setLoading(false);
+      error.response &&
+        setData({
+          ...data,
+          error:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
+          success: "",
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (error) {
+      addToast(error, { appearance: "error", autoDismiss: true });
+      setData({
+        password: "",
+        cf_password: "",
+        error: "",
+        success: "",
+      });
+    } else if (success) {
+      addToast(success, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      setData({
+        password: "",
+        cf_password: "",
+        error: "",
+        success: "",
+      });
+    }
+  }, [error, success, addToast]);
 
   return (
     <section className="login-section">
@@ -27,10 +98,13 @@ const ResetPassword = () => {
         <form className="login__form">
           <div className="pass">
             <input
-              type={typePass ? "text" : "password"}
               className="login__form__input"
+              type={typePass ? "text" : "password"}
               name="password"
-              placeholder="Your password"
+              id="password"
+              value={password}
+              onChange={handleChangeInput}
+              placeholder="New password"
             />
             <small onClick={() => setTypePass(!typePass)}>
               {typePass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -41,18 +115,26 @@ const ResetPassword = () => {
               className="login__form__input"
               type={typeCfPass ? "text" : "password"}
               name="cf_password"
+              id="cf_password"
               value={cf_password}
               onChange={handleChangeInput}
-              placeholder="Confrim Password"
-              id="cf_password"
+              placeholder="Confirm password"
             />
             <small onClick={() => setTypeCfPass(!typeCfPass)}>
               {typeCfPass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
             </small>
           </div>
 
-          <button className="login__form__submit" type="submit">
-            Reset Password
+          <button
+            className="login__form__submit"
+            type="button"
+            onClick={handleResetPass}
+          >
+            {loading ? (
+              <Spinner animation="border" size="sm" />
+            ) : (
+              "Reset Password"
+            )}
           </button>
         </form>
       </div>
