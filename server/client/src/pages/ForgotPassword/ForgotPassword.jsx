@@ -17,7 +17,7 @@ const ForgotPassword = () => {
           </div>
 
           <button className="login__form__submit" type="submit">
-            Login
+            Verify Your Email
           </button>
         </form>
       </div>
