@@ -38,22 +38,6 @@ const Header = () => {
   const toogleWishList = () => {
     setisWishListOpen(false);
   };
-  useEffect(() => {
-    const shrinkHeader = () => {
-      if (
-        document.body.scrollTop > 70 ||
-        document.documentElement.scrollTop > 70
-      ) {
-        headerRef.current.classList.add("scroll-header");
-      } else {
-        headerRef.current.classList.remove("scroll-header");
-      }
-    };
-    window.addEventListener("scroll", shrinkHeader);
-    return () => {
-      window.removeEventListener("scroll", shrinkHeader);
-    };
-  }, []);
 
   const handleLogout = () => {
     // if (!user?.userInfo?.access_token) return;
@@ -76,7 +60,7 @@ const Header = () => {
   //   }, [userLogout, error, addToast, dispatch, navigate]);
 
   return (
-    <header className="header" ref={headerRef}>
+    <header className="header scroll-header">
       <nav className="nav container-div">
         <a href="#home" className="nav__logo">
           <img width="70" src={logo} alt="shop" />
@@ -194,15 +178,15 @@ const Header = () => {
                 <>
                   <NavDropdown.Item
                     className="nav__dropdown__item"
-                    onClick={() => navigate("/signin")}
+                    onClick={() => navigate("/login")}
                   >
-                    Sign in
+                    Login
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className="nav__dropdown__item"
-                    onClick={() => navigate("/signup")}
+                    onClick={() => navigate("/register")}
                   >
-                    Sign Up
+                    Register
                   </NavDropdown.Item>
                 </>
               )}

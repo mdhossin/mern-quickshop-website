@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 import { Header } from "./components";
-import { Home, Login } from "./pages";
+import { ForgotPassword, Home, Login, Register } from "./pages";
 import "./styles/styles.scss";
 function App() {
   return (
@@ -11,6 +11,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="forgot" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </ToastProvider>
