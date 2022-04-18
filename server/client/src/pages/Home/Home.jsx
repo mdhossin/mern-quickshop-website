@@ -1,11 +1,20 @@
 import React from "react";
-import { HeroSlide, SupportArea } from "../../components";
+import {
+  DiscountBanner,
+  HeroSlide,
+  Iphone,
+  Products,
+  SupportArea,
+} from "../../components";
 
 const Home = () => {
   return (
     <div>
       <HeroSlide />
       <SupportArea />
+      <DiscountBanner />
+      <Products />
+      <Iphone />
     </div>
   );
 };

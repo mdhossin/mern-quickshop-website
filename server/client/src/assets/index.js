@@ -8,6 +8,7 @@ import plane from "./images/plane.svg";
 import money from "./images/money.svg";
 import bank from "./images/piggy-bank.svg";
 import discountBanner from "./images/discount-banner.jpg";
+import iphone from "./images/iphone.png";
 
 export {
   logo,
@@ -19,4 +20,6 @@ export {
   plane,
   money,
   bank,
+  discountBanner,
+  iphone,
 };

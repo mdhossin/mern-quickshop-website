@@ -1,3 +1,4 @@
+import { useId } from "react";
 import {
   bank,
   like,
@@ -7,6 +8,15 @@ import {
   sliderThree,
   sliderTwo,
 } from "../assets";
+
+import img1 from "../assets/camera-1.png";
+import img2 from "../assets/camera-2.png";
+import img3 from "../assets/camera-3.png";
+import img4 from "../assets/camera-4.png";
+import img5 from "../assets/camera-9.webp";
+import img6 from "../assets/camera-6.png";
+import img7 from "../assets/camera-7.png";
+import img8 from "../assets/camera-8.png";
 
 export const heroSlideData = [
   {
@@ -56,5 +66,88 @@ export const supportData = [
     title: "60-DAY MONEY BACK",
     desc: "If you are unable",
     img: bank,
+  },
+];
+
+export const productData = [
+  {
+    id: useId,
+    images: {
+      url: img1,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
+  },
+  {
+    id: useId,
+    images: {
+      url: img2,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
+  },
+  {
+    id: useId,
+    images: {
+      url: img3,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
+  },
+  {
+    id: useId,
+    images: {
+      url: img4,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
+  },
+  {
+    id: useId,
+    images: {
+      url: img5,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
+  },
+  {
+    id: useId,
+    images: {
+      url: img6,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
+  },
+  {
+    id: useId,
+    images: {
+      url: img7,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
+  },
+  {
+    id: useId,
+    images: {
+      url: img8,
+    },
+    Stock: 5,
+    name: "Smart Watch 2022",
+    ratings: 4,
+    price: 777,
   },
 ];

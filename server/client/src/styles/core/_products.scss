@@ -1,0 +1,74 @@
+@use "./utils/" as *;
+
+.featured {
+  padding-bottom: 4rem;
+  font-family: "Rubik", sans-serif;
+  &__products {
+    gap: 1.5rem;
+
+    @include breakpoint-up("medium") {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include breakpoint-up("xlarge") {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    &__load-more {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+
+      button {
+        width: 170px;
+      }
+    }
+
+    &__notFound {
+      text-align: center;
+
+      color: #333;
+      font-weight: 600;
+      font-size: 24px;
+      margin-top: 3rem;
+    }
+  }
+
+  &__title {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    position: relative;
+
+    @include breakpoint-up("medium") {
+      margin-bottom: 4rem;
+      font-size: 3rem;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 30%;
+      top: 45px;
+      height: 2px;
+      background-color: var(--theme-color);
+
+      @include breakpoint-up("medium") {
+      }
+      @include breakpoint-up("large") {
+        top: 45px;
+        width: 12%;
+      }
+    }
+  }
+}
