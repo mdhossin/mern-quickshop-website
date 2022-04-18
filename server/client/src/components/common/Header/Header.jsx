@@ -102,6 +102,24 @@ const Header = () => {
                 Shop
               </Link>
             </li>
+            <li className="nav__item">
+              <Link
+                to="shop"
+                onClick={() => setMenuOpen(false)}
+                className="nav__link"
+              >
+                About
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link
+                to="shop"
+                onClick={() => setMenuOpen(false)}
+                className="nav__link"
+              >
+                Blog
+              </Link>
+            </li>
 
             <li className="nav__item">
               <Link
