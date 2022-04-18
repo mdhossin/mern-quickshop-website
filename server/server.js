@@ -7,6 +7,7 @@ import path from "path";
 dotenv.config();
 import { fileURLToPath } from "url";
 import errorHandler from "./middlewares/errorHandler.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -33,6 +34,9 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
+
+// auth routes
+app.use("/api", authRoutes);
 
 // Database connection
 import "./config/database.js";
