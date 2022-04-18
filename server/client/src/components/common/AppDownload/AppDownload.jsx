@@ -3,7 +3,7 @@ import { appOne, appTwo } from "../../../assets";
 
 const AppDownload = () => {
   return (
-    <section style={{ paddingBottom: "5rem" }}>
+    <section>
       <div className="download">
         <div className="container-div download__container">
           <p className="download__container-desc">

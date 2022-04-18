@@ -3,6 +3,7 @@ import {
   AppDownload,
   Brands,
   DiscountBanner,
+  Footer,
   HeroSlide,
   Iphone,
   NewsLetter,
@@ -23,6 +24,8 @@ const Home = () => {
 
       <NewsLetter />
       <AppDownload />
+
+      <Footer />
     </div>
   );
 };

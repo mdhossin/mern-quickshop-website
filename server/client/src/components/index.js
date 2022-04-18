@@ -11,6 +11,7 @@ import Brands from "./common/Brands/Brands";
 import NewsLetter from "./common/NewsLetter/NewsLetter";
 import AppDownload from "./common/AppDownload/AppDownload";
 
+import Footer from "./common/Footer/Footer";
 // loading
 import Loading from "./common/Loading/Loading";
 import ProductRating from "./common/ProductRating/ProductRating";
@@ -30,4 +31,5 @@ export {
   Brands,
   NewsLetter,
   AppDownload,
+  Footer,
 };

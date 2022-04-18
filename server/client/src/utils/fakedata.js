@@ -21,6 +21,7 @@ import img5 from "../assets/camera-9.webp";
 import img6 from "../assets/camera-6.png";
 import img7 from "../assets/camera-7.png";
 import img8 from "../assets/camera-8.png";
+import watch from "../assets/images/watch-1.jpg";
 
 export const heroSlideData = [
   {

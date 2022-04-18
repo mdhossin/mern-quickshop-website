@@ -17,12 +17,8 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: hsla(var(--second-hue), 8%, 26%);
+  background-color: var(--theme-color);
   transition: var(--transition);
-
-  &:hover {
-    background-color: hsla(var(--second-hue), 8%, 20%);
-  }
 }
 html {
   overflow-x: hidden;
