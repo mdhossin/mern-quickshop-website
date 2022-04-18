@@ -1,33 +1,86 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { useToasts } from "react-toast-notifications";
+import { googleLogin, login } from "../../redux/actions/userActions";
+import { USER_LOGIN_RESET } from "../../redux/constants/userConstants";
+import { Spinner } from "react-bootstrap";
 const Login = () => {
+  const navigate = useNavigate();
+  let location = useLocation();
+  const { addToast } = useToasts();
+  const [newUser, setNewUser] = useState({ email: "", password: "" });
+  const dispatch = useDispatch();
+  const redirect = location.state?.path || "/";
+
+  const { email, password } = newUser;
+
   const [typePass, setTypePass] = useState(false);
-  const responseGoogle = async (response) => {
-    console.log(response);
+
+  const userLogin = useSelector((state) => state?.userLogin);
+
+  const { loading, error, userInfo } = userLogin;
+
+  const handleChangeInput = (e) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(login(email, password));
+  };
+
+  const responseGoogle = async (response) => {
+    try {
+      dispatch(googleLogin(response.tokenId));
+    } catch (error) {
+      alert(error?.message);
+    }
+  };
+
+  useEffect(() => {
+    if (error) {
+      dispatch({ type: USER_LOGIN_RESET });
+      addToast(error, { appearance: "error", autoDismiss: true });
+    } else if (userInfo) {
+      if (userInfo.message !== undefined) {
+        addToast(userInfo?.message, {
+          appearance: "success",
+          autoDismiss: true,
+        });
+      }
+      navigate(redirect, { replace: true });
+    }
+  }, [userInfo, error, addToast, navigate, dispatch, redirect]);
   return (
     <section className="login-section">
       <div className="login container-div">
         <h3 className="login__title">Login</h3>
-        <form className="login__form">
+        <form className="login__form" onSubmit={handleSubmit}>
           <div>
             <input
               className="login__form__input"
               type="email"
               name="email"
-              placeholder="Your email"
+              value={email}
+              id="email"
+              onChange={handleChangeInput}
+              placeholder="Your Email"
             />
           </div>
 
           <div className="pass">
             <input
-              type={typePass ? "text" : "password"}
               className="login__form__input"
+              type={typePass ? "text" : "password"}
               name="password"
-              placeholder="Your password"
+              value={password}
+              onChange={handleChangeInput}
+              id="password"
+              placeholder="Your Password"
             />
             <small onClick={() => setTypePass(!typePass)}>
               {typePass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -39,11 +92,11 @@ const Login = () => {
           </p>
 
           <button className="login__form__submit" type="submit">
-            Login
+            {loading ? <Spinner animation="border" size="sm" /> : "login"}
           </button>
           <div className="login__form__social">
             <GoogleLogin
-              clientId="371370040135-2f71d8rrmn8ami8mfc77ivcst7adc3cp.apps.googleusercontent.com"
+              clientId="768253564136-6ntsta3ed6q04le02jrkr0520ii7psqh.apps.googleusercontent.com"
               buttonText="Login with google"
               onSuccess={responseGoogle}
               cookiePolicy={"single_host_origin"}

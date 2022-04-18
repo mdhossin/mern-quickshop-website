@@ -71,6 +71,7 @@ const Register = () => {
               type="name"
               name="name"
               value={name}
+              id="name"
               onChange={handleChangeInput}
               placeholder="Your Name"
             />
@@ -81,6 +82,7 @@ const Register = () => {
               type="email"
               name="email"
               value={email}
+              id="email"
               onChange={handleChangeInput}
               placeholder="Your Email"
             />

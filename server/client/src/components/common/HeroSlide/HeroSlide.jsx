@@ -1,6 +1,6 @@
 import React from "react";
 
-import SwiperCore, { Autoplay } from "swiper";
+import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -8,8 +8,6 @@ import "swiper/css";
 import { heroSlideData } from "../../../utils/fakedata";
 
 const HeroSlide = () => {
-  SwiperCore.use([Autoplay]);
-
   return (
     <section className="hero-section">
       <div className="hero-slide">

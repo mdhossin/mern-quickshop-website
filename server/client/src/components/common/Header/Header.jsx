@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { Cart } from "../../../pages";
 import { logo } from "../../../assets";
+import { logout } from "../../../redux/actions/userActions";
+import { USER_LOGOUT_RESET } from "../../../redux/constants/userConstants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,11 +25,11 @@ const Header = () => {
   const [isCartOpen, setCartOpen] = useState(false);
   const [isWishListOpen, setisWishListOpen] = useState(false);
 
-  //   const user = useSelector((state) => state.userLogin);
-  //   const { userInfo } = user;
+  const user = useSelector((state) => state.userLogin);
+  const { userInfo } = user;
   //   console.log(user, "user");
-  //   const logoutUser = useSelector((state) => state.userLogout);
-  //   const { userLogout, error } = logoutUser;
+  const logoutUser = useSelector((state) => state.userLogout);
+  const { userLogout, error } = logoutUser;
 
   //   const { cartItems } = useSelector((state) => state.cart);
 
@@ -40,24 +42,24 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    // if (!user?.userInfo?.access_token) return;
-    // dispatch(logout(userInfo?.access_token));
+    if (!user?.userInfo?.access_token) return;
+    dispatch(logout(userInfo?.access_token));
   };
 
-  //   useEffect(() => {
-  //     if (error) {
-  //       dispatch({ type: USER_LOGOUT_RESET });
-  //       addToast(error, { appearance: "error", autoDismiss: true });
-  //     } else if (userLogout) {
-  //       dispatch({ type: USER_LOGOUT_RESET });
+  useEffect(() => {
+    if (error) {
+      dispatch({ type: USER_LOGOUT_RESET });
+      addToast(error, { appearance: "error", autoDismiss: true });
+    } else if (userLogout) {
+      dispatch({ type: USER_LOGOUT_RESET });
 
-  //       addToast(userLogout?.message, {
-  //         appearance: "success",
-  //         autoDismiss: true,
-  //       });
-  //       navigate("/");
-  //     }
-  //   }, [userLogout, error, addToast, dispatch, navigate]);
+      addToast(userLogout?.message, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      navigate("/");
+    }
+  }, [userLogout, error, addToast, dispatch, navigate]);
 
   return (
     <header className="header scroll-header">
@@ -145,13 +147,14 @@ const Header = () => {
 
             <NavDropdown
               title={
-                false ? (
+                userInfo?.user ? (
                   <img
+                    title={userInfo?.user?.name}
                     style={{ borderRadius: "50%" }}
                     width="22"
                     height="22"
-                    src=""
-                    alt=""
+                    src={userInfo?.user?.avatar}
+                    alt="user"
                   />
                 ) : (
                   <AiOutlineUser className="nav__dropdown-icon" />
@@ -159,7 +162,7 @@ const Header = () => {
               }
               id="collasible-nav-dropdown"
             >
-              {false ? (
+              {userInfo?.user ? (
                 <>
                   <NavDropdown.Item
                     className="nav__dropdown__item"
