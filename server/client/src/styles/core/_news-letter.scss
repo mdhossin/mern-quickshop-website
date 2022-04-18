@@ -1,0 +1,61 @@
+@use "./utils/" as *;
+
+.newsletter {
+  padding: 5rem 0;
+  background-color: rgb(247, 247, 247);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+    &__desc {
+      p {
+        color: #666;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.2px;
+        padding-bottom: 1rem;
+      }
+
+      h1 {
+        color: #222;
+
+        font-size: 2rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        line-height: 1.2em;
+
+        span {
+          color: var(--theme-color);
+        }
+
+        @include breakpoint-up("medium") {
+          font-size: 50px;
+        }
+      }
+    }
+
+    &__content {
+      &__inputs {
+        display: flex;
+        align-items: center;
+        margin: 1.5rem 0;
+
+        input {
+          flex: 2;
+        }
+
+        button {
+          margin-top: 0;
+          flex: 1;
+        }
+      }
+    }
+  }
+}

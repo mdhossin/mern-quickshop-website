@@ -4,7 +4,7 @@ import { iphone } from "../../../assets";
 const Iphone = () => {
   return (
     <section className="iphone-section">
-      <h2 className="iphone__title">iPhone 11 Pro</h2>
+      <h2 className="title">iPhone 11 Pro</h2>
       <div className="iphone">
         <div className="container-div iphone__container grid">
           <div className="iphone__left grid">

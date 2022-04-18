@@ -1,6 +1,10 @@
 import { useId } from "react";
 import {
   bank,
+  brandFive,
+  brandOne,
+  brandThree,
+  brandTwo,
   like,
   money,
   plane,
@@ -149,5 +153,28 @@ export const productData = [
     name: "Smart Watch 2022",
     ratings: 4,
     price: 777,
+  },
+];
+
+export const brandsData = [
+  {
+    id: useId,
+    img: brandFive,
+  },
+  {
+    id: useId,
+    img: brandTwo,
+  },
+  {
+    id: useId,
+    img: brandThree,
+  },
+  {
+    id: useId,
+    img: brandFive,
+  },
+  {
+    id: useId,
+    img: brandOne,
   },
 ];

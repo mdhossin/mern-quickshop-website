@@ -7,6 +7,9 @@ import SupportArea from "./common/SupportArea/SupportArea";
 import DiscountBanner from "./common/DiscountBanner/DiscountBanner";
 import Products from "./common/Products/Products";
 import Iphone from "./common/Iphone/Iphone";
+import Brands from "./common/Brands/Brands";
+import NewsLetter from "./common/NewsLetter/NewsLetter";
+import AppDownload from "./common/AppDownload/AppDownload";
 
 // loading
 import Loading from "./common/Loading/Loading";
@@ -24,4 +27,7 @@ export {
   ProductRating,
   Products,
   Iphone,
+  Brands,
+  NewsLetter,
+  AppDownload,
 };

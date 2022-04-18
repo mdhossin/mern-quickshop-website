@@ -1,13 +1,7 @@
 @use "./utils/" as *;
-
-.iphone {
-  height: 100vh;
-  background: url("../../assets/images/iphone-bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-
-  &__title {
+.iphone-section {
+  padding-bottom: 5rem;
+  .title {
     color: #2c2c2c;
     font-size: 2rem;
     font-weight: 600;
@@ -19,6 +13,12 @@
       margin-bottom: 4rem;
     }
   }
+}
+.iphone {
+  background: url("../../assets/images/iphone-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 
   &__container {
     gap: 2.5rem;

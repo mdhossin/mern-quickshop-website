@@ -1,0 +1,39 @@
+@use "./utils/" as *;
+
+.download {
+  background-color: #587498;
+  padding: 1.5rem 0;
+
+  @include breakpoint-up("large") {
+    padding: 1rem 0;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @include breakpoint-up("large") {
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+    }
+    gap: 0.5rem;
+    &-desc {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 300;
+
+      @include breakpoint-up("medium") {
+        font-size: 25px;
+      }
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+  }
+}
