@@ -7,16 +7,13 @@ const CheckOut = ({ setCartOpen }) => {
       <div className="checkout-actions">
         <Link to="/shop" className="shopping">
           {" "}
-          <button
-            onClick={() => setCartOpen(false)}
-            className="button-secondary"
-          >
+          <button onClick={() => setCartOpen(false)} className="button">
             Continue shopping
           </button>
         </Link>
 
         <Link to="/shipping" className="checkout">
-          <button onClick={() => setCartOpen(false)} className="button">
+          <button onClick={() => setCartOpen(false)} className="button-primary">
             Proceed To Checkout
           </button>
         </Link>

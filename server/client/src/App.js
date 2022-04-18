@@ -1,7 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 import { Header } from "./components";
-import { ForgotPassword, Home, Login, Register, ResetPassword } from "./pages";
+import {
+  ActivationEmail,
+  ForgotPassword,
+  Home,
+  Login,
+  Register,
+  ResetPassword,
+} from "./pages";
 import "./styles/styles.scss";
 function App() {
   return (
@@ -14,6 +21,11 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="forgot" element={<ForgotPassword />} />
           <Route path="user/reset/:token" element={<ResetPassword />} />
+
+          <Route
+            path="/active/:activation_token"
+            element={<ActivationEmail />}
+          />
         </Routes>
       </BrowserRouter>
     </ToastProvider>

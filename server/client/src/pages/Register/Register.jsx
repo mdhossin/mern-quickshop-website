@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useToasts } from "react-toast-notifications";
 import { validRegister } from "../../utils/validation";
+import { register } from "../../redux/actions/userActions";
+import { USER_REGISTER_RESET } from "../../redux/constants/userConstants";
 const Register = () => {
+  const dispatch = useDispatch();
   const { addToast } = useToasts();
+
   const [newUser, setNewUser] = useState({
     email: "",
     password: "",
@@ -14,6 +19,10 @@ const Register = () => {
   });
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
+
+  const userReg = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo: userRegInfo } = userReg;
+
   const { name, email, password, cf_password } = newUser;
 
   const handleChangeInput = (e) => {
@@ -30,7 +39,7 @@ const Register = () => {
         autoDismiss: true,
       });
     }
-    // dispatch(register(name, email, password));
+    dispatch(register(name, email, password));
     setNewUser({
       email: "",
       password: "",
@@ -39,17 +48,31 @@ const Register = () => {
     });
   };
 
+  useEffect(() => {
+    if (error) {
+      dispatch({ type: USER_REGISTER_RESET });
+      addToast(error, { appearance: "error", autoDismiss: true });
+    } else if (userRegInfo) {
+      dispatch({ type: USER_REGISTER_RESET });
+      addToast(userRegInfo?.message, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+    }
+  }, [userRegInfo, error, addToast, dispatch]);
   return (
     <section className="login-section">
       <div className="login container-div">
         <h3 className="login__title">Register</h3>
-        <form className="login__form">
+        <form className="login__form" onSubmit={handleSubmit}>
           <div>
             <input
               className="login__form__input"
-              type="text"
+              type="name"
               name="name"
-              placeholder="Your name"
+              value={name}
+              onChange={handleChangeInput}
+              placeholder="Your Name"
             />
           </div>
           <div>
@@ -57,16 +80,21 @@ const Register = () => {
               className="login__form__input"
               type="email"
               name="email"
-              placeholder="Your email"
+              value={email}
+              onChange={handleChangeInput}
+              placeholder="Your Email"
             />
           </div>
 
           <div className="pass">
             <input
-              type={typePass ? "text" : "password"}
               className="login__form__input"
+              type={typePass ? "text" : "password"}
               name="password"
-              placeholder="Your password"
+              value={password}
+              id="password"
+              onChange={handleChangeInput}
+              placeholder="Your Password"
             />
             <small onClick={() => setTypePass(!typePass)}>
               {typePass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -78,9 +106,9 @@ const Register = () => {
               type={typeCfPass ? "text" : "password"}
               name="cf_password"
               value={cf_password}
+              id="cf_password"
               onChange={handleChangeInput}
               placeholder="Confrim Password"
-              id="cf_password"
             />
             <small onClick={() => setTypeCfPass(!typeCfPass)}>
               {typeCfPass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -88,7 +116,7 @@ const Register = () => {
           </div>
 
           <button className="login__form__submit" type="submit">
-            Register
+            {loading ? <Spinner animation="border" size="sm" /> : "Register"}
           </button>
 
           <div style={{ marginTop: "1rem" }} className="login__form__forgot">
