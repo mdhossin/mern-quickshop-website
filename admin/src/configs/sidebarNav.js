@@ -23,6 +23,12 @@ const sidebarNav = [
     text: "Products",
   },
   {
+    link: "/dashboard/category",
+    section: "category",
+    icon: <CgAddR />,
+    text: "Add Category",
+  },
+  {
     link: "/dashboard/addProduct",
     section: "addProduct",
     icon: <CgAddR />,

@@ -14,6 +14,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import NotFound from "./pages/NotFound/NotFound";
 import AddProduct from "./pages/AddProduct/AddProduct";
+import AddCategory from "./pages/AddCategory/AddCategory";
 function App() {
   const dispatch = useDispatch();
 
@@ -36,7 +37,7 @@ function App() {
             <Route path="orders" element={<Blank />} />
             <Route path="products" element={<Blank />} />
 
-            <Route path="settings" element={<Blank />} />
+            <Route path="category" element={<AddCategory />} />
             <Route path="users" element={<Blank />} />
 
             {/* <Route path="users" element={<Profile />} /> */}
