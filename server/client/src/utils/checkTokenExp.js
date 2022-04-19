@@ -14,10 +14,7 @@ export const checkTokenExp = async (token, dispatch) => {
     },
   };
 
-  const res = await axios.get(
-    "https://ecommerce-quickshop.herokuapp.com/api/refresh_token",
-    config
-  );
+  const res = await axios.get("/api/refresh_token", config);
 
   dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
   return res.data.access_token;

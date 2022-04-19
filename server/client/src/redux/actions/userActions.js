@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://ecommerce-quickshop.herokuapp.com/api/login",
+      "/api/login",
       { email, password },
       config
     );
@@ -66,7 +66,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://ecommerce-quickshop.herokuapp.com/api/register",
+      "/api/register",
       { name, email, password },
       config
     );
@@ -104,7 +104,7 @@ export const refreshToken = () => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      "https://ecommerce-quickshop.herokuapp.com/api/refresh_token",
+      "/api/refresh_token",
       config
     );
     // console.log(data, "refresh token action");
@@ -145,7 +145,7 @@ export const logout = (token, navigate) => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      "https://ecommerce-quickshop.herokuapp.com/api/logout",
+      "/api/logout",
       config
     );
     // console.log(data, access_token, "logout action");
@@ -183,7 +183,7 @@ export const googleLogin = (id_token) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://ecommerce-quickshop.herokuapp.com/api/google_login",
+      "/api/google_login",
       config
     );
     console.log(data, " data");
