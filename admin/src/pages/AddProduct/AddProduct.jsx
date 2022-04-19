@@ -11,6 +11,7 @@ import {
 } from "../../redux/actions/productActions";
 import { CREATE_PRODUCT_RESET } from "../../redux/constants/productConstants";
 import Loader from "../../components/Loader/Loader";
+import { getAllCategories } from "../../redux/actions/catetoryActions";
 
 const initialstate = {
   name: "",
@@ -40,7 +41,8 @@ const AddProduct = () => {
 
   const { name, description, Stock, price, category } = product;
 
-  console.log(product, 'add product')
+  console.log(product, "add product");
+  const { categories } = useSelector((state) => state.allCategories);
 
   useEffect(() => {
     if (productId) {
@@ -128,6 +130,7 @@ const AddProduct = () => {
       // update prduct call here
       dispatch(updateProduct({ ...product, images }, _id, addToast));
     } else {
+      console.log(product, "all");
       // create product api call here
       dispatch(createProduct({ ...product, images }, navigate, addToast));
     }
@@ -142,6 +145,10 @@ const AddProduct = () => {
       dispatch({ type: CREATE_PRODUCT_RESET });
     }
   }, [products, addToast, error, dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, [dispatch]);
 
   useEffect(() => {
     if (uploadError) {
@@ -234,15 +241,11 @@ const AddProduct = () => {
                 onChange={handleChangeInput}
               >
                 <option value="">Please select a category</option>
-                {/* {categories.map((category) => (
-              <option value={category._id} key={category._id}>
-                {category.name}
-              </option>
-            ))} */}
-
-                <option value="sony">sony</option>
-                <option value="Iphone">Iphone</option>
-                <option value="Iphone">Iphone</option>
+                {categories?.map((category) => (
+                  <option value={category.name} key={category._id}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
             </div>
             <h4>Upload Image</h4>
@@ -256,7 +259,13 @@ const AddProduct = () => {
                 />
                 {isLoading ? (
                   <div id="file_img">
-                    <Loader inline backdrop />
+                    <Spinner
+                      style={{ margin: "120px" }}
+                      animation="border"
+                      role="status"
+                    >
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
                   </div>
                 ) : (
                   <div id="file_img" style={styleUpload}>

@@ -15,14 +15,13 @@ const AddCategory = () => {
   const { addToast } = useToasts();
 
   const [category, setCategory] = useState("");
-  console.log(category, "category");
+
   const {
     categories: createCategoryData,
     error: createError,
     loading: createLoading,
   } = useSelector((state) => state.createCategory);
   const user = useSelector((state) => state?.userLogin?.userInfo);
-  console.log(user);
 
   const { categories, error, loading } = useSelector(
     (state) => state.allCategories
@@ -31,10 +30,6 @@ const AddCategory = () => {
   const [callback, setCallback] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
   const [id, setID] = useState("");
-
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, [dispatch, callback]);
 
   const createCategories = async (e) => {
     e.preventDefault();
@@ -78,6 +73,10 @@ const AddCategory = () => {
       );
     }
   };
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, [dispatch, callback]);
 
   useEffect(() => {
     if (createError) {

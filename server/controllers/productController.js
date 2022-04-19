@@ -4,11 +4,22 @@ const CustomErrorHandler = require("../services/CustomErrorHandler");
 const productController = {
   async createProduct(req, res, next) {
     try {
-      const { name, description, Stock, price, isActive, images, ratings } =
-        req.body;
+      const {
+        name,
+        description,
+        Stock,
+        price,
+        isActive,
+        images,
+        ratings,
+        category,
+      } = req.body;
 
       if (!images) {
         return next(CustomErrorHandler.badRequest("You must upload image."));
+      }
+      if (!category) {
+        return next(CustomErrorHandler.badRequest("You must add a category."));
       }
 
       if (!description || !name) {
@@ -33,6 +44,7 @@ const productController = {
         isActive,
         images,
         ratings,
+        category,
       });
 
       const savedProduct = await product.save();
@@ -47,8 +59,16 @@ const productController = {
   },
   async updateProducts(req, res, next) {
     try {
-      const { name, description, Stock, price, isActive, images, ratings } =
-        req.body;
+      const {
+        name,
+        description,
+        Stock,
+        price,
+        isActive,
+        images,
+        ratings,
+        category,
+      } = req.body;
       if (!images) {
         return next(CustomErrorHandler.badRequest("No image upload"));
       }
@@ -63,6 +83,7 @@ const productController = {
           isActive,
           images,
           ratings,
+          category,
         },
         { new: true }
       );

@@ -11,7 +11,7 @@ import axios from "axios";
 // create category action
 export const createCategory = (category) => async (dispatch, getState) => {
   const token = getState().userLogin?.userInfo?.access_token;
-  console.log(category, token, "category action");
+
   try {
     dispatch({
       type: CREATE_CATEGORY_REQUEST,
@@ -47,7 +47,6 @@ export const createCategory = (category) => async (dispatch, getState) => {
 export const updateCategory = (category, id) => async (dispatch, getState) => {
   const token = getState().userLogin?.userInfo?.access_token;
 
-  console.log(category, id, "upade");
   try {
     dispatch({
       type: CREATE_CATEGORY_REQUEST,

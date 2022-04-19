@@ -17,7 +17,7 @@ const uploadController = {
       cloudinary.v2.uploader.upload(
         file.tempFilePath,
         {
-          folder: "camera-shop",
+          folder: "quick-shop",
         },
         async (err, result) => {
           try {
