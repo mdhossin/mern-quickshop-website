@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
+
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
-import { login, googleLogin, logout } from "../../redux/actions/userActions";
+import { login, logout } from "../../redux/actions/userActions";
 import { Spinner } from "react-bootstrap";
 import { USER_LOGIN_RESET } from "../../redux/constants/userConstants";
 
@@ -32,14 +32,6 @@ const Login = () => {
     e.preventDefault();
 
     dispatch(login(email, password));
-  };
-
-  const responseGoogle = async (response) => {
-    try {
-      dispatch(googleLogin(response.tokenId));
-    } catch (error) {
-      alert(error?.message);
-    }
   };
 
   useEffect(() => {
@@ -104,15 +96,6 @@ const Login = () => {
           <button className="login__form__submit" type="submit">
             {loading ? <Spinner animation="border" size="sm" /> : "login"}
           </button>
-          <div className="login__form__social">
-            <GoogleLogin
-              clientId="768253564136-6ntsta3ed6q04le02jrkr0520ii7psqh.apps.googleusercontent.com"
-              buttonText="Login with google"
-              onSuccess={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-              theme="dark"
-            />
-          </div>
         </form>
       </div>
     </section>

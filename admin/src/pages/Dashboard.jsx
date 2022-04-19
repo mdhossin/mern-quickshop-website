@@ -4,7 +4,6 @@ import Box from "../components/Box/Box";
 
 import DashboardWrapper, {
   DashboardWrapperMain,
-  DashboardWrapperRight,
 } from "../components/DashboardWrapper/DashboardWrapper";
 import SummaryBox, {
   SummaryBoxSpecial,
@@ -22,8 +21,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import RevenueList from "../components/RevenueList/RevenueList";
-import OverallList from "../components/OverallList/OverallList";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,

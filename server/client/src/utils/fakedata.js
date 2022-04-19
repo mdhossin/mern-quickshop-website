@@ -78,7 +78,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img1,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",
@@ -88,7 +88,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img2,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",
@@ -98,7 +98,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img3,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",
@@ -108,7 +108,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img4,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",
@@ -118,7 +118,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img5,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",
@@ -128,7 +128,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img6,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",
@@ -138,7 +138,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img7,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",
@@ -148,7 +148,7 @@ export const productData = [
   {
     id: useId,
     images: {
-      url: img8,
+      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
     },
     Stock: 5,
     name: "Smart Watch 2022",

@@ -12,8 +12,8 @@ const jwt = require("jsonwebtoken");
 const sendEmail = require("../config/sendMail");
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
-const CLIENT_URL = `http://localhost:3000`;
-// const CLIENT_URL = `https://ecommerce-quickshop.herokuapp.com`;
+// const CLIENT_URL = `http://localhost:3000`;
+const CLIENT_URL = `https://mern-quickshop-web-app.herokuapp.com`;
 
 const authCtrl = {
   async register(req, res, next) {
@@ -142,6 +142,7 @@ const authCtrl = {
   async refreshToken(req, res, next) {
     try {
       const rf_token = req.cookies.refreshtoken;
+      console.log(rf_token, "refresh backend");
       if (!rf_token)
         return next(CustomErrorHandler.badRequest("Please login now!"));
 

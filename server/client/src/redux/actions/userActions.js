@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/login",
+      "https://mern-quickshop-web-app.herokuapp.com/api/login",
       { email, password },
       config
     );
@@ -66,7 +66,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/register",
+      "https://mern-quickshop-web-app.herokuapp.com/api/register",
       { name, email, password },
       config
     );
@@ -104,7 +104,7 @@ export const refreshToken = () => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      "/api/refresh_token",
+      "https://mern-quickshop-web-app.herokuapp.com/api/refresh_token",
       config
     );
     // console.log(data, "refresh token action");
@@ -145,7 +145,7 @@ export const logout = (token, navigate) => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      "/api/logout",
+      "https://mern-quickshop-web-app.herokuapp.com/api/logout",
       config
     );
     // console.log(data, access_token, "logout action");
@@ -183,7 +183,7 @@ export const googleLogin = (id_token) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/google_login",
+      "https://mern-quickshop-web-app.herokuapp.com/api/google_login",
       config
     );
     console.log(data, " data");
