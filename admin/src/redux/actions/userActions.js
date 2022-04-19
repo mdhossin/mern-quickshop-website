@@ -1,4 +1,7 @@
 import {
+  USER_LIST_FAIL,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -116,6 +119,37 @@ export const logout = (token, navigate) => async (dispatch) => {
       payload:
         error.response && error.response.data
           ? error.response.data
+          : error.message,
+    });
+  }
+};
+
+// user list for admin
+export const userList = () => async (dispatch, getState) => {
+  const token = getState().userLogin?.userInfo?.access_token;
+  try {
+    dispatch({
+      type: USER_LIST_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.get(`/api/admin/users`, config);
+    dispatch({
+      type: USER_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }

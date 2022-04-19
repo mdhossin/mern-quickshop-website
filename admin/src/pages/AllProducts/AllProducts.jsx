@@ -50,7 +50,7 @@ const AllProducts = () => {
       <div className="allProducts__container grid">
         {loading ? (
           <Spinner
-            style={{ margin: "0 auto" }}
+            style={{ marginLeft: "50%", marginTop: "5%" }}
             animation="border"
             role="status"
           >
@@ -81,7 +81,7 @@ const AllProducts = () => {
                       Edit
                     </Link>
                     <button
-                      className="button delete"
+                      className="button"
                       onClick={() =>
                         deleteHandler(product._id, product.images.public_id)
                       }

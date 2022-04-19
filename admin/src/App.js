@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import AddCategory from "./pages/AddCategory/AddCategory";
 import AllProducts from "./pages/AllProducts/AllProducts";
+import UserList from "./pages/UserList/UserList";
 function App() {
   const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ function App() {
             <Route path="products" element={<AllProducts />} />
 
             <Route path="category" element={<AddCategory />} />
-            <Route path="users" element={<Blank />} />
+            <Route path="users" element={<UserList />} />
 
             {/* <Route path="users" element={<Profile />} /> */}
             {/* <Route path="edit_user/:id" element={<EditUser />} /> */}
