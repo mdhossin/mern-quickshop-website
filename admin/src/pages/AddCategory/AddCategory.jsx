@@ -46,8 +46,12 @@ const AddCategory = () => {
       }
       setOnEdit(false);
       setCategory("");
-    } catch (err) {
-      alert(err.response.data.message);
+    } catch (error) {
+      alert(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
     }
   };
 
@@ -59,13 +63,19 @@ const AddCategory = () => {
 
   const deleteCategory = async (id) => {
     try {
-      const res = await axios.delete(`/api/category/${id}`, {
-        headers: { Authorization: user?.access_token },
-      });
-      alert(res.data.message);
-      setCallback(!callback);
-    } catch (err) {
-      alert(err.response.data.message);
+      if (window.confirm("Are you sure want to delete?")) {
+        const res = await axios.delete(`/api/category/${id}`, {
+          headers: { Authorization: user?.access_token },
+        });
+        alert(res.data.message);
+        setCallback(!callback);
+      }
+    } catch (error) {
+      alert(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
     }
   };
 
@@ -121,10 +131,22 @@ const AddCategory = () => {
           ) : (
             <>
               {categories?.map((category) => (
-                <div className="category__container__action__list">
+                <div
+                  key={category._id}
+                  className="category__container__action__list"
+                >
                   <p>{category?.name}</p>
-                  <button>Edit</button>
-                  <button className="delete">Delete</button>
+                  <button
+                    onClick={() => editCategory(category._id, category.name)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="delete"
+                    onClick={() => deleteCategory(category._id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               ))}
             </>

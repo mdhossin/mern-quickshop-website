@@ -46,6 +46,8 @@ export const createCategory = (category) => async (dispatch, getState) => {
 // create category action
 export const updateCategory = (category, id) => async (dispatch, getState) => {
   const token = getState().userLogin?.userInfo?.access_token;
+
+  console.log(category, id, "upade");
   try {
     dispatch({
       type: CREATE_CATEGORY_REQUEST,
@@ -57,7 +59,11 @@ export const updateCategory = (category, id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/category/${id}`, category, config);
+    const { data } = await axios.put(
+      `/api/category/${id}`,
+      { name: category },
+      config
+    );
 
     dispatch({
       type: CREATE_CATEGORY_SUCCESS,
