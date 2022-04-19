@@ -1,5 +1,4 @@
 import React from "react";
-import "./UserInfo.scss";
 
 const UserInfo = ({ user }) => {
   console.log(user);

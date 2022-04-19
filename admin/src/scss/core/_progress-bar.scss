@@ -1,5 +1,4 @@
-@use "../../scss/abstracts/" as *;
-
+@use "./abstracts/" as *;
 .progress-bar {
   height: 8px;
   background-color: $bodyBg;

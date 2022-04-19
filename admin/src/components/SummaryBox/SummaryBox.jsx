@@ -1,5 +1,5 @@
 import React from "react";
-import "./SummaryBox.scss";
+
 import Box from "../Box/Box";
 import {
   CircularProgressbarWithChildren,

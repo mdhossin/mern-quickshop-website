@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./SideBar.scss";
+
 import { Link, useLocation } from "react-router-dom";
 import { images } from "../../constants";
 import sidebarNav from "../../configs/sidebarNav";

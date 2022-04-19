@@ -1,5 +1,4 @@
 import React from "react";
-import "./Box.scss";
 
 const Box = (props) => {
   const className = {

@@ -1,7 +1,6 @@
 import React from "react";
 import { data } from "../../constants";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import "./RevenueList.scss";
 
 const RevenueList = () => {
   return (

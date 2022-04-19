@@ -1,6 +1,5 @@
 import React from "react";
 import { data } from "../../constants";
-import "./OverallList.scss";
 
 const icons = [
   <i className="bx bx-receipt"></i>,

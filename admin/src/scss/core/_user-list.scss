@@ -1,4 +1,4 @@
-@use "../../scss/abstracts/" as *;
+@use "./abstracts/" as *;
 
 .user-info {
   @include flex(center, flex-start);

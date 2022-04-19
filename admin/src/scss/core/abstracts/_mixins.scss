@@ -1,0 +1,54 @@
+@use "./variables" as *;
+
+@mixin flex($alignItem: center, $justifyContent: center) {
+  display: flex;
+  align-items: $alignItem;
+  justify-content: $justifyContent;
+}
+
+// // max-width = 1024px
+
+//375px, 576px, 767px, 1024px, 1200px / 1rem
+
+$breakpoints-up: (
+  "small": "23.4375em",
+  "medium": "36em",
+  "large": "47.9375em",
+  "xlarge": "64em",
+  "xxlarge": "75em",
+);
+
+//320px, 375px,  576px, 1024px, 1399px
+
+$breakpoints-down: (
+  "xs": "20em",
+  "xm": "23.4375em",
+
+  "small": "36em",
+  "medium": "64em",
+);
+
+@mixin breakpoint-up($size) {
+  // map-get(key, value)
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoints-down($size) {
+  @media (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: $tablet-width) {
+    @content;
+  }
+}

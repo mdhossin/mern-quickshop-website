@@ -1,6 +1,6 @@
 import React from "react";
 import UserInfo from "../UserInfo/UserInfo";
-import "./TopNav.scss";
+
 import { data } from "../../constants";
 const TopNav = () => {
   const openSidebar = () => {

@@ -1,0 +1,130 @@
+@use "./abstracts/" as *;
+
+.login-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  width: 400px;
+
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+
+  &__title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 3.5rem;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20%;
+      transition: width 0.5s ease;
+      height: 2px;
+      background-color: #f3b632;
+    }
+  }
+
+  &__form {
+    .pass {
+      position: relative;
+      small {
+        position: absolute;
+        top: 35%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        opacity: 0.5;
+        svg {
+          font-size: 16px;
+        }
+      }
+    }
+    &__input {
+      width: 100%;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background-color: #f7f7f7;
+      text-align: center;
+      margin-bottom: 20px;
+
+      &:focus {
+        border: 1px solid #f3b632;
+      }
+    }
+
+    &__forgot {
+      text-align: end;
+      font-size: 14px;
+      font-weight: 500;
+      color: #f4a51c;
+      transition: all 0.5s ease;
+      margin-bottom: 0.5rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__social {
+      button {
+        width: 100%;
+        margin: 10px 0;
+        height: 50px;
+        text-transform: capitalize;
+        box-shadow: 0 2px 4px #777;
+        margin-top: 1rem;
+        border-radius: 25px !important;
+        font-size: 15px;
+
+        > div {
+          background-color: transparent !important;
+        }
+        > span {
+          display: block;
+          font-weight: 600;
+          letter-spacing: 1px;
+          text-align: center;
+          color: #fff;
+          font-size: 14px;
+          margin-left: 58px;
+          @media screen and(min-width: 376px) {
+            margin-left: 75px !important;
+          }
+
+          @media screen and(min-width: 440px) {
+            margin-left: 95px !important;
+          }
+        }
+      }
+    }
+
+    &__submit {
+      cursor: pointer;
+      border-radius: 5em;
+      color: #fff;
+      background: #f3b632;
+      width: 100%;
+      display: block;
+      padding: 15px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+      transition: all 0.5s ease;
+
+      &:hover {
+        background-color: #2c2c2c;
+      }
+    }
+  }
+}

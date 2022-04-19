@@ -1,5 +1,4 @@
 import React from "react";
-import "./DashboardWrapper.scss";
 
 const DashboardWrapper = (props) => {
   return <div className="dashboard-wrapper">{props.children}</div>;
