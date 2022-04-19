@@ -15,6 +15,7 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import NotFound from "./pages/NotFound/NotFound";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import AddCategory from "./pages/AddCategory/AddCategory";
+import AllProducts from "./pages/AllProducts/AllProducts";
 function App() {
   const dispatch = useDispatch();
 
@@ -35,7 +36,7 @@ function App() {
             {/* <Route path="/" element={<Dashboard />} /> same working index and root when i need to render same root use index or root path */}
             <Route index element={<Dashboard />} />
             <Route path="orders" element={<Blank />} />
-            <Route path="products" element={<Blank />} />
+            <Route path="products" element={<AllProducts />} />
 
             <Route path="category" element={<AddCategory />} />
             <Route path="users" element={<Blank />} />
@@ -43,7 +44,7 @@ function App() {
             {/* <Route path="users" element={<Profile />} /> */}
             {/* <Route path="edit_user/:id" element={<EditUser />} /> */}
             <Route path="addProduct" element={<AddProduct />} />
-            {/* <Route path="edit/:productId" element={<AddProduct />} /> */}
+            <Route path="edit/:productId" element={<AddProduct />} />
 
             {/* <Route path="products" element={<AllProducts />} /> */}
 

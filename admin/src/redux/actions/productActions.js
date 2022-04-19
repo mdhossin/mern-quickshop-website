@@ -53,6 +53,8 @@ export const createProduct =
 export const updateProduct =
   (product, id, addToast) => async (dispatch, getState) => {
     const token = getState().userLogin?.userInfo?.access_token;
+
+    console.log(product, id, token);
     try {
       dispatch({
         type: CREATE_PRODUCT_REQUEST,
