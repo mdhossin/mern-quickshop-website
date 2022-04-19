@@ -1,0 +1,145 @@
+@use "./abstracts/" as *;
+
+.addproduct {
+  padding-top: 2rem;
+  &__title {
+    color: #333;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  &__form {
+    gap: 0;
+
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    input {
+      border: 1px solid #b9b9b9;
+      border-radius: 3px;
+
+      &:focus {
+        border: 1px solid #8624db;
+      }
+    }
+    label {
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    textarea {
+      font-size: 15px;
+      width: 100%;
+      padding: 10px;
+      resize: vertical;
+      color: #2c2c2c;
+      border: 1px solid #b9b9b9;
+      border-radius: 3px;
+      background: transparent;
+      box-shadow: none;
+      transition: all 0.5s ease;
+      &:focus {
+        border: 1px solid #8624db;
+      }
+    }
+
+    &__right {
+      select {
+        display: block;
+        font-size: 15px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #b9b9b9;
+        transition: all 0.5s ease;
+        border-radius: 3px;
+        &:focus {
+          border: 1px solid #8624db;
+        }
+      }
+
+      h4 {
+        margin-top: 0.8rem;
+        font-size: 15px;
+        font-weight: 500;
+        color: #333;
+      }
+      &__box {
+        display: grid;
+        margin-top: 20px;
+        place-items: center;
+        border: 1px dashed #799cd9;
+        position: relative;
+        height: 300px;
+        width: 300px;
+        background: #fbfbff;
+        border-radius: 20px;
+        &__upload {
+          #file_up {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border-radius: 5px;
+
+            &::before {
+              content: url("../../assets/images/upload.png");
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              background: white;
+              border-radius: 5px;
+              text-align: center;
+              cursor: pointer;
+              @include flex(center, center);
+            }
+          }
+
+          #file_img {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            img {
+              margin-top: 0.5rem;
+              width: 280px;
+              height: 280px;
+              object-fit: contain;
+            }
+
+            span {
+              position: absolute;
+              top: -13px;
+              right: -13px;
+              background: white;
+              border: 1px solid #ddd;
+              border-radius: 50%;
+              padding: 6px 10px;
+              cursor: pointer;
+              font-weight: 900;
+              color: crimson;
+            }
+          }
+        }
+      }
+    }
+
+    &__button {
+      width: 180px;
+      padding-top: 1rem;
+      button {
+        background-color: #8624db;
+
+        &:hover {
+          background-color: #a95cec;
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 const userRoutes = require("./routes/userRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 
 const app = express();
 
@@ -24,6 +25,8 @@ app.use(
   })
 );
 
+// category routes
+app.use("/api", categoryRoutes);
 // auth routes
 app.use("/api", authRoutes);
 

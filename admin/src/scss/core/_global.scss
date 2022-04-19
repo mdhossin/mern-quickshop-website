@@ -27,7 +27,21 @@ a {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
+}
+/* ====== global styles any section can i use ====== */
+
+.container-div {
+  max-width: 968px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  //min-width: 1024px
+  @include breakpoint-up("xlarge") {
+    margin: 1rem auto;
+  }
+  @include breakpoint-up("xxlarge") {
+    max-width: 1200px;
+  }
 }
 
 ul,
@@ -105,11 +119,15 @@ input {
   padding-left: 10px;
 
   color: #2c2c2c;
-  border: 1px solid #ebeeee;
+  border: 1px solid #e3e6e6;
   background: transparent;
   box-shadow: none;
 }
 
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
 // select {
 //   font-size: rem(14);
 

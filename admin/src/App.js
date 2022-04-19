@@ -13,6 +13,7 @@ import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import NotFound from "./pages/NotFound/NotFound";
+import AddProduct from "./pages/AddProduct/AddProduct";
 function App() {
   const dispatch = useDispatch();
 
@@ -34,9 +35,19 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="orders" element={<Blank />} />
             <Route path="products" element={<Blank />} />
-            <Route path="addProduct" element={<Blank />} />
+
             <Route path="settings" element={<Blank />} />
             <Route path="users" element={<Blank />} />
+
+            {/* <Route path="users" element={<Profile />} /> */}
+            {/* <Route path="edit_user/:id" element={<EditUser />} /> */}
+            <Route path="addProduct" element={<AddProduct />} />
+            {/* <Route path="edit/:productId" element={<AddProduct />} /> */}
+
+            {/* <Route path="products" element={<AllProducts />} /> */}
+
+            {/* <Route path="orders" element={<OrderList />} /> */}
+            {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
           </Route>
 
           <Route path="*" element={<NotFound />} />
