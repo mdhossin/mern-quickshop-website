@@ -51,8 +51,7 @@ const CartList = ({
                       className="input"
                       readOnly
                       type="number"
-                      // value={item.quantity}
-                      value="22"
+                      value={item.quantity}
                     />
                     <button
                       onClick={() =>

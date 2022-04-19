@@ -31,7 +31,7 @@ const Header = () => {
   const logoutUser = useSelector((state) => state.userLogout);
   const { userLogout, error } = logoutUser;
 
-  //   const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const toggleCart = () => {
     setCartOpen(false);
@@ -218,7 +218,7 @@ const Header = () => {
                 }}
               >
                 <BsHandbag />
-                <span className="nav__icons__cart">1</span>
+                <span className="nav__icons__cart">{cartItems?.length}</span>
               </a>
             </li>
           </ul>

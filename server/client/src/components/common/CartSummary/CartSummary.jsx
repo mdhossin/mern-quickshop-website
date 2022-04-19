@@ -10,7 +10,7 @@ const CartSummary = ({ cartTotal }) => {
             <p className="summary-label">SubTotal</p>
           </Col>
           <Col xs="3" className="text-right">
-            <p className="summary-value">$200</p>
+            <p className="summary-value">${cartTotal}</p>
           </Col>
         </Row>
       </Container>

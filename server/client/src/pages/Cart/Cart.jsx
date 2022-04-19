@@ -4,40 +4,21 @@ import { BiShoppingBag } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Watch } from "../../assets";
 import { CartList, CartSummary, CheckOut } from "../../components";
+import {
+  addItemsToCart,
+  removeItemsFromCart,
+} from "../../redux/actions/cartActions";
 
 const Cart = ({ setCartOpen, isCartOpen }) => {
-  const cartItems = [
-    {
-      name: "sony",
-      price: 123,
-      image: Watch,
-    },
-    {
-      name: "sony",
-      price: 123,
-      image: Watch,
-    },
-    {
-      name: "sony",
-      price: 123,
-      image: Watch,
-    },
-    {
-      name: "sony",
-      price: 123,
-      image: Watch,
-    },
-  ];
-
   const dispatch = useDispatch();
-  //   const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
       return;
     }
-    // dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, newQty));
   };
 
   const decreaseQuantity = (id, quantity) => {
@@ -45,11 +26,11 @@ const Cart = ({ setCartOpen, isCartOpen }) => {
     if (1 >= quantity) {
       return;
     }
-    // dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, newQty));
   };
 
   const deleteCartItems = (id) => {
-    // dispatch(removeItemsFromCart(id));
+    dispatch(removeItemsFromCart(id));
   };
 
   // const checkoutHandler = () => {
