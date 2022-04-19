@@ -38,7 +38,7 @@ const EditUser = () => {
       if (num % 2 !== 0) {
         setLoading(true);
         const res = await axios.patch(
-          `/api/admin/update_role/${editUser._id}`,
+          `https://mern-quickshop-web-app.herokuapp.com/api/admin/update_role/${editUser._id}`,
           {
             role: checkAdmin ? 1 : 0,
           },

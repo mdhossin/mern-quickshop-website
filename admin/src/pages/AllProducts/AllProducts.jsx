@@ -24,7 +24,7 @@ const AllProducts = () => {
     try {
       if (window.confirm("are you sure?")) {
         const destroyImg = axios.post(
-          "/api/destroy",
+          "https://mern-quickshop-web-app.herokuapp.com/api/destroy",
           { public_id },
           {
             headers: { Authorization: token },

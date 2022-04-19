@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import SingleProduct from "./SingleProduct/SingleProduct";
 import { productData } from "../../../utils/fakedata";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllProduct } from "../../../redux/actions/productActions";
+import { Spinner } from "react-bootstrap";
 const Products = () => {
-  //   const dispatch = useDispatch();
-  //   const { products, loading } = useSelector((state) => state.adminProducts);
+  const dispatch = useDispatch();
+  const productsData = useSelector((state) => state.allProducts);
+  const { products, loading, error } = productsData;
 
-  //   useEffect(() => {
-  //     dispatch(getAdminProduct());
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getAllProduct());
+  }, [dispatch]);
 
   return (
     <section className="featured container-div">
@@ -18,13 +23,31 @@ const Products = () => {
 
         <div className="featured__products grid">
           <>
-            {false ? (
-              <Loading />
+            {loading ? (
+              <Spinner
+                style={{ marginLeft: "50%", marginTop: "5%" }}
+                animation="border"
+                role="status"
+              >
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            ) : error ? (
+              <h2
+                style={{
+                  color: "#333",
+                  fontWeight: "500",
+                  textAlign: "center",
+                }}
+              >
+                {error}
+              </h2>
             ) : (
               <>
-                {productData &&
-                  productData?.slice(0, 8).map((product, i) => {
-                    return <SingleProduct key={i} product={product} />;
+                {products &&
+                  products?.slice(0, 8).map((product) => {
+                    return (
+                      <SingleProduct key={product?._id} product={product} />
+                    );
                   })}
               </>
             )}

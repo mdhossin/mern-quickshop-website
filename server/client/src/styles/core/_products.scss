@@ -43,13 +43,13 @@
   &__title {
     color: #2c2c2c;
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 3rem;
     position: relative;
 
     @include breakpoint-up("medium") {
       margin-bottom: 4rem;
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
 
     &::after {

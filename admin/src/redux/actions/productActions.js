@@ -28,7 +28,11 @@ export const createProduct =
         },
       };
 
-      const { data } = await axios.post("/api/products", product, config);
+      const { data } = await axios.post(
+        "https://mern-quickshop-web-app.herokuapp.com/api/products",
+        product,
+        config
+      );
 
       dispatch({
         type: CREATE_PRODUCT_SUCCESS,
@@ -54,7 +58,6 @@ export const updateProduct =
   (product, id, addToast) => async (dispatch, getState) => {
     const token = getState().userLogin?.userInfo?.access_token;
 
-    console.log(product, id, token);
     try {
       dispatch({
         type: CREATE_PRODUCT_REQUEST,
@@ -66,7 +69,11 @@ export const updateProduct =
         },
       };
 
-      const { data } = await axios.put(`/api/products/${id}`, product, config);
+      const { data } = await axios.put(
+        `https://mern-quickshop-web-app.herokuapp.com/api/products/${id}`,
+        product,
+        config
+      );
 
       dispatch({
         type: CREATE_PRODUCT_SUCCESS,
@@ -105,7 +112,10 @@ export const deleteProduct = (token, id) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.delete(`/api/products/${id}`, config);
+    const { data } = await axios.delete(
+      `https://mern-quickshop-web-app.herokuapp.com/api/products/${id}`,
+      config
+    );
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
       payload: data,
@@ -126,7 +136,9 @@ export const getAllProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTS_LOADING });
 
-    const { data } = await axios.get("/api/products");
+    const { data } = await axios.get(
+      "https://mern-quickshop-web-app.herokuapp.com/api/products"
+    );
 
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,

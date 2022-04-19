@@ -34,25 +34,34 @@ function App() {
           <Route path="forgot" element={<ForgotPassword />} />
           <Route path="user/reset/:token" element={<ResetPassword />} />
 
-          <Route path="/dashboard" element={<MainLayout />}>
-            {/* <Route path="/" element={<Dashboard />} /> same working index and root when i need to render same root use index or root path */}
-            <Route index element={<Dashboard />} />
-            <Route path="orders" element={<Blank />} />
-            <Route path="products" element={<AllProducts />} />
+          {user?.access_token && user?.user?.role === 1 && (
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <MainLayout />
+                </PrivateRoute>
+              }
+            >
+              {/* <Route path="/" element={<Dashboard />} /> same working index and root when i need to render same root use index or root path */}
+              <Route index element={<Dashboard />} />
+              <Route path="orders" element={<Blank />} />
+              <Route path="products" element={<AllProducts />} />
 
-            <Route path="category" element={<AddCategory />} />
-            <Route path="users" element={<UserList />} />
+              <Route path="category" element={<AddCategory />} />
+              <Route path="users" element={<UserList />} />
 
-            {/* <Route path="users" element={<Profile />} /> */}
-            <Route path="edit_user/:id" element={<EditUser />} />
-            <Route path="addProduct" element={<AddProduct />} />
-            <Route path="edit/:productId" element={<AddProduct />} />
+              {/* <Route path="users" element={<Profile />} /> */}
+              <Route path="edit_user/:id" element={<EditUser />} />
+              <Route path="addProduct" element={<AddProduct />} />
+              <Route path="edit/:productId" element={<AddProduct />} />
 
-            {/* <Route path="products" element={<AllProducts />} /> */}
+              {/* <Route path="products" element={<AllProducts />} /> */}
 
-            {/* <Route path="orders" element={<OrderList />} /> */}
-            {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
-          </Route>
+              {/* <Route path="orders" element={<OrderList />} /> */}
+              {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
+            </Route>
+          )}
 
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -19,9 +19,12 @@ const UserListItem = ({ users, setCallback, callback }) => {
     try {
       if (auth?.user?._id !== id) {
         if (window.confirm("Are you sure you want to delete this account?")) {
-          const { data } = await axios.delete(`/api/admin/delete/${id}`, {
-            headers: { Authorization: token },
-          });
+          const { data } = await axios.delete(
+            `https://mern-quickshop-web-app.herokuapp.com/api/admin/delete/${id}`,
+            {
+              headers: { Authorization: token },
+            }
+          );
 
           setCallback(!callback);
           setSuccess(data.message);

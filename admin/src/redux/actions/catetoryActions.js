@@ -24,7 +24,7 @@ export const createCategory = (category) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "/api/category",
+      "https://mern-quickshop-web-app.herokuapp.com/api/category",
       { name: category },
       config
     );
@@ -59,7 +59,7 @@ export const updateCategory = (category, id) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/category/${id}`,
+      `https://mern-quickshop-web-app.herokuapp.com/api/category/${id}`,
       { name: category },
       config
     );
@@ -84,7 +84,9 @@ export const getAllCategories = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_CATEGORIES_LOADING });
 
-    const { data } = await axios.get("/api/category");
+    const { data } = await axios.get(
+      "https://mern-quickshop-web-app.herokuapp.com/api/category"
+    );
 
     dispatch({
       type: ALL_CATEGORIES_SUCCESS,

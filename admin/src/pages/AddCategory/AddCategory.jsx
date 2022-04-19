@@ -59,9 +59,12 @@ const AddCategory = () => {
   const deleteCategory = async (id) => {
     try {
       if (window.confirm("Are you sure want to delete?")) {
-        const res = await axios.delete(`/api/category/${id}`, {
-          headers: { Authorization: user?.access_token },
-        });
+        const res = await axios.delete(
+          `https://mern-quickshop-web-app.herokuapp.com/api/category/${id}`,
+          {
+            headers: { Authorization: user?.access_token },
+          }
+        );
         alert(res.data.message);
         setCallback(!callback);
       }

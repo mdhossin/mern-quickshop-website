@@ -10,7 +10,7 @@ import {
   updateProduct,
 } from "../../redux/actions/productActions";
 import { CREATE_PRODUCT_RESET } from "../../redux/constants/productConstants";
-import Loader from "../../components/Loader/Loader";
+
 import { getAllCategories } from "../../redux/actions/catetoryActions";
 
 const initialstate = {
@@ -41,7 +41,6 @@ const AddProduct = () => {
 
   const { name, description, Stock, price, category } = product;
 
-  console.log(product, "add product");
   const { categories } = useSelector((state) => state.allCategories);
 
   useEffect(() => {
@@ -70,12 +69,16 @@ const AddProduct = () => {
       formData.append("file", file);
       setIsLoading(true);
       setUploadError("");
-      const res = await axios.post("/api/upload_image", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://mern-quickshop-web-app.herokuapp.com/api/upload_image",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       setIsLoading(false);
       setImages(res.data);
       setUploadSuccess(res.data.message);
@@ -96,7 +99,7 @@ const AddProduct = () => {
       setIsLoading(true);
       setUploadError("");
       const res = await axios.post(
-        "/api/destroy",
+        "https://mern-quickshop-web-app.herokuapp.com/api/destroy",
         { public_id: images.public_id },
         {
           headers: { Authorization: token },
