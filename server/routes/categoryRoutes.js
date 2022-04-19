@@ -16,6 +16,7 @@ router
   .post(auth, authAdmin, createCategory);
 
 // delete and update route here have
+
 router
   .route("/category/:id")
   .delete(auth, authAdmin, deleteCategory)

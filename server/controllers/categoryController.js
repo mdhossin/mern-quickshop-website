@@ -13,26 +13,34 @@ const categoryController = {
   },
 
   async createCategory(req, res, next) {
+    console.log(req.body, "create category controller");
     // if user have role = 1  --  mean admin
 
     // only admin can create, delete and update category
 
     const { name } = req.body;
-    const category = await Category.findOne({ name });
-    if (category) {
-      return next(
-        CustomErrorHandler.alreadyExist("This category already exists.")
-      );
+    try {
+      if (!name) {
+        return next(CustomErrorHandler.badRequest("Please add a Category."));
+      }
+      const category = await Category.findOne({ name });
+      if (category) {
+        return next(
+          CustomErrorHandler.alreadyExist("This category already exists.")
+        );
+      }
+      const newCategory = new Category({
+        name,
+      });
+
+      await newCategory.save();
+
+      res.json({
+        message: "Created a category.",
+      });
+    } catch (error) {
+      return next(error);
     }
-    const newCategory = new Category({
-      name,
-    });
-
-    await newCategory.save();
-
-    res.json({
-      messge: "Created a category.",
-    });
   },
 
   async deleteCategory(req, res, next) {
