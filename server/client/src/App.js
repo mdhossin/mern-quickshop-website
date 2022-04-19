@@ -8,6 +8,7 @@ import {
   ForgotPassword,
   Home,
   Login,
+  ProductDetail,
   Register,
   ResetPassword,
 } from "./pages";
@@ -34,6 +35,7 @@ function App() {
             path="/active/:activation_token"
             element={<ActivationEmail />}
           />
+          <Route path="/product/:productId" element={<ProductDetail />} />
         </Routes>
       </BrowserRouter>
     </ToastProvider>

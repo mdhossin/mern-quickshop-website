@@ -1,0 +1,153 @@
+@use "./utils/" as *;
+
+.product {
+  margin-top: 7rem;
+  &__detail {
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &__img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 280px;
+      }
+    }
+
+    &__info {
+      &-name {
+        font-size: 26px;
+        margin: 1rem 0 0.5rem 0;
+        color: #2c2c2c;
+        font-weight: 600;
+      }
+
+      &-rating {
+        margin-bottom: 1rem;
+      }
+
+      &-stock {
+        p {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          font-weight: 400;
+        }
+      }
+
+      &__price {
+        &-count {
+          display: block;
+          font-size: 22px;
+          color: var(--theme-color);
+          margin-bottom: 1rem;
+          font-weight: 500;
+          font-family: "Roboto", sans-serif;
+        }
+      }
+      &__buttons {
+        display: flex;
+        align-items: center;
+
+        gap: 1rem;
+
+        &-quantity {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 130px;
+          max-width: 100%;
+          border: 0.5px solid rgb(177, 177, 177);
+          border-radius: 5px;
+
+          @include breakpoints-down("small") {
+            width: 110px;
+            height: 40px;
+          }
+
+          @include breakpoints-down("xm") {
+            width: 95px;
+          }
+
+          button {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: none;
+
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+
+            @include breakpoints-down("small") {
+              padding: 0.5rem 0.8rem;
+              font-size: 1rem;
+            }
+
+            @include breakpoints-down("xm") {
+              padding: 0.5rem 0.7rem;
+            }
+            &:hover {
+              background-color: #2c2c2c;
+              color: #fff;
+            }
+          }
+
+          .minus {
+            border-right: 0.5px solid rgb(177, 177, 177);
+          }
+
+          .add {
+            border-left: 0.5px solid rgb(177, 177, 177);
+          }
+
+          .input {
+            outline: none;
+            border: none;
+            margin-left: 12px;
+            padding: 0;
+
+            @include breakpoints-down("xm") {
+              margin-left: 3px;
+            }
+          }
+        }
+
+        &-add {
+          button {
+            background-color: #2c2c2c;
+            padding: 1rem 1.3rem;
+            color: #fff;
+          }
+        }
+
+        &-wishlist {
+          border: 0.5px solid rgb(177, 177, 177);
+
+          button {
+            background-color: transparent;
+            padding: 1rem 1.3rem;
+            background-color: transparent;
+
+            &:hover {
+              background-color: #2c2c2c;
+              color: #fff;
+            }
+
+            @include breakpoints-down("xm") {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &-desc {
+        margin: 1rem 0;
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -1,22 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useToasts } from "react-toast-notifications";
+import { useToasts } from "react-toast-notifications";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { AiOutlineHeart, AiOutlineEye } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import ProductRating from "../../ProductRating/ProductRating";
+import { addItemsToCart } from "../../../../redux/actions/cartActions";
 
 const SingleProduct = ({ product, wishlistItem }) => {
-  //   const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
 
-  //   const { addToast } = useToasts();
+  const { addToast } = useToasts();
 
-  //   const addOrNot = cartItems?.find((item) => item.product === product._id);
-  //   const dispatch = useDispatch();
+  const addOrNot = cartItems?.find((item) => item.product === product._id);
+  const dispatch = useDispatch();
   const addToCartHandler = () => {
-    // dispatch(addItemsToCart(product?._id, 1, addToast));
+    dispatch(addItemsToCart(product?._id, 1, addToast));
   };
   return (
     <>
@@ -44,13 +45,12 @@ const SingleProduct = ({ product, wishlistItem }) => {
             <div className="pro-same-action pro-cart">
               {product?.Stock && product?.Stock > 0 ? (
                 <button
-                  //   disabled={addOrNot?.quantity > 0}
+                  disabled={addOrNot?.quantity > 0}
                   onClick={addToCartHandler}
                   className="cart-btn"
                 >
                   <FiShoppingCart />
-                  {/* {addOrNot?.quantity > 0 ? "Added" : "Buy Now"} */}
-                  Buy Now
+                  {addOrNot?.quantity > 0 ? "Added" : "Buy Now"}
                 </button>
               ) : (
                 <button disabled className="active">
