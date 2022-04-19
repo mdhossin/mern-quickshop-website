@@ -1,26 +1,21 @@
-import Users from "../models/userModel.js";
-import Joi from "joi";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import {
+const Users = require("../models/userModels");
+const { OAuth2Client } = require("google-auth-library");
+const Joi = require("joi");
+const bcrypt = require("bcrypt");
+const CustomErrorHandler = require("../services/CustomErrorHandler");
+const {
   generateActiveToken,
   generateAccessToken,
   generateRefreshToken,
-} from "../config/generateToken.js";
-import sendMail from "../config/sendMail.js";
-import dotenv from "dotenv";
-dotenv.config();
-
-import CustomErrorHandler from "../services/CustomErrorHandler.js";
-
-import { OAuth2Client } from "google-auth-library";
-// import fetch from 'node-fetch'
+} = require("../config/generateToken");
+const jwt = require("jsonwebtoken");
+const sendEmail = require("../config/sendMail");
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
 // const CLIENT_URL = `http://localhost:3000`;
-const CLIENT_URL = `https://mern-quickshop-ecommerce.herokuapp.com`;
+const CLIENT_URL = `https://ecommerce-quickshop.herokuapp.com`;
 
-const authController = {
+const authCtrl = {
   async register(req, res, next) {
     //  create schema useing joi for validation
 
@@ -75,7 +70,7 @@ const authController = {
       const url = `${CLIENT_URL}/active/${active_token}`;
 
       if (validateEmail(email)) {
-        sendMail(email, url, "Verify your email address");
+        sendEmail(email, url, "Verify your email address");
         return res.json({
           message: "Success! Please check your email and verify.",
         });
@@ -317,10 +312,8 @@ const authController = {
   async forgotPassword(req, res, next) {
     try {
       const { email } = req.body;
-      console.log(email);
 
       const user = await Users.findOne({ email });
-      console.log(user, "uiser");
       if (!user)
         return res
           .status(400)
@@ -336,7 +329,7 @@ const authController = {
       const url = `${CLIENT_URL}/user/reset/${access_token}`;
 
       if (validateEmail(email)) {
-        sendMail(email, url, "Forgot password?");
+        sendEmail(email, url, "Forgot password?");
         return res.json({ message: "Success! Please check your email." });
       }
     } catch (err) {
@@ -344,32 +337,32 @@ const authController = {
     }
   },
 
-  //   async statsUserPerMonth(req, res, next) {
-  //     const date = new Date();
-  //     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+  async statsUserPerMonth(req, res, next) {
+    const date = new Date();
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
 
-  //     let data;
+    let data;
 
-  //     try {
-  //       data = await Users.aggregate([
-  //         { $match: { createdAt: { $gte: lastYear } } },
-  //         {
-  //           $project: {
-  //             month: { $month: "$createdAt" },
-  //           },
-  //         },
-  //         {
-  //           $group: {
-  //             _id: "$month",
-  //             total: { $sum: 1 },
-  //           },
-  //         },
-  //       ]);
-  //     } catch (err) {
-  //       return next(err);
-  //     }
-  //     res.json(data);
-  //   },
+    try {
+      data = await Users.aggregate([
+        { $match: { createdAt: { $gte: lastYear } } },
+        {
+          $project: {
+            month: { $month: "$createdAt" },
+          },
+        },
+        {
+          $group: {
+            _id: "$month",
+            total: { $sum: 1 },
+          },
+        },
+      ]);
+    } catch (err) {
+      return next(err);
+    }
+    res.json(data);
+  },
 };
 
 const loginUser = async (user, password, res) => {
@@ -417,7 +410,7 @@ const registerUser = async (user, res) => {
   });
 };
 
-export default authController;
+module.exports = authCtrl;
 
 function validateEmail(email) {
   const re =

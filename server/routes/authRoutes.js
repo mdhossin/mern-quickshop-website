@@ -1,28 +1,28 @@
-import express from "express";
-import authController from "../controllers/authController.js";
-import auth from "../middlewares/auth.js";
+const express = require("express");
+const authCtrl = require("../controllers/authController");
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
 // register route
-router.post("/register", authController.register);
+router.post("/register", authCtrl.register);
 
 // verify and active account route
-router.post("/active", authController.activeAccount);
+router.post("/active", authCtrl.activeAccount);
 
 // login route
 
-router.post("/login", authController.login);
+router.post("/login", authCtrl.login);
 
 // logout route must be authenticated
 
-router.get("/logout", auth, authController.logout);
+router.get("/logout", auth, authCtrl.logout);
 
 // refresh token route
 
-router.get("/refresh_token", authController.refreshToken);
+router.get("/refresh_token", authCtrl.refreshToken);
 
 // google login route
-router.post("/google_login", authController.googleLogin);
+router.post("/google_login", authCtrl.googleLogin);
 
-export default router;
+module.exports = router;

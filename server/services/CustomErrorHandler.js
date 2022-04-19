@@ -9,7 +9,6 @@ class CustomErrorHandler extends Error {
   static alreadyExist(message) {
     return new CustomErrorHandler(409, message);
   }
-
   static badRequest(message) {
     return new CustomErrorHandler(400, message);
   }
@@ -29,4 +28,4 @@ class CustomErrorHandler extends Error {
   }
 }
 
-export default CustomErrorHandler;
+module.exports = CustomErrorHandler;

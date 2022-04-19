@@ -1,19 +1,14 @@
-import express from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
-import fileUpload from "express-fileupload";
-import path from "path";
-dotenv.config();
-import { fileURLToPath } from "url";
-import errorHandler from "./middlewares/errorHandler.js";
-import authRoutes from "./routes/authRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const fileUpload = require("express-fileupload");
+const path = require("path");
+const connectDb = require("./config/database");
+const errorHandler = require("./middlewares/errorHandler");
+const authRoutes = require("./routes/authRoutes");
 
-const __filename = fileURLToPath(import.meta.url);
-
-// 👇️ "/home/john/Desktop/javascript"
-const __dirname = path.dirname(__filename);
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -28,22 +23,30 @@ app.use(
   })
 );
 
-// for production
+// auth routes
+app.use("/api", authRoutes);
+
+// // user routes
+app.use("/api", userRoutes);
+
+// upload routes
+// app.use("/api", uploadRoutes);
+// // product routes
+// app.use("/api", productRoutes);
+
+// order routes
+
+// Database connection
+connectDb();
+
+// delpoy code
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
-// auth routes
-app.use("/api", authRoutes);
-
-// user routes
-app.use("/api", userRoutes);
-
-// Database connection
-import "./config/database.js";
 
 // declareing the port here
 const PORT = process.env.PORT || 5000;

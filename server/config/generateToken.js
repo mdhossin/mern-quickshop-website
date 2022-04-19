@@ -1,22 +1,19 @@
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-dotenv.config();
-export const generateActiveToken = (payload) => {
+const jwt = require("jsonwebtoken");
+
+exports.generateActiveToken = (payload) => {
   // console.log("generate token", process.env.ACTIVE_TOKEN_SECRET);
   return jwt.sign(payload, `${process.env.ACTIVE_TOKEN_SECRET}`, {
     expiresIn: "5m",
   });
 };
 
-export const generateAccessToken = (payload) => {
-  console.log("access", process.env.ACCESS_TOKEN_SECRET);
+exports.generateAccessToken = (payload) => {
   return jwt.sign(payload, `${process.env.ACCESS_TOKEN_SECRET}`, {
     expiresIn: "15m",
   });
 };
 
-export const generateRefreshToken = (payload, res) => {
-  console.log(process.env.REFRESH_TOKEN_SECRET, "refresh");
+exports.generateRefreshToken = (payload, res) => {
   const refresh_token = jwt.sign(
     payload,
     `${process.env.REFRESH_TOKEN_SECRET}`,

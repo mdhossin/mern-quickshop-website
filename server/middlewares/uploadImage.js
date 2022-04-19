@@ -1,7 +1,7 @@
-import fs from "fs";
-import CustomErrorHandler from "../services/CustomErrorHandler.js";
+const fs = require("node:fs/promises");
+const CustomErrorHandler = require("../services/CustomErrorHandler");
 
-export default async function (req, res, next) {
+module.exports = async function (req, res, next) {
   // console.log(req.files);
   try {
     if (!req.files || Object.keys(req.files).length === 0)
@@ -24,7 +24,7 @@ export default async function (req, res, next) {
   } catch (err) {
     return next(err);
   }
-}
+};
 
 const removeTmp = (path) => {
   fs.unlink(path, (err) => {

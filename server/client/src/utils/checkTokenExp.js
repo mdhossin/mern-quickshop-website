@@ -15,7 +15,7 @@ export const checkTokenExp = async (token, dispatch) => {
   };
 
   const res = await axios.get(
-    "https://mern-quickshop-ecommerce.herokuapp.com/api/refresh_token",
+    "https://ecommerce-quickshop.herokuapp.com/api/refresh_token",
     config
   );
 

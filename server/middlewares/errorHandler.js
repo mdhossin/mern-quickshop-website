@@ -1,5 +1,5 @@
-import Joi from "joi";
-import CustomErrorHandler from "../services/CustomErrorHandler.js";
+const Joi = require("joi");
+const CustomErrorHandler = require("../services/CustomErrorHandler");
 
 const { ValidationError } = Joi;
 
@@ -9,7 +9,7 @@ const errorHandler = (err, req, res, next) => {
 
   let data = {
     ...err,
-    message: "Your request could not be processed. Please try again.",
+    message: "Internal server error",
     ...(process.env.DEBUG_MODE === "true" && { originalError: err.message }),
   };
 
@@ -39,4 +39,4 @@ const errorHandler = (err, req, res, next) => {
   return res.status(statusCode).json(data);
 };
 
-export default errorHandler;
+module.exports = errorHandler;

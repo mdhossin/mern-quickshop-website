@@ -1,7 +1,6 @@
-import Users from "../models/userModel.js";
-import CustomErrorHandler from "../services/CustomErrorHandler.js";
+const Users = require("../models/userModels");
+const CustomErrorHandler = require("../services/CustomErrorHandler");
 const authAdmin = async (req, res, next) => {
-  console.log(req.user, "auth admin");
   try {
     const user = await Users.findOne({ _id: req.user.id });
     if (user.role === 1) {
@@ -16,4 +15,4 @@ const authAdmin = async (req, res, next) => {
   }
 };
 
-export default authAdmin;
+module.exports = authAdmin;

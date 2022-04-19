@@ -1,14 +1,10 @@
-import Users from "../models/userModel.js";
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-dotenv.config();
-import CustomErrorHandler from "../services/CustomErrorHandler.js";
+const Users = require("../models/userModels");
+const jwt = require("jsonwebtoken");
+const CustomErrorHandler = require("../services/CustomErrorHandler");
 
 const auth = async (req, res, next) => {
-  console.log(process.env.ACCESS_TOKEN_SECRET, "auth");
   try {
     const token = req.header("Authorization");
-    console.log(token, "token");
 
     if (!token) {
       return next(CustomErrorHandler.unAuthorized());
@@ -33,4 +29,4 @@ const auth = async (req, res, next) => {
   }
 };
 
-export default auth;
+module.exports = auth;
