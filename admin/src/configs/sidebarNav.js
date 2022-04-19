@@ -1,39 +1,38 @@
+import { AiOutlineHome } from "react-icons/ai";
+
+import { BiCube, BiReceipt } from "react-icons/bi";
+import { CgAddR } from "react-icons/cg";
+import { FiUsers } from "react-icons/fi";
 const sidebarNav = [
   {
-    link: "/",
+    link: "/dashboard/",
     section: "home",
-    icon: <i className="bx bx-home-alt"></i>,
+    icon: <AiOutlineHome />,
     text: "Home",
   },
   {
-    link: "/orders",
+    link: "/dashboard/orders",
     section: "orders",
-    icon: <i className="bx bx-receipt"></i>,
+    icon: <BiReceipt />,
     text: "Orders",
   },
   {
-    link: "/products",
+    link: "/dashboard/products",
     section: "products",
-    icon: <i className="bx bx-cube"></i>,
+    icon: <BiCube />,
     text: "Products",
   },
   {
-    link: "/customers",
-    section: "customers",
-    icon: <i className="bx bx-user"></i>,
-    text: "Customers",
+    link: "/dashboard/addProduct",
+    section: "addProduct",
+    icon: <CgAddR />,
+    text: "Add Product",
   },
   {
-    link: "/stats",
-    section: "stats",
-    icon: <i className="bx bx-line-chart"></i>,
-    text: "Stats",
-  },
-  {
-    link: "/settings",
-    section: "settings",
-    icon: <i className="bx bx-cog"></i>,
-    text: "Settings",
+    link: "/dashboard/users",
+    section: "users",
+    icon: <FiUsers />,
+    text: "Users",
   },
 ];
 

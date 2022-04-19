@@ -4,7 +4,7 @@ import { GoogleLogin } from "react-google-login";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
-import { login, googleLogin } from "../../redux/actions/userActions";
+import { login, googleLogin, logout } from "../../redux/actions/userActions";
 import { Spinner } from "react-bootstrap";
 import { USER_LOGIN_RESET } from "../../redux/constants/userConstants";
 
@@ -53,7 +53,16 @@ const Login = () => {
           autoDismiss: true,
         });
       }
-      navigate("/dashboard");
+
+      if (userInfo?.user?.role !== 1) {
+        dispatch(logout(userInfo?.access_token));
+        addToast("Admin resources access denied.", {
+          appearance: "error",
+          autoDismiss: true,
+        });
+      } else {
+        navigate("/dashboard/");
+      }
     }
   }, [userInfo, error, addToast, navigate, dispatch, redirect]);
   return (
@@ -103,10 +112,6 @@ const Login = () => {
               cookiePolicy={"single_host_origin"}
               theme="dark"
             />
-          </div>
-
-          <div className="login__form__forgot">
-            <Link to="/register"> Don't have an account ? Register</Link>
           </div>
         </form>
       </div>

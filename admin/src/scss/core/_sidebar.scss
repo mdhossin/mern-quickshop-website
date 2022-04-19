@@ -103,16 +103,16 @@
         --size: 40px;
         width: var(--size);
         height: var(--size);
-        margin-right: 3rem;
+        margin-right: 1rem;
         @include flex(center, center);
 
-        @include tablet {
-          margin-right: 1rem;
+        svg {
+          font-size: 1.1rem;
         }
+      }
 
-        i {
-          font-size: 1.9rem;
-        }
+      &__txt {
+        font-size: 1.1rem;
       }
 
       &:last-child {
