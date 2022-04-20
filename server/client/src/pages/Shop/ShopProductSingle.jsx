@@ -76,7 +76,7 @@ const ShopProductSingle = ({ product, wishlistItem }) => {
           </h3>
 
           <div className="product-price">
-            <span>${product.price}.00</span>
+            <span>${product.price}</span>
           </div>
         </div>
       </div>

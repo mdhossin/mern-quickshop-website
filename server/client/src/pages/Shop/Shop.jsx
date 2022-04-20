@@ -41,7 +41,11 @@ const Shop = () => {
             <select name="category" value={category} onChange={handleCategory}>
               <option value="">All Products</option>
               {categories?.map((category) => (
-                <option value={"category=" + category.name} key={category._id}>
+                <option
+                  style={{ textTransform: "capitalize" }}
+                  value={"category=" + category.name}
+                  key={category._id}
+                >
                   {category.name}
                 </option>
               ))}

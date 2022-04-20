@@ -21,6 +21,7 @@
         margin: 1rem 0 0.5rem 0;
         color: #2c2c2c;
         font-weight: 600;
+        text-transform: capitalize;
       }
 
       &-rating {
@@ -155,7 +156,7 @@
 .related-products {
   padding-top: 3rem;
   h2 {
-    font-weight: 500;
+    font-weight: 600;
     color: #333;
     font-size: 28px;
     margin-bottom: 3rem;

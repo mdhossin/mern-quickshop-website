@@ -1,7 +1,6 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import Items from "./Items";
 import PaginatedItems from "./Pagination";
 
 const ShopProduct = () => {
