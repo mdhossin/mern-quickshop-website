@@ -3,6 +3,11 @@ import { combineReducers } from "redux";
 import { cartReducer } from "./cartReducer";
 import { categoryReducer } from "./categoryReducer";
 import {
+  myOrdersReducer,
+  newOrderReducer,
+  orderDetailsReducer,
+} from "./orderReducer";
+import {
   productByIdReducer,
   productReducer,
   shopReducer,
@@ -22,4 +27,7 @@ export default combineReducers({
   cart: cartReducer,
   shopProduct: shopReducer,
   allCategories: categoryReducer,
+  newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
+  orderDetails: orderDetailsReducer,
 });
