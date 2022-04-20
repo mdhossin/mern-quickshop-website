@@ -12,6 +12,7 @@ const uploadRoutes = require("./routes/uploadRoutes");
 const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 
@@ -43,7 +44,7 @@ app.use("/api", productRoutes);
 app.use("/api", paymentRoutes);
 
 // order routes
-
+app.use("/api", orderRoutes);
 // Database connection
 connectDb();
 
