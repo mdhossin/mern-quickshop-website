@@ -1,0 +1,98 @@
+@use "./utils/" as *;
+
+.shop-main {
+  padding-top: 4.5rem;
+  width: 100%;
+  @include breakpoint-up("xlarge") {
+    padding-top: 5.5rem;
+  }
+
+  .title {
+    height: 130px;
+    background-color: rgb(243, 244, 246);
+    @include flex(center, center);
+    h2 {
+      font-weight: 500;
+      color: #333;
+      font-size: 2rem;
+    }
+  }
+}
+
+.shop {
+  &__filter {
+    padding-bottom: 3rem;
+
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 968px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &__category {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        margin-bottom: 0;
+        font-weight: 600;
+        color: #333;
+        font-size: 16px;
+      }
+
+      select {
+        padding: 0.5rem 1rem;
+        width: 70%;
+        border: 1px solid #e4e4e4;
+        color: #2c2c2c;
+        border-radius: 3px;
+        transition: all 0.5s ease;
+        @include breakpoint-up("large") {
+          width: 75%;
+        }
+
+        &:focus {
+          border: 1px solid var(--theme-color);
+        }
+      }
+    }
+    &__search {
+      position: relative;
+      height: 42px;
+
+      width: 100%;
+
+      input {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        border: 1px solid #ebeeee;
+        padding: 0 15px 0 45px;
+        color: #333;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 6px;
+        transition: all 0.5s ease;
+
+        &:focus {
+          border: 1px solid var(--theme-color);
+        }
+      }
+      svg {
+        position: absolute;
+        z-index: 2;
+        color: #333;
+        top: 50%;
+        left: 15px;
+        font-size: 20px;
+        transform: translateY(-50%);
+      }
+    }
+    &__select {
+    }
+  }
+}
