@@ -34,6 +34,7 @@ export const newOrderReducer = (state = {}, action) => {
     case CLEAR_ERRORS:
       return {
         ...state,
+        loading: false,
         error: null,
       };
 

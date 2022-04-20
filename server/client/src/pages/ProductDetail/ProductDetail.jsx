@@ -5,11 +5,15 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 
 import { useToasts } from "react-toast-notifications";
-import { getProductById } from "../../redux/actions/productActions";
+import {
+  getAllProduct,
+  getProductById,
+} from "../../redux/actions/productActions";
 import { addItemsToCart } from "../../redux/actions/cartActions";
 
 import { Footer, ProductRating } from "../../components";
 import { FiShoppingCart } from "react-icons/fi";
+import SingleProduct from "../../components/common/Products/SingleProduct/SingleProduct";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -21,6 +25,17 @@ const ProductDetail = () => {
   const addOrNot = cartItems?.find((item) => item.product === product._id);
 
   const { addToast } = useToasts();
+
+  const productsData = useSelector((state) => state.allProducts);
+  const {
+    products,
+    loading: productsLoading,
+    error: productsError,
+  } = productsData;
+
+  useEffect(() => {
+    dispatch(getAllProduct());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getProductById(productId));
@@ -116,12 +131,6 @@ const ProductDetail = () => {
                   ) : (
                     <button disabled>Out of Stock</button>
                   )}
-                  {/* <button
-                    disabled={addOrNot?.quantity > 0}
-                    onClick={addToCartHandler}
-                  >
-                    {addOrNot?.quantity > 0 ? "Added" : "Add"}
-                  </button> */}
                 </div>
                 <div className="product__detail__info__buttons-wishlist">
                   <button>
@@ -136,6 +145,43 @@ const ProductDetail = () => {
             </div>
           </div>
         )}
+
+        <div className="related-products">
+          <h2>Related Products</h2>
+          <div className="featured__products grid">
+            <>
+              {productsLoading ? (
+                <Spinner
+                  style={{ marginLeft: "50%", marginTop: "5%" }}
+                  animation="border"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              ) : productsError ? (
+                <h2
+                  style={{
+                    color: "#333",
+                    fontWeight: "500",
+                    textAlign: "center",
+                  }}
+                >
+                  {productsError}
+                </h2>
+              ) : (
+                <>
+                  {products &&
+                    products?.map((item) => {
+                      console.log(item, "all");
+                      return item.category === product.category ? (
+                        <SingleProduct key={item?._id} product={item} />
+                      ) : null;
+                    })}
+                </>
+              )}
+            </>
+          </div>
+        </div>
       </section>
       <Footer />
     </>

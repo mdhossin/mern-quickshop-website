@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Loading from "../Loading/Loading";
 import SingleProduct from "./SingleProduct/SingleProduct";
-import { productData } from "../../../utils/fakedata";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllProduct } from "../../../redux/actions/productActions";
