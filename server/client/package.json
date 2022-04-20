@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@redux-devtools/extension": "^3.2.2",
+    "@stripe/react-stripe-js": "^1.7.2",
+    "@stripe/stripe-js": "^1.27.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",

@@ -1,0 +1,79 @@
+@use "./utils/" as *;
+
+.payment-checkout {
+  padding: 7rem 0;
+}
+
+.payment {
+  padding-top: 3rem;
+  display: grid;
+  place-items: center;
+  background-color: rgb(255, 255, 255);
+
+  margin: 2vmax;
+
+  &__form {
+    border: 1px solid rgb(216, 216, 216);
+    // width: 30%;
+    width: 100%;
+    height: 100%;
+    padding: 3rem 2rem;
+
+    @include breakpoint-up("medium") {
+      padding: 4rem 3rem;
+      width: 80%;
+    }
+    @include breakpoint-up("large") {
+      width: 60%;
+    }
+    @include breakpoint-up("xlarge") {
+      width: 40%;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 2.5rem;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      margin: 2vmax 0;
+      @include breakpoint-up("xlarge") {
+        margin: 1vmax 0;
+      }
+      > svg {
+        position: absolute;
+        transform: translateX(1vmax);
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.623);
+        margin-left: 0.3rem;
+      }
+    }
+    &__input {
+      //   padding: 3vmax 5vmax;
+      padding: 2vmax 0vmax 2vmax 5vmax;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.267);
+      border-radius: 4px;
+      outline: none;
+
+      @include breakpoint-up("large") {
+        padding: 1.5vmax 0vmax 1.5vmax 4vmax;
+      }
+
+      @include breakpoint-up("xlarge") {
+        padding: 1vmax 0vmax 1vmax 3vmax;
+      }
+    }
+  }
+
+  .button {
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+  }
+}

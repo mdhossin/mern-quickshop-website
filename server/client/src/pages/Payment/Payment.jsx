@@ -10,16 +10,15 @@ import {
   useElements,
   Elements,
 } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { useToasts } from "react-toast-notifications";
 
 import { BsCreditCard, BsCalendar2Event, BsFillKeyFill } from "react-icons/bs";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import CheckoutSteps from "../../components/Common/CheckoutSteps/CheckoutSteps";
-import { loadStripe } from "@stripe/stripe-js";
 import { clearErrors, createOrder } from "../../redux/actions/orderActions";
-import Loading from "../../components/Common/Loading/Loading";
+import { Loading } from "../../components";
 
 const CheckoutForm = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -155,7 +154,7 @@ const CheckoutForm = () => {
     <div className="container-div payment-checkout">
       <>
         {/* <MetaData title="Payment" /> */}
-        <CheckoutSteps activeStep={2} />
+
         <div className="payment">
           <form className="payment__form" onSubmit={(e) => submitHandler(e)}>
             <h2>Card Info</h2>
