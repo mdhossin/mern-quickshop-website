@@ -2,14 +2,16 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
-import PrivateRoute from "../../../admin/src/pages/PrivateRoute/PrivateRoute";
+
 import { Header } from "./components";
 import {
   ActivationEmail,
+  ConfirmOrder,
   ForgotPassword,
   Home,
   Login,
   ProductDetail,
+  ProtectedRoute,
   Register,
   ResetPassword,
   Shipping,
@@ -44,12 +46,19 @@ function App() {
           <Route
             path="shipping"
             element={
-              <PrivateRoute>
+              <ProtectedRoute>
                 <Shipping />
-              </PrivateRoute>
+              </ProtectedRoute>
             }
           ></Route>
-          <Route path="/order/confirm" element={<ConfirmOrder />}></Route>
+          <Route
+            path="/order/confirm"
+            element={
+              <ProtectedRoute>
+                <ConfirmOrder />
+              </ProtectedRoute>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </ToastProvider>

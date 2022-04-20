@@ -10,6 +10,8 @@ import Shop from "./Shop/Shop";
 import ProductDetail from "./ProductDetail/ProductDetail";
 import Shipping from "./Shipping/Shipping";
 import ConfirmOrder from "./ConfirmOrder/ConfirmOrder";
+
+import ProtectedRoute from "./ProtectedRoute/ProtectedRotue";
 export {
   Cart,
   Home,
@@ -22,4 +24,5 @@ export {
   Shop,
   Shipping,
   ConfirmOrder,
+  ProtectedRoute,
 };

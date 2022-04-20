@@ -13,7 +13,7 @@ const ConfirmOrder = () => {
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 0 : 100;
+  const shippingCharges = subtotal < 1000 ? 0 : 100;
 
   const tax = subtotal * 0.18;
 
@@ -94,7 +94,7 @@ const ConfirmOrder = () => {
           <div className="confirm__order__summary__subtotal">
             <div>
               <p>Subtotal:</p>
-              <span>${subtotal}</span>
+              <span>${subtotal.toFixed(2)}</span>
             </div>
             <div>
               <p>Shipping Charges:</p>
@@ -102,7 +102,7 @@ const ConfirmOrder = () => {
             </div>
             <div>
               <p>GST:</p>
-              <span>${tax}</span>
+              <span>${tax.toFixed(2)}</span>
             </div>
           </div>
 

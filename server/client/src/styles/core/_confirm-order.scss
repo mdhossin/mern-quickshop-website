@@ -1,0 +1,123 @@
+@use "./utils/" as *;
+
+.confirm {
+  font-family: "Roboto", sans-serif;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 7rem;
+
+  &__order {
+    @include breakpoint-up("large") {
+      padding-top: 3rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+
+      > div:last-child {
+        border-left: 1px solid rgba(0, 0, 0, 0.247);
+        padding-left: 1.5rem;
+      }
+    }
+
+    &__shipping {
+      &__area {
+        &-title {
+          color: #333;
+          font-size: 22px;
+          font-weight: 500;
+          margin-bottom: 1.5rem;
+        }
+
+        &__box {
+          padding-left: 1.5rem;
+
+          > div {
+            margin-bottom: 0.6rem;
+            span {
+              margin-left: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+
+    &__cartItem {
+      &__container {
+        padding-left: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        &__items {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          img {
+            width: 60px;
+          }
+
+          &-price {
+            a {
+              font-size: 16px;
+              color: #6d6d6d;
+              margin-right: 0.5rem;
+              font-weight: 400;
+            }
+
+            span {
+              font-size: 16px;
+              font-size: 400;
+            }
+          }
+        }
+      }
+    }
+
+    &__summary {
+      &__subtotal {
+        padding-left: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        > div {
+          display: flex;
+          align-content: center;
+          justify-content: space-between;
+          p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2c2c2c;
+          }
+          span {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+          }
+        }
+      }
+      &__total {
+        padding-left: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p {
+          font-size: 20px;
+          font-weight: 500;
+          color: #333;
+        }
+        span {
+          font-size: 20px;
+          font-weight: 500;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  &__button {
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    button {
+      width: 200px;
+    }
+  }
+}
