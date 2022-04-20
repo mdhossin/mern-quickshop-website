@@ -11,6 +11,7 @@ import ProductDetail from "./ProductDetail/ProductDetail";
 import Shipping from "./Shipping/Shipping";
 import ConfirmOrder from "./ConfirmOrder/ConfirmOrder";
 import Payment from "./Payment/Payment";
+import OrderSuccess from "./OrderSuccess/OrderSuccess";
 
 import ProtectedRoute from "./ProtectedRoute/ProtectedRotue";
 export {
@@ -27,4 +28,5 @@ export {
   ConfirmOrder,
   ProtectedRoute,
   Payment,
+  OrderSuccess,
 };

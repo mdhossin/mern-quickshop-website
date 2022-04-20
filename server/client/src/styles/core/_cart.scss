@@ -65,6 +65,11 @@
     .cart-summary {
       padding: 10px;
       background-color: var(--theme-white);
+      @include breakpoints-down("small") {
+        .container {
+          padding-right: 2.5rem !important;
+        }
+      }
 
       p {
         margin-bottom: 0;
@@ -216,6 +221,7 @@
 }
 
 /* start cart common styles */
+
 .summary-item {
   .summary-label {
     color: #333;

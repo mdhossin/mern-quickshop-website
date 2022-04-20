@@ -10,6 +10,7 @@ import {
   ForgotPassword,
   Home,
   Login,
+  OrderSuccess,
   Payment,
   ProductDetail,
   ProtectedRoute,
@@ -69,6 +70,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/success"
+            element={
+              <ProtectedRoute>
+                <OrderSuccess />
+              </ProtectedRoute>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </ToastProvider>

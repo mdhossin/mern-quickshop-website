@@ -19,6 +19,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { clearErrors, createOrder } from "../../redux/actions/orderActions";
 import { Loading } from "../../components";
+import { Spinner } from "react-bootstrap";
 
 const CheckoutForm = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -173,7 +174,7 @@ const CheckoutForm = () => {
 
             <button ref={payBtn} type="submit" className="button">
               {isLoading ? (
-                <Loading />
+                <Spinner animation="border" size="sm" />
               ) : (
                 `Pay - $${orderInfo && orderInfo.totalPrice.toFixed(2)}`
               )}

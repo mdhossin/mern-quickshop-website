@@ -13,7 +13,7 @@ import {
 import axios from "axios";
 
 // Create Order action
-export const createOrder = (order, token, navigate) => async (dispatch) => {
+export const createOrder = (order, token) => async (dispatch) => {
   try {
     dispatch({ type: CREATE_ORDER_REQUEST });
 
@@ -27,8 +27,8 @@ export const createOrder = (order, token, navigate) => async (dispatch) => {
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
 
-    navigate("/success");
     localStorage.removeItem("cartItems");
+    window.location.href = "/success";
   } catch (error) {
     dispatch({
       type: CREATE_ORDER_FAIL,
