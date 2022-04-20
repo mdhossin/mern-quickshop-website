@@ -9,6 +9,7 @@ import { getProductById } from "../../redux/actions/productActions";
 import { addItemsToCart } from "../../redux/actions/cartActions";
 
 import { Footer, ProductRating } from "../../components";
+import { FiShoppingCart } from "react-icons/fi";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -71,7 +72,7 @@ const ProductDetail = () => {
 
               <div className="product__detial__info__price">
                 <span className="product__detail__info__price-count">
-                  ${product.price}.00
+                  ${product.price}
                 </span>
               </div>
               <div className="product__detail__info-rating">
@@ -80,7 +81,12 @@ const ProductDetail = () => {
               </div>
 
               <div className="product__detail__info-stock">
-                <p>Status: {product.Stock < 0 ? "Out Of Stock" : "In Stock"}</p>
+                <p>
+                  Status:{" "}
+                  {product?.Stock && product?.Stock > 0
+                    ? "In Stock"
+                    : "Out of Stock"}
+                </p>
               </div>
 
               <div className="product__detail__info__buttons">
@@ -99,12 +105,23 @@ const ProductDetail = () => {
                   </button>
                 </div>
                 <div className="product__detail__info__buttons-add">
-                  <button
+                  {product?.Stock && product?.Stock > 0 ? (
+                    <button
+                      disabled={addOrNot?.quantity > 0}
+                      onClick={addToCartHandler}
+                    >
+                      <FiShoppingCart style={{ marginRight: ".5rem" }} />
+                      {addOrNot?.quantity > 0 ? "Added" : "Buy Now"}
+                    </button>
+                  ) : (
+                    <button disabled>Out of Stock</button>
+                  )}
+                  {/* <button
                     disabled={addOrNot?.quantity > 0}
                     onClick={addToCartHandler}
                   >
                     {addOrNot?.quantity > 0 ? "Added" : "Add"}
-                  </button>
+                  </button> */}
                 </div>
                 <div className="product__detail__info__buttons-wishlist">
                   <button>

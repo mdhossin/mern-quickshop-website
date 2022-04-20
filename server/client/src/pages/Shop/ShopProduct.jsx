@@ -13,7 +13,7 @@ const ShopProduct = () => {
     // reuse css class
     <section className="featured container-div">
       <div className="featured__container">
-        <div className="featured__products grid">
+        <div className="featured__products">
           <>
             {loading ? (
               <Spinner
@@ -36,7 +36,8 @@ const ShopProduct = () => {
               </h2>
             ) : (
               <>
-                <Items />
+                {/* <Items loading={loading} error={error} /> */}
+                <PaginatedItems items={products?.products} itemsPerPage={8} />
               </>
             )}
 
@@ -47,7 +48,6 @@ const ShopProduct = () => {
             )}
           </>
         </div>
-        <PaginatedItems items={products?.products} itemsPerPage={8} />
       </div>
     </section>
   );
