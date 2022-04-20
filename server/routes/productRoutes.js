@@ -6,10 +6,11 @@ const authAdmin = require("../middlewares/authAdmin");
 const router = express.Router();
 // must be authenticated and admin
 
+router.get("/shop/products", productController.getShopProducts);
+
 router
   .route("/products")
   .get(productController.getAllProducts)
-
   .post([auth, authAdmin], productController.createProduct);
 
 router
