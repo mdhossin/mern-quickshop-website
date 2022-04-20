@@ -57,9 +57,8 @@ export const getAllProduct = () => async (dispatch) => {
   }
 };
 
-
 // fetch all products from for shop page
-export const fetchProducts =
+export const fetchShopProducts =
   (page = 1, category, sort, search) =>
   async (dispatch) => {
     try {
@@ -67,7 +66,7 @@ export const fetchProducts =
         type: FETCH_SHOP_PRODUCTS_LOADING,
       });
       const { data } = await axios.get(
-        `/api/products?limit=${
+        `/api/shop/products?limit=${
           page * 8
         }&${category}&${sort}&name[regex]=${search}`
       );

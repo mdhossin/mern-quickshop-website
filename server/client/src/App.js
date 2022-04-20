@@ -11,6 +11,7 @@ import {
   ProductDetail,
   Register,
   ResetPassword,
+  Shop,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import "./styles/styles.scss";
@@ -32,10 +33,11 @@ function App() {
           <Route path="user/reset/:token" element={<ResetPassword />} />
 
           <Route
-            path="/active/:activation_token"
+            path="active/:activation_token"
             element={<ActivationEmail />}
           />
-          <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="product/:productId" element={<ProductDetail />} />
+          <Route path="shop" element={<Shop />} />
         </Routes>
       </BrowserRouter>
     </ToastProvider>

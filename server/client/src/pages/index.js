@@ -5,6 +5,7 @@ import Register from "./Register/Register";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import ResetPassword from "./ResetPassword/ResetPassword";
 import ActivationEmail from "./ActivationEmail/ActivationEmail";
+import Shop from "./Shop/Shop";
 
 import ProductDetail from "./ProductDetail/ProductDetail";
 export {
@@ -16,4 +17,5 @@ export {
   ResetPassword,
   ActivationEmail,
   ProductDetail,
+  Shop,
 };
