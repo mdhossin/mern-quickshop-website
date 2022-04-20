@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
+import PrivateRoute from "../../../admin/src/pages/PrivateRoute/PrivateRoute";
 import { Header } from "./components";
 import {
   ActivationEmail,
@@ -11,6 +12,7 @@ import {
   ProductDetail,
   Register,
   ResetPassword,
+  Shipping,
   Shop,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
@@ -38,6 +40,16 @@ function App() {
           />
           <Route path="product/:productId" element={<ProductDetail />} />
           <Route path="shop" element={<Shop />} />
+
+          <Route
+            path="shipping"
+            element={
+              <PrivateRoute>
+                <Shipping />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route path="/order/confirm" element={<ConfirmOrder />}></Route>
         </Routes>
       </BrowserRouter>
     </ToastProvider>

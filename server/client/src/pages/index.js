@@ -8,6 +8,8 @@ import ActivationEmail from "./ActivationEmail/ActivationEmail";
 import Shop from "./Shop/Shop";
 
 import ProductDetail from "./ProductDetail/ProductDetail";
+import Shipping from "./Shipping/Shipping";
+import ConfirmOrder from "./ConfirmOrder/ConfirmOrder";
 export {
   Cart,
   Home,
@@ -18,4 +20,6 @@ export {
   ActivationEmail,
   ProductDetail,
   Shop,
+  Shipping,
+  ConfirmOrder,
 };

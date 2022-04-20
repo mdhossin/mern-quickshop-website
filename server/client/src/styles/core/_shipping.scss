@@ -1,0 +1,58 @@
+@use "./utils/" as *;
+
+.shipping {
+  margin-top: 2rem;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__box {
+    background-color: white;
+    width: 280px;
+
+    @include breakpoint-up("small") {
+      width: 300px;
+    }
+    @include breakpoint-up("medium") {
+      width: 400px;
+    }
+  }
+
+  &__heading {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.664);
+    margin-bottom: 3rem;
+    font-weight: 600;
+  }
+
+  &__form {
+    gap: 0.7rem !important;
+
+    > div {
+      display: flex;
+      width: 100%;
+      align-items: center;
+
+      > input,
+      > select {
+        padding: 0.7rem 2rem;
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.267);
+        border-radius: 4px;
+        @include breakpoint-up("large") {
+          padding: 0.7rem 2.5rem;
+        }
+      }
+
+      > svg {
+        position: absolute;
+        transform: translateX(1vmax);
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.623);
+      }
+    }
+  }
+}

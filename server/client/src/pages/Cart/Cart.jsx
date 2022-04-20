@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { Watch } from "../../assets";
+
 import { CartList, CartSummary, CheckOut } from "../../components";
 import {
   addItemsToCart,
