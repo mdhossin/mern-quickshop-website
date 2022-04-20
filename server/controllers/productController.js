@@ -54,8 +54,8 @@ const productController = {
     try {
       const features = new APIfeatures(Products.find(), req.query)
         .filtering()
-        .sorting()
-        .paginating();
+        .sorting();
+
       const products = await features.query;
 
       if (products.length < 0) {

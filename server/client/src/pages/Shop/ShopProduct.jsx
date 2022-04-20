@@ -1,13 +1,14 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import ShopProductSingle from "./ShopProductSingle";
+import Items from "./Items";
+import PaginatedItems from "./Pagination";
 
-const ShopProduct = ({ page, setPage }) => {
+const ShopProduct = () => {
   const { products, loading, error } = useSelector(
     (state) => state.shopProduct
   );
-  console.log(products);
+
   return (
     // reuse css class
     <section className="featured container-div">
@@ -28,18 +29,14 @@ const ShopProduct = ({ page, setPage }) => {
                   color: "#333",
                   fontWeight: "500",
                   textAlign: "center",
+                  paddingBottom: "1.5rem",
                 }}
               >
                 {error}
               </h2>
             ) : (
               <>
-                {products?.products &&
-                  products?.products?.map((product, i) => {
-                    return (
-                      <ShopProductSingle key={product._id} product={product} />
-                    );
-                  })}
+                <Items />
               </>
             )}
 
@@ -50,24 +47,7 @@ const ShopProduct = ({ page, setPage }) => {
             )}
           </>
         </div>
-        {/* <LoadMore page={page} setPage={setPage} /> */}
-
-        {/* paignation */}
-
-        {/* <div className="featured__button">
-          <button className="button">View Products</button>
-        </div> */}
-
-        {/* {totalProducts >= 8 && (
-          <div className="d-flex justify-content-center text-center mt-4">
-            <Pagination
-            //   handlePagenationChangeSubmit={filterProducts}
-            //   products={products}
-            //   pages={pages}
-            //   page={pageNumber}
-            />
-          </div>
-        )} */}
+        <PaginatedItems items={products?.products} itemsPerPage={8} />
       </div>
     </section>
   );

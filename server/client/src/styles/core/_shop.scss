@@ -92,7 +92,42 @@
         transform: translateY(-50%);
       }
     }
-    &__select {
-    }
   }
+}
+
+.pagination {
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.page-item:first-child .page-link {
+  color: var(--theme-color);
+  box-shadow: none;
+}
+
+.page-item:last-child .page-link {
+  color: var(--theme-color);
+  box-shadow: none;
+}
+.page-item.disabled .page-link {
+  color: #6c757d !important;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+  box-shadow: none;
+}
+
+.page-item.active .page-link {
+  background-color: var(--theme-color) !important;
+  color: #fff;
+  border: 1px solid var(--theme-color);
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.page-link {
+  color: #333;
+  padding: 11px 22px;
 }

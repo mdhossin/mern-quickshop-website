@@ -66,9 +66,7 @@ export const fetchShopProducts =
         type: FETCH_SHOP_PRODUCTS_LOADING,
       });
       const { data } = await axios.get(
-        `/api/shop/products?limit=${
-          page * 8
-        }&${category}&${sort}&name[regex]=${search}`
+        `/api/shop/products?${category}&${sort}&name[regex]=${search}`
       );
 
       dispatch({
