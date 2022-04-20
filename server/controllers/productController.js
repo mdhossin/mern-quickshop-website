@@ -108,7 +108,7 @@ const productController = {
       }
 
       const product = new Products({
-        name,
+        name: name.toLowerCase(),
         description,
         Stock,
         price,
