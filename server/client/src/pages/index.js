@@ -18,6 +18,9 @@ import NotFound from "./NotFound/NotFound";
 
 //
 import AboutUs from "./AboutUs/AboutUs";
+//
+import Blog from "./Blog/Blog";
+import Contact from "./Contact/Contact";
 export {
   Cart,
   Home,
@@ -35,4 +38,6 @@ export {
   OrderSuccess,
   NotFound,
   AboutUs,
+  Blog,
+  Contact,
 };

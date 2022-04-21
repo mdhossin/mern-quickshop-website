@@ -1,0 +1,93 @@
+@use "./utils/" as *;
+
+.blog-main {
+  padding-top: 4.5rem;
+  width: 100%;
+  @include breakpoint-up("xlarge") {
+    padding-top: 5.5rem;
+  }
+
+  .title {
+    height: 130px;
+    background-color: rgb(243, 244, 246);
+    @include flex(center, center);
+    h2 {
+      font-weight: 500;
+      color: #333;
+      font-size: 2rem;
+    }
+  }
+}
+
+.blog {
+  padding: 5rem 0;
+  font-family: "Rubik", sans-serif;
+  &__items {
+    @include breakpoint-up("medium") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: "968px") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &__item {
+      padding: 1rem;
+      transition: all 0.5s ease-in;
+
+      &:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+      }
+      img {
+        width: 100%;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        &:hover {
+          overflow: hidden;
+          transform: scale(1.01);
+        }
+      }
+      span {
+        display: block;
+        color: #222;
+        font-weight: 400;
+        text-transform: capitalize;
+        font-size: 14px;
+        margin-right: 10px;
+        line-height: 26px;
+        padding-top: 0.7rem;
+      }
+      h3 {
+        font-size: 1.2em;
+        font-weight: 600;
+        line-height: 1.5;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        &:hover {
+          color: var(--theme-color);
+        }
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.7142857143;
+        color: #666;
+      }
+
+      button {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #666;
+        margin-top: 15px;
+        border-bottom: 2px solid var(--theme-color);
+        background-color: transparent;
+        transition: all 0.5s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

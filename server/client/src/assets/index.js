@@ -18,7 +18,20 @@ import brandSix from "./images/brand-11.jpg";
 import appOne from "./images/app-1.png";
 import appTwo from "./images/app-2.png";
 
+import blogOne from "./images/blog-1.jpg";
+import blogTwo from "./images/blog-2.jpg";
+import blogThree from "./images/blog-3.jpg";
+import blogFour from "./images/blog-4.jpg";
+import blogFive from "./images/blog-5.jpg";
+import blogSix from "./images/blog-6.jpg";
+
 export {
+  blogFive,
+  blogFour,
+  blogOne,
+  blogSix,
+  blogThree,
+  blogTwo,
   logo,
   Watch,
   sliderOne,

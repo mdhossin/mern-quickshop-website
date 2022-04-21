@@ -37,13 +37,12 @@
 @use "./forgot-password";
 
 // activation email
-
 @use "./activation-email";
 
-//
+// product details
 @use "./product-detail";
 
-//
+// shop page
 @use "./shop";
 
 // checkout
@@ -66,3 +65,5 @@
 @use "./about-us";
 @use "./our-history";
 @use "./our-features";
+//blog
+@use "./blog";

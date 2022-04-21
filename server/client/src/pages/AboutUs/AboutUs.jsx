@@ -6,10 +6,14 @@ import {
   OurFeatures,
   OurHistory,
 } from "../../components";
-
+import { Helmet } from "react-helmet";
 const AboutUs = () => {
   return (
     <section>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>About</title>
+      </Helmet>
       <div className="about">
         <div className="about__home">
           <div className="about__home__desc container-div grid">

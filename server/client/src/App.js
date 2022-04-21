@@ -13,7 +13,9 @@ import {
 import {
   AboutUs,
   ActivationEmail,
+  Blog,
   ConfirmOrder,
+  Contact,
   ForgotPassword,
   Home,
   Login,
@@ -81,6 +83,8 @@ function App() {
               <Route path="product/:productId" element={<ProductDetail />} />
               <Route path="shop" element={<Shop />} />
               <Route path="about" element={<AboutUs />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="contact" element={<Contact />} />
 
               <Route
                 path="shipping"
