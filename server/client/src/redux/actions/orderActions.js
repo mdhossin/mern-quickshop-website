@@ -23,7 +23,11 @@ export const createOrder = (order, token) => async (dispatch) => {
         Authorization: token,
       },
     };
-    const { data } = await axios.post("/api/order/new", order, config);
+    const { data } = await axios.post(
+      "https://mern-quickshop-web-app.herokuapp.com/api/order/new",
+      order,
+      config
+    );
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
 
@@ -44,7 +48,7 @@ export const createOrder = (order, token) => async (dispatch) => {
 export const myOrders = () => async (dispatch, getState) => {
   try {
     const token = getState().userLogin?.userInfo?.access_token;
-    console.log(token, "my orders action");
+
     dispatch({ type: MY_ORDERS_REQUEST });
     const config = {
       headers: {
@@ -53,7 +57,10 @@ export const myOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/order/me", config);
+    const { data } = await axios.get(
+      "https://mern-quickshop-web-app.herokuapp.com/api/order/me",
+      config
+    );
     console.log(data, "orders action");
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data });
@@ -82,7 +89,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/order/${id}`, config);
+    const { data } = await axios.get(
+      `https://mern-quickshop-web-app.herokuapp.com/api/order/${id}`,
+      config
+    );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {

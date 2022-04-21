@@ -11,7 +11,9 @@ export const getAllCategories = () => async (dispatch) => {
     console.log("category action");
     dispatch({ type: ALL_CATEGORIES_LOADING });
 
-    const { data } = await axios.get("/api/category");
+    const { data } = await axios.get(
+      "https://mern-quickshop-web-app.herokuapp.com/api/category"
+    );
 
     dispatch({
       type: ALL_CATEGORIES_SUCCESS,

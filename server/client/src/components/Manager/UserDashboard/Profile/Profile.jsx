@@ -60,12 +60,16 @@ const Profile = () => {
       formData.append("file", file);
 
       setLoading(true);
-      const res = await axios.post("/api/upload_image", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://mern-quickshop-web-app.herokuapp.com/api/upload_image",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       setLoading(false);
       setAvatar(res.data.url);
       setData({ ...data, success: res.data.message, error: "" });
@@ -84,7 +88,7 @@ const Profile = () => {
   const updateInfor = () => {
     try {
       axios.patch(
-        "/api/user/update",
+        "https://mern-quickshop-web-app.herokuapp.com/api/user/update",
         {
           name: name ? name : user.name,
           avatar: avatar ? avatar : user.avatar,
@@ -124,7 +128,7 @@ const Profile = () => {
 
     try {
       axios.post(
-        "/api/user/reset",
+        "https://mern-quickshop-web-app.herokuapp.com/api/user/reset",
         { password },
         {
           headers: { Authorization: token },

@@ -18,7 +18,7 @@ import { BsCreditCard, BsCalendar2Event, BsFillKeyFill } from "react-icons/bs";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { clearErrors, createOrder } from "../../redux/actions/orderActions";
-import { Loading } from "../../components";
+
 import { Spinner } from "react-bootstrap";
 
 const CheckoutForm = () => {
@@ -72,7 +72,7 @@ const CheckoutForm = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/payment/process",
+        "https://mern-quickshop-web-app.herokuapp.com/api/payment/process",
         paymentData,
         config
       );

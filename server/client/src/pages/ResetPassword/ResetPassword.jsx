@@ -45,7 +45,7 @@ const ResetPassword = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "/api/user/reset",
+        "https://mern-quickshop-web-app.herokuapp.com/api/user/reset",
         { password },
         {
           headers: { Authorization: token },
