@@ -362,6 +362,22 @@ textarea:focus {
   }
 }
 
+// loader spinner
+[data-testid="rings-loading"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+
+  svg {
+    width: 400px !important;
+    height: 150px !important;
+    color: var(--theme-color) !important;
+  }
+}
+
 /* slider img bounce */
 
 @-webkit-keyframes bounce-img {
