@@ -1,0 +1,202 @@
+@use "./utils/" as *;
+
+.main {
+  height: 100%;
+
+  @media screen and (min-width: 1080px) {
+    margin-left: 18vw;
+  }
+
+  @include breakpoint-up("medium") {
+    padding: 0 2rem;
+  }
+}
+
+.sidebar {
+  @include flex(center, space-between);
+  margin-top: 5rem;
+  position: fixed;
+  left: 0;
+  background-color: var(--dashboard-body-color);
+  height: 100vh;
+  width: 18vw;
+  flex-direction: column;
+  padding: 2rem 0;
+  gap: 2rem;
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+
+    .toggle {
+      display: none;
+    }
+    .brand {
+      width: 100%;
+      @include flex(center, center);
+      gap: 2rem;
+      svg {
+        color: var(--theme-color);
+        font-size: 2.5rem;
+      }
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .userLogout {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          color: #333;
+          font-weight: 600;
+          font-size: 0.95rem;
+          line-height: 1.25rem;
+          transition: all 0.5s ease;
+          cursor: pointer;
+          &:hover {
+            color: var(--theme-color);
+          }
+        }
+        li {
+          padding: 0.6rem 1rem;
+          border-radius: 0.6rem;
+          transition: all 0.5s ease;
+          &:hover {
+            color: var(--theme-color);
+            transform: scaleX(1.05);
+          }
+          a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.25rem;
+            transition: all 0.5s ease;
+            &:hover {
+              color: var(--theme-color);
+            }
+          }
+        }
+        .active {
+          color: var(--theme-color);
+          a {
+            color: var(--theme-color);
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 280px) and (max-width: 1080px) {
+    position: initial;
+    width: 100%;
+    height: max-content;
+    padding: 1rem;
+    .top {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      .toggle {
+        display: block;
+        color: #333;
+        z-index: 99;
+        svg {
+          font-size: 1.4rem;
+        }
+      }
+      .brand {
+        gap: 1rem;
+        justify-content: flex-start;
+      }
+    }
+    .top > .links,
+    .logout {
+      display: none;
+    }
+  }
+}
+
+.responsive {
+  margin-top: 5rem;
+  position: fixed;
+  right: -10vw;
+  top: 0;
+  z-index: 10;
+  background-color: var(--dashboard-body-color);
+  height: 100vh;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  padding: 1rem;
+  .responsive__links {
+    ul {
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 3rem;
+
+      .userLogout {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: #333;
+        font-weight: 600;
+        font-size: 0.95rem;
+        line-height: 1.25rem;
+        transition: all 0.5s ease;
+        cursor: pointer;
+        &:hover {
+          color: var(--theme-color);
+        }
+      }
+      li {
+        padding: 0.6rem 1rem;
+        border-radius: 0.6rem;
+        transition: all 0.5s ease;
+
+        &:hover {
+          color: var(--theme-color);
+          transform: scaleX(1.05);
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          color: #333;
+          font-weight: 600;
+          font-size: 0.95rem;
+          line-height: 1.25rem;
+          transition: all 0.5s ease;
+          &:hover {
+            color: var(--theme-color);
+          }
+        }
+      }
+      .active {
+        color: var(--theme-color);
+        a {
+          color: var(--theme-color);
+        }
+      }
+    }
+  }
+}
+
+.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  right: 0 !important;
+}

@@ -1,7 +1,4 @@
 import {
-  USER_LIST_FAIL,
-  USER_LIST_REQUEST,
-  USER_LIST_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -29,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://mern-quickshop-web-app.herokuapp.com/api/login",
+      "/api/login",
       { email, password },
       config
     );
@@ -123,7 +120,7 @@ export const refreshToken = () => async (dispatch) => {
 };
 
 // user logout action
-export const logout = (token, navigate) => async (dispatch) => {
+export const logout = (token) => async (dispatch) => {
   const result = await checkTokenExp(token, dispatch);
   // console.log("logout action ", result, token);
   const access_token = result ? result : token;

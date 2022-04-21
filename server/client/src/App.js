@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 
-import { Header } from "./components";
+import { Header, UserDashboard } from "./components";
 import {
   ActivationEmail,
   ConfirmOrder,
@@ -77,7 +77,20 @@ function App() {
                 <OrderSuccess />
               </ProtectedRoute>
             }
-          ></Route>
+          />
+
+          <Route
+            path="dashboard"
+            element={
+              <ProtectedRoute>
+                <UserDashboard />
+              </ProtectedRoute>
+            }
+          >
+            {/* <Route index element={<Profile />} />
+            <Route path="myorders" element={<Myorders />} />
+            <Route path="order/:orderId" element={<OrderDetails />} /> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </ToastProvider>

@@ -16,6 +16,9 @@ import Footer from "./common/Footer/Footer";
 import Loading from "./common/Loading/Loading";
 import ProductRating from "./common/ProductRating/ProductRating";
 
+// user dashbaord
+import UserDashboard from "./Manager/UserDashboard/UserDashboard";
+
 export {
   Header,
   CartList,
@@ -32,4 +35,5 @@ export {
   NewsLetter,
   AppDownload,
   Footer,
+  UserDashboard,
 };
