@@ -246,7 +246,8 @@ ul {
 }
 
 .greenColor {
-  color: green;
+  color: var(--theme-color);
+  font-weight: 600;
 }
 .redColor {
   color: red;
@@ -260,6 +261,7 @@ ul {
   //   padding: 4rem 0;
   // }
 }
+
 /*--
     - Common Classes
 -----------------------------------------*/
@@ -276,26 +278,6 @@ input {
   background: transparent;
   box-shadow: none;
 }
-
-// select {
-//   font-size: rem(14);
-
-//   width: 100%;
-
-//   color: #333;
-//   border: 0 solid #eceff8;
-//   background: transparent;
-//   box-shadow: none;
-// }
-
-// option {
-//   font-size: rem(14);
-
-//   padding-left: rem(10);
-
-//   border: 0 solid #626262;
-//   background: #fff;
-// }
 
 input:focus {
   background: transparent;

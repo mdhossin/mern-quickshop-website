@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { useToasts } from "react-toast-notifications";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { BiEdit } from "react-icons/bi";
 import { Table } from "react-bootstrap";
 import { clearErrors, myOrders } from "../../../../redux/actions/orderActions";
-import Loader from "../../../../components/Loader/Loader";
+import Loading from "../../../common/Loading/Loading";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -38,32 +37,35 @@ const MyOrders = () => {
             {loading ? (
               <tr>
                 <td className="order-loading">
-                  <Loader backdrop />
+                  <Loading backdrop />
                 </td>
               </tr>
             ) : error ? (
-              <h3>{error}</h3>
+              <h3
+                style={{
+                  color: "#333",
+                  fontWeight: "500",
+                  textAlign: "center",
+                }}
+              >
+                {error}
+              </h3>
             ) : (
               <>
                 {orders?.map(({ _id, orderStatus, totalPrice, orderItems }) => (
                   <tr key={_id}>
-                    <td>#{_id}</td>
+                    <td>{_id}</td>
                     <td>{orderItems?.length}</td>
-                    <td>{totalPrice.toFixed(2)}</td>
+                    <td>${totalPrice.toFixed(2)}</td>
                     <td>
                       <button>{orderStatus}</button>
                     </td>
                     <td title="Order Details">
-                      {" "}
-                      <Link to={`/dashboard/order/${_id}`}>
-                        {" "}
-                        <BiEdit
-                          style={{
-                            color: "#f1510a",
-                            fontSize: "18px",
-                            cursor: "pointer",
-                          }}
-                        />
+                      <Link
+                        className="order-detail"
+                        to={`/dashboard/order/${_id}`}
+                      >
+                        Details
                       </Link>
                     </td>
                   </tr>

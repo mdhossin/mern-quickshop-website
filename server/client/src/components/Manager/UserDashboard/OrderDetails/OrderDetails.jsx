@@ -6,10 +6,11 @@ import {
   clearErrors,
   getOrderDetails,
 } from "../../../../redux/actions/orderActions";
-import Loader from "../../../../components/Loader/Loader";
+import Loading from "../../../common/Loading/Loading";
 
 const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
+  console.log(order);
   const dispatch = useDispatch();
   const { orderId } = useParams();
   const { addToast } = useToasts();
@@ -24,7 +25,7 @@ const OrderDetails = () => {
   return (
     <>
       {loading ? (
-        <Loader backdrop />
+        <Loading backdrop />
       ) : error ? (
         <h2>{error}</h2>
       ) : (
@@ -32,7 +33,7 @@ const OrderDetails = () => {
           <div className="orderDetails grid container-div">
             <div className="orderDetails__container grid">
               <h2>
-                Order Id: <span>#{order && order._id}</span>
+                Order Id: <span>{order && order._id}</span>
               </h2>
               <div className="orderDetails__container__box">
                 <h3>Shipping Info</h3>
@@ -40,12 +41,18 @@ const OrderDetails = () => {
                   <p>Name:</p>
                   <span>{order.user && order.user.name}</span>
                 </div>
+                <div>
+                  <p>Phone:</p>
+                  <span>
+                    0{order.shippingInfo && order.shippingInfo.phoneNo}
+                  </span>
+                </div>
 
                 <div>
                   <p className="address">Address:</p>
                   <span>
                     {order.shippingInfo &&
-                      `${order.shippingInfo.address_line1}, ${order.shippingInfo.address_city}, ${order.shippingInfo.address_zip}, ${order.shippingInfo.address_country}`}
+                      `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
                   </span>
                 </div>
               </div>
@@ -69,7 +76,9 @@ const OrderDetails = () => {
 
                 <div>
                   <p>Amount:</p>
-                  <span>${order.totalPrice && order.totalPrice}</span>
+                  <span>
+                    ${order.totalPrice && order.totalPrice.toFixed(2)}
+                  </span>
                 </div>
               </div>
 

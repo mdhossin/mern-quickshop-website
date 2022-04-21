@@ -14,7 +14,7 @@
 
 .sidebar {
   @include flex(center, space-between);
-  margin-top: 5rem;
+  margin-top: 4.5rem;
   position: fixed;
   left: 0;
   background-color: var(--dashboard-body-color);
@@ -23,6 +23,10 @@
   flex-direction: column;
   padding: 2rem 0;
   gap: 2rem;
+
+  @include breakpoint-up("xlarge") {
+    margin-top: 5.5rem;
+  }
   .top {
     display: flex;
     flex-direction: column;
@@ -127,7 +131,7 @@
 }
 
 .responsive {
-  margin-top: 5rem;
+  margin-top: 4.5rem;
   position: fixed;
   right: -10vw;
   top: 0;
