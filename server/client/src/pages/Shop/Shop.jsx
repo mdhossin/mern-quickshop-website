@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Footer } from "../../components";
+import { AppDownload, Footer } from "../../components";
 import { getAllCategories } from "../../redux/actions/categoryAction";
 import { AiOutlineSearch } from "react-icons/ai";
 import { fetchShopProducts } from "../../redux/actions/productActions";
@@ -39,7 +39,7 @@ const Shop = () => {
       <div className="title">
         <h2>Shop</h2>
       </div>
-      <div className="shop section container-div">
+      <div className="shop container-div">
         <div className="shop__filter grid">
           <div className="shop__filter__category">
             <p>Filters: </p>
@@ -82,6 +82,7 @@ const Shop = () => {
 
         <ShopProduct page={page} setPage={setPage} />
       </div>
+      <AppDownload />
       <Footer />
     </section>
   );

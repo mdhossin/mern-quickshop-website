@@ -22,6 +22,10 @@ import Profile from "./Manager/UserDashboard/Profile/Profile";
 import MyOrders from "./Manager/UserDashboard/MyOrders/Myorders";
 import OrderDetails from "./Manager/UserDashboard/OrderDetails/OrderDetails";
 
+/// about us
+import OurHistory from "./common/OurHistory/OurHistory";
+import OurFeatures from "./common/OurFeatures/OurFeatures";
+
 export {
   Header,
   CartList,
@@ -42,4 +46,6 @@ export {
   Profile,
   MyOrders,
   OrderDetails,
+  OurHistory,
+  OurFeatures,
 };

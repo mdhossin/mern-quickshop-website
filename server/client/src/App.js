@@ -11,6 +11,7 @@ import {
   UserDashboard,
 } from "./components";
 import {
+  AboutUs,
   ActivationEmail,
   ConfirmOrder,
   ForgotPassword,
@@ -79,6 +80,7 @@ function App() {
               />
               <Route path="product/:productId" element={<ProductDetail />} />
               <Route path="shop" element={<Shop />} />
+              <Route path="about" element={<AboutUs />} />
 
               <Route
                 path="shipping"

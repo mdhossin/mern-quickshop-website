@@ -1,4 +1,8 @@
-import { useId } from "react";
+import {
+  AiOutlineLaptop,
+  AiOutlineWifi,
+  AiOutlineCamera,
+} from "react-icons/ai";
 import {
   bank,
   brandFive,
@@ -64,108 +68,46 @@ export const supportData = [
   },
 ];
 
-export const productData = [
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-  {
-    id: useId,
-    images: {
-      url: "https://rtl.reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-660x660.png",
-    },
-    Stock: 5,
-    name: "Smart Watch 2022",
-    ratings: 4,
-    price: 777,
-  },
-];
-
 export const brandsData = [
   {
-    id: useId,
+    id: 1,
     img: brandFive,
   },
   {
-    id: useId,
+    id: 2,
     img: brandTwo,
   },
   {
-    id: useId,
+    id: 3,
     img: brandThree,
   },
   {
-    id: useId,
+    id: 4,
     img: brandFive,
   },
   {
-    id: useId,
+    id: 5,
     img: brandOne,
+  },
+];
+
+export const featuresData = [
+  {
+    id: 1,
+    img: <AiOutlineLaptop />,
+    title: "Laptop & Computers",
+    desc: "We've done the research so you don't have",
+  },
+  {
+    id: 2,
+    img: <AiOutlineWifi />,
+    title: "Wireless Plans",
+    desc: "Unda undae uno inter. Caelumque grandia",
+  },
+  {
+    id: 3,
+    img: <AiOutlineCamera />,
+    title: "Photo Camera",
+    desc: "Humanas extendi quisquis nullus caesa",
   },
 ];

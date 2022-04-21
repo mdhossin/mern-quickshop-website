@@ -15,6 +15,9 @@ import OrderSuccess from "./OrderSuccess/OrderSuccess";
 
 import ProtectedRoute from "./ProtectedRoute/ProtectedRotue";
 import NotFound from "./NotFound/NotFound";
+
+//
+import AboutUs from "./AboutUs/AboutUs";
 export {
   Cart,
   Home,
@@ -31,4 +34,5 @@ export {
   Payment,
   OrderSuccess,
   NotFound,
+  AboutUs,
 };

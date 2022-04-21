@@ -1,0 +1,46 @@
+@use "./utils/" as *;
+
+.features {
+  background-color: var(--dashboard-body-color);
+  padding: 5rem 0;
+
+  &__container {
+    h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+      text-align: center;
+    }
+    &-text {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    &__items {
+      padding-bottom: 5rem;
+      @include breakpoint-up("medium") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include breakpoint-up("xlarge") {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      &__item {
+        border: 1px solid #e4e4e4;
+        text-align: center;
+        padding: 2.5rem;
+        span {
+          svg {
+            color: #333;
+            font-size: 2rem;
+          }
+        }
+
+        h4 {
+          font-size: 20px;
+          font-weight: 600;
+          padding-top: 1rem;
+        }
+      }
+    }
+  }
+}
