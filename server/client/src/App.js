@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 
 import {
@@ -16,6 +16,7 @@ import {
   ForgotPassword,
   Home,
   Login,
+  NotFound,
   OrderSuccess,
   Payment,
   ProductDetail,
@@ -33,6 +34,8 @@ function App() {
   useEffect(() => {
     dispatch(refreshToken());
   }, [dispatch]);
+
+  const user = useSelector((state) => state?.userLogin?.userInfo);
   return (
     <ToastProvider placement="top-right">
       <BrowserRouter>
@@ -40,13 +43,23 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="forgot" element={<ForgotPassword />} />
+          <Route
+            path="register"
+            element={user?.access_token ? <Navigate to="/" /> : <Register />}
+          />
+          <Route
+            path="forgot"
+            element={
+              user?.access_token ? <Navigate to="/" /> : <ForgotPassword />
+            }
+          />
           <Route path="user/reset/:token" element={<ResetPassword />} />
 
           <Route
             path="active/:activation_token"
-            element={<ActivationEmail />}
+            element={
+              user?.access_token ? <Navigate to="/" /> : <ActivationEmail />
+            }
           />
           <Route path="product/:productId" element={<ProductDetail />} />
           <Route path="shop" element={<Shop />} />
@@ -97,6 +110,8 @@ function App() {
             <Route path="myorders" element={<MyOrders />} />
             <Route path="order/:orderId" element={<OrderDetails />} />
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ToastProvider>

@@ -1,0 +1,18 @@
+@use "./utils/" as *;
+
+.notfound {
+  @include flex(center, center);
+  height: 100vh;
+  max-width: 400px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.4;
+    text-align: center;
+  }
+}

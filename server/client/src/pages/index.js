@@ -14,6 +14,7 @@ import Payment from "./Payment/Payment";
 import OrderSuccess from "./OrderSuccess/OrderSuccess";
 
 import ProtectedRoute from "./ProtectedRoute/ProtectedRotue";
+import NotFound from "./NotFound/NotFound";
 export {
   Cart,
   Home,
@@ -29,4 +30,5 @@ export {
   ProtectedRoute,
   Payment,
   OrderSuccess,
+  NotFound,
 };
