@@ -1,0 +1,161 @@
+@use "./utils/" as *;
+
+.contact-main {
+  font-family: "Rubik", sans-serif;
+  padding-top: 4.5rem;
+  width: 100%;
+  @include breakpoint-up("xlarge") {
+    padding-top: 5.5rem;
+  }
+
+  .title {
+    height: 130px;
+    background-color: rgb(243, 244, 246);
+    @include flex(center, center);
+    h2 {
+      font-weight: 500;
+      color: #333;
+      font-size: 2rem;
+    }
+  }
+}
+
+.contact {
+  gap: 2rem !important;
+
+  @include breakpoint-up("large") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &__left {
+    border-radius: 5px;
+    background-color: #587498;
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    h3 {
+      color: #fff;
+
+      font-size: 25px;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin-bottom: 1rem;
+    }
+
+    &-desc {
+      color: #f3f3f3;
+
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      padding-top: 0.5rem;
+    }
+
+    &__box {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        color: #fff;
+      }
+
+      > div {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        background-color: #fff;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          background-color: #f3f4f6;
+          fill: #f4a51c;
+          color: #f4a51c;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+  h3 {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 30%;
+      top: 35px;
+      height: 2px;
+      background-color: var(--theme-color);
+
+      @include breakpoint-up("large") {
+        top: 35px;
+        width: 12%;
+      }
+    }
+  }
+
+  &__right {
+    padding-top: 32px;
+    h3 {
+      color: #333;
+
+      font-size: 25px;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin-bottom: 3rem;
+    }
+
+    &__form {
+      &__detail {
+        @include breakpoint-up("xlarge") {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      label {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.7142857143;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        width: 100%;
+        max-width: 100%;
+        background-color: #f2f2f2;
+        border-color: #f2f2f2 !important;
+        font-size: 14px;
+        border-radius: 6px;
+        box-shadow: none !important;
+        vertical-align: middle;
+        padding: 0 15px;
+        height: 40px;
+      }
+      textarea {
+        width: 100%;
+        max-width: 100%;
+        background-color: #f2f2f2;
+        border-color: #f2f2f2 !important;
+        font-size: 14px;
+        border-radius: 6px;
+        box-shadow: none !important;
+        vertical-align: middle;
+        padding: 15px;
+      }
+
+      .button {
+        width: 200px;
+      }
+      > div:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
