@@ -17,7 +17,7 @@ import { USER_LOGOUT_RESET } from "../../../redux/constants/userConstants";
 
 const Header = () => {
   const navigate = useNavigate();
-  const headerRef = useRef(null);
+
   const dispatch = useDispatch();
   const { addToast } = useToasts();
 
@@ -81,7 +81,7 @@ const Header = () => {
             </li>
             <li className="nav__item">
               <Link
-                to="shop"
+                to="/shop"
                 onClick={() => setMenuOpen(false)}
                 className="nav__link"
               >
@@ -90,7 +90,7 @@ const Header = () => {
             </li>
             <li className="nav__item">
               <Link
-                to="shop"
+                to="/about"
                 onClick={() => setMenuOpen(false)}
                 className="nav__link"
               >
@@ -99,7 +99,7 @@ const Header = () => {
             </li>
             <li className="nav__item">
               <Link
-                to="shop"
+                to="/blog"
                 onClick={() => setMenuOpen(false)}
                 className="nav__link"
               >

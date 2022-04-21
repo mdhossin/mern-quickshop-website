@@ -5,6 +5,7 @@ import { getAllCategories } from "../../redux/actions/categoryAction";
 import { AiOutlineSearch } from "react-icons/ai";
 import { fetchShopProducts } from "../../redux/actions/productActions";
 import ShopProduct from "./ShopProduct";
+import { Helmet } from "react-helmet";
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ const Shop = () => {
 
   return (
     <section className="shop-main">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Shop</title>
+      </Helmet>
       <div className="title">
         <h2>Shop</h2>
       </div>

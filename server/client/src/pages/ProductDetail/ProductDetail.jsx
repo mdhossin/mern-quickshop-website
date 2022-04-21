@@ -14,7 +14,7 @@ import { addItemsToCart } from "../../redux/actions/cartActions";
 import { Footer, ProductRating } from "../../components";
 import { FiShoppingCart } from "react-icons/fi";
 import SingleProduct from "../../components/common/Products/SingleProduct/SingleProduct";
-
+import { Helmet } from "react-helmet";
 const ProductDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
@@ -64,6 +64,10 @@ const ProductDetail = () => {
   return (
     <>
       <section className="container-div section product">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Product - Detail</title>
+        </Helmet>
         {loading ? (
           <Spinner
             style={{ marginLeft: "50%", marginTop: "5%" }}

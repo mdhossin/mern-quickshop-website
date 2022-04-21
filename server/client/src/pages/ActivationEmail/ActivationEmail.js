@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
+import { Helmet } from "react-helmet";
 
 const ActivationEmail = () => {
   const { activation_token } = useParams();
@@ -46,6 +47,10 @@ const ActivationEmail = () => {
   }, [success, error, addToast]);
   return (
     <div className="activation section">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Actiation - Email</title>
+      </Helmet>
       <div>
         <h1 className="activation__error">{error && error}</h1>
         <h1 className="activation__success">{success && success}</h1>

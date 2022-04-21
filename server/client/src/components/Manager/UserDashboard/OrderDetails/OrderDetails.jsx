@@ -7,10 +7,11 @@ import {
   getOrderDetails,
 } from "../../../../redux/actions/orderActions";
 import Loading from "../../../common/Loading/Loading";
+import { Helmet } from "react-helmet";
 
 const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
-  console.log(order);
+
   const dispatch = useDispatch();
   const { orderId } = useParams();
   const { addToast } = useToasts();
@@ -24,6 +25,10 @@ const OrderDetails = () => {
   }, [dispatch, error, addToast, orderId]);
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Order - Details</title>
+      </Helmet>
       {loading ? (
         <Loading backdrop />
       ) : error ? (

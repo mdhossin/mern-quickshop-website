@@ -10,10 +10,14 @@ import {
   Products,
   SupportArea,
 } from "../../components";
-
+import { Helmet } from "react-helmet";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Quickshop - Ecommerce</title>
+      </Helmet>
       <HeroSlide />
       <SupportArea />
       <DiscountBanner />

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Country, State } from "country-state-city";
-
+import { Helmet } from "react-helmet";
 import { AiFillHome } from "react-icons/ai";
 import { FaCity } from "react-icons/fa";
 import {
@@ -27,7 +27,6 @@ const Shipping = () => {
   const [country, setCountry] = useState(shippingInfo.country);
   const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
-  console.log(state, "get state");
 
   const shippingSubmit = (e) => {
     e.preventDefault();
@@ -44,6 +43,10 @@ const Shipping = () => {
 
   return (
     <section className="containter-div section shipping">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Shipping</title>
+      </Helmet>
       <div className="shipping__container">
         <div className="shipping__box">
           <h2 className="shipping__heading">Shipping Details</h2>

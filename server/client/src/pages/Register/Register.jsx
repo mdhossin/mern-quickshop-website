@@ -7,6 +7,7 @@ import { useToasts } from "react-toast-notifications";
 import { validRegister } from "../../utils/validation";
 import { register } from "../../redux/actions/userActions";
 import { USER_REGISTER_RESET } from "../../redux/constants/userConstants";
+import { Helmet } from "react-helmet";
 const Register = () => {
   const dispatch = useDispatch();
   const { addToast } = useToasts();
@@ -62,6 +63,10 @@ const Register = () => {
   }, [userRegInfo, error, addToast, dispatch]);
   return (
     <section className="login-section">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Register</title>
+      </Helmet>
       <div className="login container-div">
         <h3 className="login__title">Register</h3>
         <form className="login__form" onSubmit={handleSubmit}>

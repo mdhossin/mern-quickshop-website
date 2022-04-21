@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useToasts } from "react-toast-notifications";
 import { isEmail } from "../../utils/validation";
+import { Helmet } from "react-helmet";
 
 const ForgotPassword = () => {
   const [data, setData] = useState({
@@ -69,6 +70,10 @@ const ForgotPassword = () => {
   }, [error, success, addToast]);
   return (
     <section className="login-section forgot">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Forgot - Password</title>
+      </Helmet>
       <div className="login container-div">
         <h3 className="login__title">Forgot your password?</h3>
         <p>We will send you an email to reset your password.</p>

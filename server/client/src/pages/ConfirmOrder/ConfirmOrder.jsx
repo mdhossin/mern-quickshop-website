@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 const ConfirmOrder = () => {
   const navigate = useNavigate();
   const { shippingInfo, cartItems } = useSelector((state) => state?.cart);
@@ -36,7 +36,10 @@ const ConfirmOrder = () => {
 
   return (
     <section className="container-div section confirm">
-      {/* <MetaData title="Confirm Order" /> */}
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Confirm - Order</title>
+      </Helmet>
 
       <div className="confirm__order grid">
         <div className="confirm__order__shipping grid">

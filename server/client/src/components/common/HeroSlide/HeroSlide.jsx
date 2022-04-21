@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import { heroSlideData } from "../../../utils/fakedata";
+import { Link } from "react-router-dom";
 
 const HeroSlide = () => {
   return (
@@ -51,7 +52,9 @@ const HeroSlideItem = ({ item, className }) => {
             <h3 className="overview">{item.overview}</h3>
             <h2 className="title">{item.title}</h2>
             <div className="btns">
-              <button className="shop-now">Shop Now</button>
+              <Link to="/shop">
+                <button className="shop-now">Shop Now</button>
+              </Link>
             </div>
           </div>
         </div>

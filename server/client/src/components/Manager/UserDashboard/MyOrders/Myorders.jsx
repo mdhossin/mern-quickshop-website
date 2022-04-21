@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { clearErrors, myOrders } from "../../../../redux/actions/orderActions";
 import Loading from "../../../common/Loading/Loading";
+import { Helmet } from "react-helmet";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,10 @@ const MyOrders = () => {
 
   return (
     <section className="myorders container-div">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My - Orders</title>
+      </Helmet>
       <h2>My Orders</h2>
       <div>
         <Table responsive="sm">

@@ -18,6 +18,7 @@ import { BsCreditCard, BsCalendar2Event, BsFillKeyFill } from "react-icons/bs";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { clearErrors, createOrder } from "../../redux/actions/orderActions";
+import { Helmet } from "react-helmet";
 
 import { Spinner } from "react-bootstrap";
 
@@ -28,7 +29,6 @@ const CheckoutForm = () => {
   const [successMessage, setSuccessMesssage] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
   const { addToast } = useToasts();
   const navigate = useNavigate();
@@ -154,7 +154,10 @@ const CheckoutForm = () => {
   return (
     <div className="container-div payment-checkout">
       <>
-        {/* <MetaData title="Payment" /> */}
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Payment</title>
+        </Helmet>
 
         <div className="payment">
           <form className="payment__form" onSubmit={(e) => submitHandler(e)}>

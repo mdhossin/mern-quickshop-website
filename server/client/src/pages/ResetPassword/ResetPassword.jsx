@@ -6,6 +6,7 @@ import { useToasts } from "react-toast-notifications";
 import { checkPassword, isLength } from "../../utils/validation";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 const ResetPassword = () => {
   const [data, setData] = useState({
     password: "",
@@ -93,6 +94,10 @@ const ResetPassword = () => {
 
   return (
     <section className="login-section">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Reset - Password</title>
+      </Helmet>
       <div className="login container-div">
         <h3 className="login__title">Reset Your Password</h3>
         <form className="login__form">

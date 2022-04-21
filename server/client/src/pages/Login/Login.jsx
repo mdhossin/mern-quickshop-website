@@ -7,6 +7,7 @@ import { useToasts } from "react-toast-notifications";
 import { googleLogin, login } from "../../redux/actions/userActions";
 import { USER_LOGIN_RESET } from "../../redux/constants/userConstants";
 import { Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 const Login = () => {
   const navigate = useNavigate();
   let location = useLocation();
@@ -57,6 +58,10 @@ const Login = () => {
   }, [userInfo, error, addToast, navigate, dispatch, redirect]);
   return (
     <section className="login-section">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login</title>
+      </Helmet>
       <div className="login container-div">
         <h3 className="login__title">Login</h3>
         <form className="login__form" onSubmit={handleSubmit}>

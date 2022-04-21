@@ -13,16 +13,6 @@ import {
   sliderTwo,
 } from "../assets";
 
-import img1 from "../assets/camera-1.png";
-import img2 from "../assets/camera-2.png";
-import img3 from "../assets/camera-3.png";
-import img4 from "../assets/camera-4.png";
-import img5 from "../assets/camera-9.webp";
-import img6 from "../assets/camera-6.png";
-import img7 from "../assets/camera-7.png";
-import img8 from "../assets/camera-8.png";
-import watch from "../assets/images/watch-1.jpg";
-
 export const heroSlideData = [
   {
     id: 5,

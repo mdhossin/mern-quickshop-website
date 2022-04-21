@@ -6,6 +6,7 @@ import { useToasts } from "react-toast-notifications";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import Loading from "../../../common/Loading/Loading";
 import { isLength, isMatch } from "../../../../utils/validation";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const [data, setData] = useState({
@@ -180,6 +181,10 @@ const Profile = () => {
 
   return (
     <section className="profile container-div">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Profile</title>
+      </Helmet>
       <h3 className="profile__title">Account Details</h3>
 
       <div className="profile__container grid">
