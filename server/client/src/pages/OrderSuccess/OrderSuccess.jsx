@@ -7,7 +7,7 @@ const OrderSuccess = () => {
     <div className="orderSuccess container-div">
       <BsCheckLg />
       <h1>Your Order has been Placed successfully. </h1>
-      <Link to="/dashboard/orders" className="button">
+      <Link to="/dashboard/myorders" className="button">
         View Orders
       </Link>
     </div>

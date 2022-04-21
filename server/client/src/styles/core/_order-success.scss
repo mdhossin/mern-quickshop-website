@@ -12,7 +12,7 @@
 
   > svg {
     font-size: 3rem;
-    color: tomato;
+    color: var(--theme-color);
     @include breakpoint-up("large") {
       font-size: 4rem;
     }

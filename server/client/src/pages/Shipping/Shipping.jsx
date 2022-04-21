@@ -27,6 +27,7 @@ const Shipping = () => {
   const [country, setCountry] = useState(shippingInfo.country);
   const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+  console.log(state, "get state");
 
   const shippingSubmit = (e) => {
     e.preventDefault();
@@ -135,7 +136,7 @@ const Shipping = () => {
                   <option value="">State</option>
                   {State &&
                     State.getStatesOfCountry(country).map((item) => (
-                      <option key={item.isoCode} value={item.isoCode}>
+                      <option key={item.isoCode} value={item.name}>
                         {item.name}
                       </option>
                     ))}
