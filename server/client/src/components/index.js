@@ -18,6 +18,7 @@ import ProductRating from "./common/ProductRating/ProductRating";
 
 // user dashbaord
 import UserDashboard from "./Manager/UserDashboard/UserDashboard";
+import Profile from "./Manager/UserDashboard/Profile/Profile";
 
 export {
   Header,
@@ -36,4 +37,5 @@ export {
   AppDownload,
   Footer,
   UserDashboard,
+  Profile,
 };

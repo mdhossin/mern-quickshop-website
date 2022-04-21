@@ -4,9 +4,8 @@ import { AiOutlineCamera } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import Loading from "../../../common/Loading/Loading";
 import { isLength, isMatch } from "../../../../utils/validation";
-import UserList from "../../AdminDashboard/UserList/UserList";
-import { Loader } from "../../../../components";
 
 const Profile = () => {
   const [data, setData] = useState({
@@ -61,16 +60,12 @@ const Profile = () => {
       formData.append("file", file);
 
       setLoading(true);
-      const res = await axios.post(
-        "https://mern-camera-shop.herokuapp.com/api/upload_image",
-        formData,
-        {
-          headers: {
-            "content-type": "multipart/form-data",
-            Authorization: token,
-          },
-        }
-      );
+      const res = await axios.post("/api/upload_image", formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: token,
+        },
+      });
       setLoading(false);
       setAvatar(res.data.url);
       setData({ ...data, success: res.data.message, error: "" });
@@ -89,7 +84,7 @@ const Profile = () => {
   const updateInfor = () => {
     try {
       axios.patch(
-        "https://mern-camera-shop.herokuapp.com/api/user/update",
+        "/api/user/update",
         {
           name: name ? name : user.name,
           avatar: avatar ? avatar : user.avatar,
@@ -129,7 +124,7 @@ const Profile = () => {
 
     try {
       axios.post(
-        "https://mern-camera-shop.herokuapp.com/api/user/reset",
+        "/api/user/reset",
         { password },
         {
           headers: { Authorization: token },
@@ -181,15 +176,13 @@ const Profile = () => {
 
   return (
     <section className="profile container-div">
-      <h3 className="profile__title">
-        {user?.role === "admin" ? "Admin Profile" : "Account Details"}
-      </h3>
+      <h3 className="profile__title">Account Details</h3>
 
       <div className="profile__container grid">
         <div className="profile__container__img">
           {loading ? (
             <div>
-              <Loader inline backdrop />
+              <Loading inline backdrop />
             </div>
           ) : (
             <img src={avatar ? avatar : user.avatar} alt="logo" />
@@ -280,7 +273,6 @@ const Profile = () => {
           Save Changes
         </button>
       </div>
-      {token && user.role === 1 && <UserList />}
     </section>
   );
 };
