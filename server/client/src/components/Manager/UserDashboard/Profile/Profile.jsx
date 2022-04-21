@@ -62,7 +62,7 @@ const Profile = () => {
 
       setLoading(true);
       const res = await axios.post(
-        "https://mern-quickshop-web-app.herokuapp.com/api/upload_image",
+        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/upload_image",
         formData,
         {
           headers: {
@@ -89,7 +89,7 @@ const Profile = () => {
   const updateInfor = () => {
     try {
       axios.patch(
-        "https://mern-quickshop-web-app.herokuapp.com/api/user/update",
+        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/user/update",
         {
           name: name ? name : user.name,
           avatar: avatar ? avatar : user.avatar,
@@ -129,7 +129,7 @@ const Profile = () => {
 
     try {
       axios.post(
-        "https://mern-quickshop-web-app.herokuapp.com/api/user/reset",
+        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/user/reset",
         { password },
         {
           headers: { Authorization: token },

@@ -8,11 +8,10 @@ import axios from "axios";
 // Get All categories
 export const getAllCategories = () => async (dispatch) => {
   try {
-    console.log("category action");
     dispatch({ type: ALL_CATEGORIES_LOADING });
 
     const { data } = await axios.get(
-      "https://mern-quickshop-web-app.herokuapp.com/api/category"
+      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/category"
     );
 
     dispatch({

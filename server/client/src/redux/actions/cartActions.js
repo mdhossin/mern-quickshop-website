@@ -10,7 +10,7 @@ export const addItemsToCart =
   (id, quantity, addToast) => async (dispatch, getState) => {
     try {
       const { data } = await axios.get(
-        `https://mern-quickshop-web-app.herokuapp.com/api/products/${id}`
+        `https://mern-quickshop-app-ecommerce.herokuapp.com/api/products/${id}`
       );
 
       dispatch({

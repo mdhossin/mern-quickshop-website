@@ -19,7 +19,7 @@ export const getProductById = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `https://mern-quickshop-web-app.herokuapp.com/api/products/${id}`
+      `https://mern-quickshop-app-ecommerce.herokuapp.com/api/products/${id}`
     );
     dispatch({
       type: PRODUCT_BY_ID_SUCCESS,
@@ -43,7 +43,7 @@ export const getAllProduct = () => async (dispatch) => {
     dispatch({ type: ALL_PRODUCTS_LOADING });
 
     const { data } = await axios.get(
-      "https://mern-quickshop-web-app.herokuapp.com/api/products"
+      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/products"
     );
 
     dispatch({
@@ -70,7 +70,7 @@ export const fetchShopProducts =
         type: FETCH_SHOP_PRODUCTS_LOADING,
       });
       const { data } = await axios.get(
-        `https://mern-quickshop-web-app.herokuapp.com/api/shop/products?${category}&${sort}&name[regex]=${search}`
+        `https://mern-quickshop-app-ecommerce.herokuapp.com/api/shop/products?${category}&${sort}&name[regex]=${search}`
       );
 
       dispatch({

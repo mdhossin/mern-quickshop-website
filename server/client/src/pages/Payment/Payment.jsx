@@ -72,7 +72,7 @@ const CheckoutForm = () => {
         },
       };
       const { data } = await axios.post(
-        "https://mern-quickshop-web-app.herokuapp.com/api/payment/process",
+        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/payment/process",
         paymentData,
         config
       );

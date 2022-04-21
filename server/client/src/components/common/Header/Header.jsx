@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineHome, AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
-import { BsFillArrowDownLeftSquareFill, BsHandbag } from "react-icons/bs";
+import { BsHandbag } from "react-icons/bs";
 import { HiX } from "react-icons/hi";
 import { BiMenuAltRight } from "react-icons/bi";
 
@@ -27,7 +27,7 @@ const Header = () => {
 
   const user = useSelector((state) => state.userLogin);
   const { userInfo } = user;
-  //   console.log(user, "user");
+
   const logoutUser = useSelector((state) => state.userLogout);
   const { userLogout, error } = logoutUser;
 
@@ -37,9 +37,9 @@ const Header = () => {
     setCartOpen(false);
   };
 
-  const toogleWishList = () => {
-    setisWishListOpen(false);
-  };
+  // const toogleWishList = () => {
+  //   setisWishListOpen(false);
+  // };
 
   const handleLogout = () => {
     if (!user?.userInfo?.access_token) return;

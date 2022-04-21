@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { animateScroll } from "react-scroll";
-import { AiFillInstagram, AiOutlineArrowRight } from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
 import {
   BsChevronDoubleUp,
   BsFacebook,

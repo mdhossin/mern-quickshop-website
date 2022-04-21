@@ -55,7 +55,6 @@ const orderController = {
   },
   // get user all order
   async myOrders(req, res, next) {
-    console.log(req.user._id);
     let orders;
     try {
       orders = await Order.find({ user: req.user._id })
@@ -69,7 +68,6 @@ const orderController = {
   },
   // get admin all orders
   async getAllOrders(req, res, next) {
-    console.log(req.user._id);
     try {
       const orders = await Order.find();
 

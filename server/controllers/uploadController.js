@@ -49,7 +49,7 @@ const uploadController = {
       cloudinary.v2.uploader.destroy(public_id, async (err, result) => {
         try {
           if (err) throw err;
-          console.log(result);
+
           res.json({ message: "Deleted Image" });
         } catch (err) {
           return next(err);

@@ -14,7 +14,7 @@ const ActivationEmail = () => {
       const activationEmail = async () => {
         try {
           const res = await axios.post(
-            "https://mern-quickshop-web-app.herokuapp.com/api/active",
+            "https://mern-quickshop-app-ecommerce.herokuapp.com/api/active",
             {
               activation_token,
             }

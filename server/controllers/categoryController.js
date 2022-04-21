@@ -13,7 +13,6 @@ const categoryController = {
   },
 
   async createCategory(req, res, next) {
-    console.log(req.body, "create category controller");
     // if user have role = 1  --  mean admin
 
     // only admin can create, delete and update category

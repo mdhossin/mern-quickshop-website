@@ -26,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://mern-quickshop-web-app.herokuapp.com/api/login",
+      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/login",
       { email, password },
       config
     );
@@ -63,7 +63,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://mern-quickshop-web-app.herokuapp.com/api/register",
+      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/register",
       { name, email, password },
       config
     );
@@ -101,7 +101,7 @@ export const refreshToken = () => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      "https://mern-quickshop-web-app.herokuapp.com/api/refresh_token",
+      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/refresh_token",
       config
     );
     // console.log(data, "refresh token action");
@@ -142,7 +142,7 @@ export const logout = (token) => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      "https://mern-quickshop-web-app.herokuapp.com/api/logout",
+      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/logout",
       config
     );
     // console.log(data, access_token, "logout action");
@@ -166,7 +166,6 @@ export const logout = (token) => async (dispatch) => {
 // user google login
 
 export const googleLogin = (id_token) => async (dispatch) => {
-  console.log(id_token);
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -180,10 +179,9 @@ export const googleLogin = (id_token) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://mern-quickshop-web-app.herokuapp.com/api/google_login",
+      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/google_login",
       config
     );
-    console.log(data, " data");
 
     // const res = await postAPI('google_login', { id_token })
 

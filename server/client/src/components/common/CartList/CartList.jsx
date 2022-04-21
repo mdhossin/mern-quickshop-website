@@ -8,7 +8,6 @@ const CartList = ({
   increaseQuantity,
   deleteCartItems,
 }) => {
-  // console.log(cartItems);
   return (
     <div className="cart__header__body__list">
       {cartItems?.map((item, index) => (

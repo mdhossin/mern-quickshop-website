@@ -176,7 +176,6 @@ const ProductDetail = () => {
                 <>
                   {products &&
                     products?.map((item) => {
-                      console.log(item, "all");
                       return item.category === product.category ? (
                         <SingleProduct key={item?._id} product={item} />
                       ) : null;
