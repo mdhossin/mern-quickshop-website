@@ -17,7 +17,6 @@
     }
 
     &__items {
-      padding-bottom: 5rem;
       @include breakpoint-up("medium") {
         grid-template-columns: repeat(2, 1fr);
       }

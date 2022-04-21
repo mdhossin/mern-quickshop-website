@@ -1,7 +1,5 @@
 import React from "react";
 import { featuresData } from "../../../utils/fakedata";
-import AppDownload from "../AppDownload/AppDownload";
-import Footer from "../Footer/Footer";
 
 const OurFeatures = () => {
   return (
@@ -22,9 +20,6 @@ const OurFeatures = () => {
           ))}
         </div>
       </div>
-
-      <AppDownload />
-      <Footer />
     </div>
   );
 };
