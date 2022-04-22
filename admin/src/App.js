@@ -1,6 +1,6 @@
 import "./assets/libs/boxicons-2.1.1/css/boxicons.min.css";
 import "./scss/App.scss";
-import Blank from "./pages/Blank";
+
 import Dashboard from "./pages/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
@@ -18,6 +18,7 @@ import AddCategory from "./pages/AddCategory/AddCategory";
 import AllProducts from "./pages/AllProducts/AllProducts";
 import UserList from "./pages/UserList/UserList";
 import EditUser from "./pages/EditUser/EditUser";
+import OrderList from "./pages/OrderList/OrderList";
 function App() {
   const dispatch = useDispatch();
 
@@ -43,22 +44,18 @@ function App() {
                 </PrivateRoute>
               }
             >
-              {/* <Route path="/" element={<Dashboard />} /> same working index and root when i need to render same root use index or root path */}
               <Route index element={<Dashboard />} />
-              <Route path="orders" element={<Blank />} />
+
               <Route path="products" element={<AllProducts />} />
 
               <Route path="category" element={<AddCategory />} />
               <Route path="users" element={<UserList />} />
 
-              {/* <Route path="users" element={<Profile />} /> */}
               <Route path="edit_user/:id" element={<EditUser />} />
               <Route path="addProduct" element={<AddProduct />} />
               <Route path="edit/:productId" element={<AddProduct />} />
 
-              {/* <Route path="products" element={<AllProducts />} /> */}
-
-              {/* <Route path="orders" element={<OrderList />} /> */}
+              <Route path="orders" element={<OrderList />} />
               {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
             </Route>
           )}
