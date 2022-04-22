@@ -45,6 +45,7 @@ const categoryController = {
   async deleteCategory(req, res, next) {
     try {
       const products = await Products.findOne({ category: req.params.id });
+
       if (products)
         return res.status(400).json({
           message: "Please delete all products with a relationship.",

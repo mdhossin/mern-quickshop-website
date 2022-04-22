@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UserListItem from "../../components/UserListItem/UserListItem";
 import { userList } from "../../redux/actions/userActions";
 import { Spinner } from "react-bootstrap";
+import Profile from "../../components/Profile/Profile";
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const UserList = () => {
   }, [dispatch, callback, userInfo?.access_token]);
   return (
     <>
+      <Profile />
       <hr />
       <div className="profile__admin">
         <div className="profile__admin__users">

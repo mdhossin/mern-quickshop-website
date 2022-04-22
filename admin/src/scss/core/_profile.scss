@@ -2,19 +2,28 @@
 
 .profile {
   padding-top: 2rem;
+  margin-bottom: 6rem;
 
   &__title {
     margin-bottom: 2rem;
-    color: #2c2c2c;
+    color: #333;
     font-weight: 500;
   }
 
   &__container {
     @include breakpoint-up("medium") {
       grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
     }
     label {
       margin-bottom: 1rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      font-size: 0.8rem;
+    }
+
+    input:disabled {
+      background-color: #ececec;
     }
     &__img {
       width: 150px;
@@ -40,7 +49,7 @@
 
       span {
         position: absolute;
-        color: var(--main-color);
+        color: #ffff;
         bottom: -100%;
         left: 0;
         width: 100%;
@@ -50,10 +59,10 @@
         font-weight: 400;
         text-transform: uppercase;
         transition: 0.3s ease-in-out;
-        background-color: rgba($color: #f1510a, $alpha: 0.5);
+        background-color: hsla(272, 90%, 53%, 0.643);
 
         p {
-          color: var(--main-color);
+          color: #fff;
           font-size: 14px;
           font-weight: 700;
         }
@@ -71,6 +80,13 @@
     }
 
     &__info {
+      input {
+        border: 1px solid #ececec;
+        border-radius: 5px;
+        color: #2c2c2c;
+        font-weight: 400;
+        font-size: 15px;
+      }
       &-name {
         margin-bottom: 1.2rem;
       }
@@ -119,18 +135,6 @@
   &__button {
     width: 160px;
     margin-bottom: 3rem;
-  }
-
-  &__admin {
-    margin-top: 3rem;
-    &__users {
-      &-title {
-        color: #333;
-        font-size: 24px;
-        font-weight: 500;
-        margin-bottom: 3rem;
-      }
-    }
   }
 }
 
@@ -181,8 +185,6 @@
         border-radius: 3px;
       }
     }
-
-    
 
     #isAdmin {
       width: 20px;

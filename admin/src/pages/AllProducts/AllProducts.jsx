@@ -24,7 +24,7 @@ const AllProducts = () => {
     try {
       if (window.confirm("are you sure?")) {
         const destroyImg = axios.post(
-          "https://mern-quickshop-web-app.herokuapp.com/api/destroy",
+          "/api/destroy",
           { public_id },
           {
             headers: { Authorization: token },
@@ -81,7 +81,7 @@ const AllProducts = () => {
                       Edit
                     </Link>
                     <button
-                      className="button"
+                      className="button delete"
                       onClick={() =>
                         deleteHandler(product._id, product.images.public_id)
                       }

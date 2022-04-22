@@ -38,9 +38,10 @@
 
       div {
         h3 {
-          font-size: 1.5rem;
+          font-size: 20px;
           font-weight: 700;
           color: #2c2c2c;
+          text-transform: capitalize;
         }
 
         h5 {
@@ -70,7 +71,7 @@
     .button {
       letter-spacing: 1px;
       flex: 1;
-      height: 45px;
+      height: 40px;
       line-height: 45px;
       font-size: 15px;
       font-weight: 600;
