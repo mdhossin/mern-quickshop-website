@@ -10,8 +10,42 @@ import {
   DELETE_ORDER_SUCCESS,
   DELETE_ORDER_FAIL,
   DELETE_ORDER_RESET,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
+  ORDER_DETAILS_FAIL,
   CLEAR_ERRORS,
 } from "../constants/orderConstants";
+
+// get single order detials reducer
+export const orderDetailsReducer = (state = { order: {} }, action) => {
+  switch (action.type) {
+    case ORDER_DETAILS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case ORDER_DETAILS_SUCCESS:
+      return {
+        loading: false,
+        order: action.payload,
+      };
+
+    case ORDER_DETAILS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
 
 // get all order reducers only admin can get
 export const allOrdersReducer = (state = { orders: [] }, action) => {

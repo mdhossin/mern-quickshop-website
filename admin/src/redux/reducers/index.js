@@ -1,7 +1,11 @@
 import { combineReducers } from "redux";
 
 import { categoryReducer, createCategoryReducer } from "./categoryReducer";
-import { allOrdersReducer, orderReducer } from "./orderReducer";
+import {
+  allOrdersReducer,
+  orderDetailsReducer,
+  orderReducer,
+} from "./orderReducer";
 import { createProductReducer, productReducer } from "./productReducers";
 import {
   userListReducer,
@@ -20,4 +24,5 @@ export default combineReducers({
   allOrders: allOrdersReducer,
   // update order reducer
   order: orderReducer,
+  orderDetails: orderDetailsReducer,
 });

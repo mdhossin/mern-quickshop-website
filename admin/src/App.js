@@ -19,6 +19,7 @@ import AllProducts from "./pages/AllProducts/AllProducts";
 import UserList from "./pages/UserList/UserList";
 import EditUser from "./pages/EditUser/EditUser";
 import OrderList from "./pages/OrderList/OrderList";
+import ProcessOrder from "./pages/ProcessOrder/ProcessOrder";
 function App() {
   const dispatch = useDispatch();
 
@@ -56,7 +57,7 @@ function App() {
               <Route path="edit/:productId" element={<AddProduct />} />
 
               <Route path="orders" element={<OrderList />} />
-              {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
+              <Route path="admin/order/:id" element={<ProcessOrder />} />
             </Route>
           )}
 

@@ -6,11 +6,42 @@ import {
   DELETE_ORDER_FAIL,
   DELETE_ORDER_REQUEST,
   DELETE_ORDER_SUCCESS,
+  ORDER_DETAILS_FAIL,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
   UPDATE_ORDER_FAIL,
   UPDATE_ORDER_REQUEST,
   UPDATE_ORDER_SUCCESS,
 } from "../constants/orderConstants";
 import axios from "axios";
+
+// Get Order Details
+export const getOrderDetails = (id) => async (dispatch, getState) => {
+  try {
+    const token = getState().userLogin?.userInfo?.access_token;
+
+    dispatch({ type: ORDER_DETAILS_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.get(`/api/order/${id}`, config);
+
+    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ORDER_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 // Get All Orders (admin)
 export const getAllOrders = () => async (dispatch, getState) => {

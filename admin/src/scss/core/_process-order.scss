@@ -1,0 +1,91 @@
+@use "./abstracts/" as *;
+
+.orderDetails {
+  padding-top: 3rem;
+  padding-bottom: 7rem;
+
+  font-family: "Roboto", sans-serif;
+
+  @include breakpoint-up("large") {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  &__container {
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #333;
+      span {
+        font-size: 1.1rem;
+        @media screen and (min-width: 456px) {
+          font-size: 1.3rem;
+        }
+      }
+    }
+    &__box {
+      margin-bottom: 1.4rem;
+      h3 {
+        font-size: 1.3rem;
+        color: #333;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+      }
+
+      > div {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .address {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  &__cartItems {
+    h3 {
+      font-size: 1.3rem;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    &__container {
+      > div {
+        @include flex(center, space-between);
+
+        img {
+          width: 60px;
+        }
+      }
+    }
+  }
+}
+
+.updateOrderForm {
+  //   margin: 0 3rem;
+
+  > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    > select {
+      padding: 0.8rem 2rem;
+      margin: 1.5rem 0;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.267);
+      border-radius: 4px;
+      font-weight: 300;
+      font-size: 16px;
+      outline: none;
+    }
+
+    > svg {
+      position: absolute;
+      transform: translateX(1vmax);
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.623);
+    }
+  }
+}
