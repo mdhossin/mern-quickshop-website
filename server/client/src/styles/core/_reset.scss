@@ -32,15 +32,11 @@ body {
 body {
   font-family: var(--body-font);
   font-size: rem(14);
-
   font-style: normal;
-
   font-weight: 400;
   line-height: 1.5;
-
   background-color: white;
   color: #2c2c2c;
-
   @include breakpoints-down("medium") {
     margin-bottom: 3rem;
   }
@@ -82,9 +78,7 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-
   margin-top: 0;
-
   color: var(--heading-color);
 }
 
@@ -92,9 +86,7 @@ p {
   font-size: rem(14);
   font-weight: 400;
   line-height: rem(24);
-
   margin-bottom: rem(15);
-
   color: #333;
 }
 
@@ -142,10 +134,8 @@ a:active {
 a,
 button {
   line-height: inherit;
-
   cursor: pointer;
   text-decoration: none;
-
   color: #000;
 }
 button {
@@ -177,7 +167,6 @@ input[type="submit"] {
 ul {
   margin: 0;
   padding: 0;
-
   list-style: outside none none;
 }
 
@@ -191,7 +180,6 @@ ul {
   font-weight: 500;
   width: 100%;
   background-color: #2c2c2c;
-
   color: #fff;
   padding: 0;
   height: 50px;
@@ -200,7 +188,6 @@ ul {
 
   &:hover {
     background-color: var(--theme-color);
-
     color: #fff;
   }
 }
@@ -217,9 +204,7 @@ ul {
   padding: 0;
   height: 50px;
   line-height: 50px;
-
   transition: var(--transition);
-
   &:hover {
     background-color: #2c2c2c;
     color: #fff;
@@ -255,11 +240,6 @@ ul {
 
 .section {
   padding: 5rem 0;
-
-  //min-width: 1024px
-  // @include breakpoint-up("xlarge") {
-  //   padding: 4rem 0;
-  // }
 }
 
 /*--
@@ -268,11 +248,9 @@ ul {
 
 input {
   font-size: rem(14);
-
   width: 100%;
   height: 50px;
   padding-left: rem(10);
-
   color: #2c2c2c;
   border: 1px solid #ebeeee;
   background: transparent;
@@ -285,12 +263,9 @@ input:focus {
 
 textarea {
   font-size: rem(14);
-
   width: 100%;
   padding: rem(10);
-
   resize: vertical;
-
   border: rem(2) solid #eceff8;
   background: #eceff8;
 }
@@ -310,15 +285,11 @@ textarea:focus {
   z-index: 9811 !important;
   right: 20px;
   bottom: 60px;
-
   visibility: hidden;
   overflow: hidden;
-
   width: 50px;
   height: 50px;
-
   text-align: center;
-
   opacity: 0;
   color: #fff;
   border: none;
@@ -327,7 +298,6 @@ textarea:focus {
   background-color: var(--theme-color);
   &.show {
     visibility: visible;
-
     opacity: 1;
   }
 
@@ -336,7 +306,6 @@ textarea:focus {
       animation-name: fadeInUp;
       animation-duration: 1s;
       animation-iteration-count: infinite;
-
       animation-fill-mode: both;
     }
   }
@@ -354,10 +323,8 @@ textarea:focus {
     right: 0;
     bottom: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     content: "";
   }
 }
@@ -437,15 +404,11 @@ textarea:focus {
   z-index: 9811 !important;
   right: 20px;
   bottom: 60px;
-
   visibility: hidden;
   overflow: hidden;
-
   width: 50px;
   height: 50px;
-
   text-align: center;
-
   opacity: 0;
   color: #fff;
   border: none;
@@ -457,19 +420,11 @@ textarea:focus {
 
     opacity: 1;
   }
-  // @media #{var(--xs-layout)} {
-  //   width: 40px;
-  //   height: 40px;
-  // }
+
   & i {
     font-size: 22px;
     line-height: 50px;
-
     display: block;
-    // @media #{var(--xs-layout)} {
-    //   font-size: 16px;
-    //   line-height: 40px;
-    // }
   }
   &:hover {
     & i {

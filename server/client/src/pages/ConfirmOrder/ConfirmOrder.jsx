@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -30,7 +29,6 @@ const ConfirmOrder = () => {
     };
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
-
     navigate("/process/payment");
   };
 

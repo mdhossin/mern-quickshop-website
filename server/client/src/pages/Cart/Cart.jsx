@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,10 +31,6 @@ const Cart = ({ setCartOpen, isCartOpen }) => {
   const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
   };
-
-  // const checkoutHandler = () => {
-  //   history.push("/login?redirect=shipping");
-  // };
 
   const cartTotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,

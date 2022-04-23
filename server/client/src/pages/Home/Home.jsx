@@ -11,27 +11,25 @@ import {
   SupportArea,
 } from "../../components";
 import { Helmet } from "react-helmet";
-const Home = () => {
-  return (
-    <div>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Quickshop - Ecommerce</title>
-      </Helmet>
-      <HeroSlide />
-      <SupportArea />
-      <DiscountBanner />
-      <Products />
-      <Iphone />
+const Home = () => (
+  <div>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Quickshop - Ecommerce</title>
+    </Helmet>
+    <HeroSlide />
+    <SupportArea />
+    <DiscountBanner />
+    <Products />
+    <Iphone />
 
-      <Brands />
+    <Brands />
 
-      <NewsLetter />
-      <AppDownload />
+    <NewsLetter />
+    <AppDownload />
 
-      <Footer />
-    </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
 export default Home;

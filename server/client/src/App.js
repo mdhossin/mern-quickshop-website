@@ -1,11 +1,10 @@
-import { lazy, useEffect, Suspense } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 
 import {
   Header,
-  Loading,
   MyOrders,
   OrderDetails,
   Profile,
@@ -18,6 +17,7 @@ import {
   ConfirmOrder,
   Contact,
   ForgotPassword,
+  Home,
   Login,
   NotFound,
   OrderSuccess,
@@ -35,8 +35,6 @@ import {
 import { refreshToken } from "./redux/actions/userActions";
 import "./styles/styles.scss";
 
-const Home = lazy(() => import("./pages/Home/Home"));
-
 function App() {
   const dispatch = useDispatch();
 
@@ -50,7 +48,7 @@ function App() {
       <ToastProvider placement="top-right">
         <BrowserRouter>
           <Header />
-          <Suspense fallback={<Loading inline backdrop />}></Suspense>
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />

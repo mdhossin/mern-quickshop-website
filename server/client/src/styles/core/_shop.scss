@@ -33,9 +33,7 @@
       grid-template-columns: repeat(3, 1fr);
     }
     &__category {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include flex(center, space-between);
 
       p {
         margin-bottom: 0;
@@ -63,7 +61,6 @@
     &__search {
       position: relative;
       height: 42px;
-
       width: 100%;
 
       input {

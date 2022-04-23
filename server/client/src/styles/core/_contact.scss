@@ -66,10 +66,8 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        display: flex;
         background-color: #fff;
-        align-items: center;
-        justify-content: center;
+        @include flex(center, center);
 
         svg {
           background-color: #f3f4f6;
@@ -89,7 +87,6 @@
       position: absolute;
       bottom: 0;
       left: 0;
-
       width: 30%;
       top: 35px;
       height: 2px;

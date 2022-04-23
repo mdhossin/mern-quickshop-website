@@ -1,9 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { AiOutlineHeart, AiOutlineEye } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { addItemsToCart } from "../../redux/actions/cartActions";

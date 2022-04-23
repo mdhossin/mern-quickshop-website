@@ -3,9 +3,7 @@
 .shipping {
   margin-top: 2rem;
   &__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex(center, center);
     flex-direction: column;
   }
 

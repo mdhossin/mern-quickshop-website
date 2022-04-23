@@ -9,10 +9,8 @@
       grid-template-columns: repeat(4, 1fr);
     }
     &__item {
-      display: flex;
+      @include flex(center, flex-start);
       column-gap: 1.5rem;
-      align-items: center;
-      justify-content: flex-start;
       &-img {
         width: 45px;
       }

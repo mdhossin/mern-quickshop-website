@@ -1,8 +1,5 @@
-import React from "react";
-
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import { heroSlideData } from "../../../utils/fakedata";
@@ -39,28 +36,25 @@ const HeroSlide = () => {
   );
 };
 
-const HeroSlideItem = ({ item, className }) => {
-  // console.log(item);
-  return (
-    <section>
-      <div
-        className={`hero-slide__item ${className}`}
-        style={{ backgroundImage: `url(${item.slider})` }}
-      >
-        <div className="hero-slide__item__content container-div">
-          <div className="hero-slide__item__content__info">
-            <h3 className="overview">{item.overview}</h3>
-            <h2 className="title">{item.title}</h2>
-            <div className="btns">
-              <Link to="/shop">
-                <button className="shop-now">Shop Now</button>
-              </Link>
-            </div>
+const HeroSlideItem = ({ item, className }) => (
+  <section>
+    <div
+      className={`hero-slide__item ${className}`}
+      style={{ backgroundImage: `url(${item.slider})` }}
+    >
+      <div className="hero-slide__item__content container-div">
+        <div className="hero-slide__item__content__info">
+          <h3 className="overview">{item.overview}</h3>
+          <h2 className="title">{item.title}</h2>
+          <div className="btns">
+            <Link to="/shop">
+              <button className="shop-now">Shop Now</button>
+            </Link>
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default HeroSlide;

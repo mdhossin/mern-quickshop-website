@@ -19,12 +19,9 @@
     }
 
     &__load-more {
-      text-align: center;
+      @include flex(center, center);
       display: flex;
-      align-items: center;
-      justify-content: center;
       margin-top: 2rem;
-
       button {
         width: 170px;
       }
@@ -32,7 +29,6 @@
 
     &__notFound {
       text-align: center;
-
       color: #333;
       font-weight: 600;
       font-size: 24px;
@@ -57,7 +53,6 @@
       position: absolute;
       bottom: 0;
       left: 0;
-
       width: 30%;
       top: 45px;
       height: 2px;

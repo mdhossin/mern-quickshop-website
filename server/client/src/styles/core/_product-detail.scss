@@ -7,9 +7,7 @@
       grid-template-columns: repeat(2, 1fr);
     }
     &__img {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex(center, center);
       img {
         width: 280px;
       }
@@ -49,13 +47,10 @@
       &__buttons {
         display: flex;
         align-items: center;
-
         gap: 1rem;
 
         &-quantity {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          @include flex(center, center);
           width: 130px;
           max-width: 100%;
           border: 0.5px solid rgb(177, 177, 177);
@@ -75,7 +70,6 @@
             border: none;
             outline: none;
             background: none;
-
             cursor: pointer;
             font-size: 1.5rem;
             padding: 0.5rem 1rem;
