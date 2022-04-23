@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 
 import { useToasts } from "react-toast-notifications";
@@ -15,6 +15,7 @@ import { Footer, ProductRating } from "../../components";
 import { FiShoppingCart } from "react-icons/fi";
 import SingleProduct from "../../components/common/Products/SingleProduct/SingleProduct";
 import { Helmet } from "react-helmet";
+import { addItemsToWishlist } from "../../redux/actions/wishlistActions";
 const ProductDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
@@ -59,6 +60,16 @@ const ProductDetail = () => {
 
   const addToCartHandler = () => {
     dispatch(addItemsToCart(productId, quantity, addToast));
+  };
+
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+
+  const addWishlistOrNot = wishlistItems?.find(
+    (item) => item.product === productId
+  );
+
+  const addToWishlistHandler = () => {
+    dispatch(addItemsToWishlist(productId, 1, addToast));
   };
 
   return (
@@ -137,8 +148,20 @@ const ProductDetail = () => {
                   )}
                 </div>
                 <div className="product__detail__info__buttons-wishlist">
-                  <button>
-                    <AiOutlineHeart />
+                  <button
+                    disabled={addWishlistOrNot?.quantity > 0}
+                    onClick={addToWishlistHandler}
+                    title={
+                      addWishlistOrNot?.quantity > 0
+                        ? "Added to Wishlist"
+                        : "Add to Wishlist"
+                    }
+                  >
+                    {addWishlistOrNot?.quantity > 0 ? (
+                      <AiFillHeart style={{ color: "red" }} />
+                    ) : (
+                      <AiOutlineHeart />
+                    )}
                   </button>
                 </div>
               </div>

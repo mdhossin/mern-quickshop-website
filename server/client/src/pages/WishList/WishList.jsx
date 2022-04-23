@@ -11,7 +11,7 @@ const WishList = ({ setisWishListOpen }) => {
     <div className="cart">
       <div className="cart__header">
         <h5 className="cart__header-title">
-          Wishlist Products({wishlistItems?.length})
+          Wishlist Products ({wishlistItems?.length})
         </h5>
         <AiOutlineClose
           className="cart__header-icon"
