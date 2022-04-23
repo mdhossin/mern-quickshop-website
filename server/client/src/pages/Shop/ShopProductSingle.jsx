@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineHeart, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineEye, AiFillHeart } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { addItemsToCart } from "../../redux/actions/cartActions";
 import { ProductRating } from "../../components";
+import { addItemsToWishlist } from "../../redux/actions/wishlistActions";
 
-const ShopProductSingle = ({ product, wishlistItem }) => {
+const ShopProductSingle = ({ product }) => {
   const { cartItems } = useSelector((state) => state.cart);
 
   const { addToast } = useToasts();
@@ -15,6 +16,15 @@ const ShopProductSingle = ({ product, wishlistItem }) => {
   const dispatch = useDispatch();
   const addToCartHandler = () => {
     dispatch(addItemsToCart(product?._id, 1, addToast));
+  };
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+
+  const addWishlistOrNot = wishlistItems?.find(
+    (item) => item.product === product._id
+  );
+
+  const addToWishlistHandler = () => {
+    dispatch(addItemsToWishlist(product?._id, 1, addToast));
   };
   return (
     <>
@@ -27,16 +37,19 @@ const ShopProductSingle = ({ product, wishlistItem }) => {
           <div className="product-action">
             <div className="pro-same-action pro-wishlist">
               <button
-                className={wishlistItem !== undefined ? "active" : ""}
-                disabled={wishlistItem !== undefined}
+                disabled={addWishlistOrNot?.quantity > 0}
+                onClick={addToWishlistHandler}
                 title={
-                  wishlistItem !== undefined
-                    ? "Added to wishlist"
-                    : "Add to wishlist"
+                  addWishlistOrNot?.quantity > 0
+                    ? "Added to Wishlist"
+                    : "Add to Wishlist"
                 }
-                //   onClick={() => addToWishlist(product, addToast)}
               >
-                <AiOutlineHeart />
+                {addWishlistOrNot?.quantity > 0 ? (
+                  <AiFillHeart style={{ color: "red" }} />
+                ) : (
+                  <AiOutlineHeart />
+                )}
               </button>
             </div>
             <div className="pro-same-action pro-cart">

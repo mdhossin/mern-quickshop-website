@@ -21,6 +21,9 @@ import AboutUs from "./AboutUs/AboutUs";
 //
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
+
+//
+import WishList from "./WishList/WishList";
 export {
   Cart,
   Home,
@@ -40,4 +43,5 @@ export {
   AboutUs,
   Blog,
   Contact,
+  WishList,
 };

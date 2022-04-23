@@ -16,6 +16,11 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
   },
+  wishlist: {
+    wishlistItems: localStorage.getItem("wishlistItems")
+      ? JSON.parse(localStorage.getItem("wishlistItems"))
+      : [],
+  },
 };
 const store = createStore(
   rootReducer,

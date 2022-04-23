@@ -10,7 +10,7 @@ import { NavDropdown } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useToasts } from "react-toast-notifications";
-import { Cart } from "../../../pages";
+import { Cart, WishList } from "../../../pages";
 import { logo } from "../../../assets";
 import { logout } from "../../../redux/actions/userActions";
 import { USER_LOGOUT_RESET } from "../../../redux/constants/userConstants";
@@ -32,14 +32,14 @@ const Header = () => {
   const { userLogout, error } = logoutUser;
 
   const { cartItems } = useSelector((state) => state.cart);
-
+  const { wishlistItems } = useSelector((state) => state.wishlist);
   const toggleCart = () => {
     setCartOpen(false);
   };
 
-  // const toogleWishList = () => {
-  //   setisWishListOpen(false);
-  // };
+  const toogleWishList = () => {
+    setisWishListOpen(false);
+  };
 
   const handleLogout = () => {
     if (!user?.userInfo?.access_token) return;
@@ -205,7 +205,9 @@ const Header = () => {
                 }}
               >
                 <AiOutlineHeart />
-                <span className="nav__icons__cart">1</span>
+                <span className="nav__icons__cart">
+                  {wishlistItems?.length}
+                </span>
               </a>
             </li>
             <li className="nav__item">
@@ -239,7 +241,7 @@ const Header = () => {
       </div>
 
       {/* hidden wishlist drawer */}
-      {/* <div className={isWishListOpen ? "mini-cart-open" : ""}>
+      <div className={isWishListOpen ? "mini-cart-open" : ""}>
         <div className="mini-cart">
           <WishList
             setisWishListOpen={setisWishListOpen}
@@ -252,7 +254,7 @@ const Header = () => {
           }
           onClick={toogleWishList}
         />
-      </div> */}
+      </div>
     </header>
   );
 };

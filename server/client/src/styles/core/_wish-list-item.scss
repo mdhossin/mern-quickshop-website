@@ -1,0 +1,90 @@
+@use "./utils/" as *;
+
+.wishlist {
+  font-family: "Roboto", sans-serif;
+  padding: 25px 32px 25px 20px;
+
+  @include breakpoint-up("xlarge") {
+    padding: 25px 32px;
+  }
+  &__items {
+    &:not(:first-child) {
+      border-top: 1px solid #ebeeee;
+    }
+    &__item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 20px 0;
+
+      &__img {
+        display: block;
+        width: 80px;
+        height: auto;
+
+        margin: 0 50px 0 0;
+        padding: 0.5rem;
+
+        @include breakpoints-down("small") {
+          margin: 0 30px 0 0;
+        }
+      }
+
+      &__details {
+        display: flex;
+        flex-direction: column;
+
+        &-name {
+          font-size: 16px;
+          color: #2c2c2c;
+          font-weight: 500;
+          transition: all 0.5s ease;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--theme-color);
+          }
+        }
+
+        &-price {
+          font-size: 16px;
+          color: #2c2c2c;
+          font-weight: 400;
+          padding: 0.5rem 0;
+        }
+
+        &-button {
+          padding: 7.5px 19px;
+          font-size: 14px;
+          letter-spacing: 0.7px;
+
+          margin-top: 0.5rem;
+          text-transform: capitalize;
+
+          width: 100%;
+          background-color: #2c2c2c;
+
+          color: #fff;
+
+          transition: var(--transition);
+
+          &:hover {
+            background-color: var(--theme-color);
+          }
+        }
+      }
+
+      &__close {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+
+        svg {
+          font-size: 18px;
+          color: #2c2c2c;
+        }
+      }
+    }
+  }
+}

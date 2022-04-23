@@ -17,6 +17,7 @@ import {
   userLogoutReducer,
   userRegisterReducer,
 } from "./userReducer";
+import { wishlistReducer } from "./wishlistReducer";
 
 export default combineReducers({
   userLogin: userLoginReducer,
@@ -30,4 +31,5 @@ export default combineReducers({
   newOrder: newOrderReducer,
   myOrders: myOrdersReducer,
   orderDetails: orderDetailsReducer,
+  wishlist: wishlistReducer,
 });

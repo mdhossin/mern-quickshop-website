@@ -26,6 +26,9 @@ import OrderDetails from "./Manager/UserDashboard/OrderDetails/OrderDetails";
 import OurHistory from "./common/OurHistory/OurHistory";
 import OurFeatures from "./common/OurFeatures/OurFeatures";
 
+//
+import WishItemList from "./common/WishItemList/WishItemList";
+
 export {
   Header,
   CartList,
@@ -48,4 +51,5 @@ export {
   OrderDetails,
   OurHistory,
   OurFeatures,
+  WishItemList,
 };
