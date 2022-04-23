@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import UserListItem from "../../components/UserListItem/UserListItem";
 import { userList } from "../../redux/actions/userActions";
 import { Spinner } from "react-bootstrap";

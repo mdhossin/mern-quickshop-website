@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { AiOutlineCamera } from "react-icons/ai";
 import { useSelector } from "react-redux";
@@ -178,7 +178,6 @@ const Profile = () => {
   return (
     <section className="profile container-div">
       <h3 className="profile__title">Account Details</h3>
-
       <div className="profile__container grid">
         <div className="profile__container__img">
           {loading ? (

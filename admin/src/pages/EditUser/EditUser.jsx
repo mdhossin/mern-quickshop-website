@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { useToasts } from "react-toast-notifications";
 import { Spinner } from "react-bootstrap";
+
 const EditUser = () => {
   const navigate = useNavigate();
   const { id } = useParams();

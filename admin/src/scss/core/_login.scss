@@ -2,15 +2,12 @@
 
 .login-section {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex(center, center);
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
 .login {
   width: 400px;
-
   padding-top: 8rem;
   padding-bottom: 5rem;
 

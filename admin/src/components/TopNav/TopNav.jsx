@@ -1,12 +1,9 @@
-import React from "react";
 import UserInfo from "../UserInfo/UserInfo";
-
-import { data } from "../../constants";
+import { BiMenuAltRight } from "react-icons/bi";
 import { useSelector } from "react-redux";
 const TopNav = () => {
   const user = useSelector((state) => state.userLogin);
   const { userInfo } = user;
-  console.log(userInfo);
   const openSidebar = () => {
     document.body.classList.add("sidebar-open");
   };
@@ -15,7 +12,7 @@ const TopNav = () => {
     <div className="topNav">
       <UserInfo userInfo={userInfo}></UserInfo>
       <div className="sidebar-toggle" onClick={openSidebar}>
-        <i className="bx bx-menu-alt-right"></i>
+        <BiMenuAltRight />
       </div>
     </div>
   );

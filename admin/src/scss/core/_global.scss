@@ -113,11 +113,9 @@ input[type="submit"] {
 
 input {
   font-size: 14px;
-
   width: 100%;
   height: 50px;
   padding-left: 10px;
-
   color: #2c2c2c;
   border: 1px solid #e3e6e6;
   background: transparent;
@@ -128,25 +126,6 @@ input {
   display: grid;
   gap: 1.25rem;
 }
-// select {
-//   font-size: rem(14);
-
-//   width: 100%;
-
-//   color: #333;
-//   border: 0 solid #eceff8;
-//   background: transparent;
-//   box-shadow: none;
-// }
-
-// option {
-//   font-size: rem(14);
-
-//   padding-left: rem(10);
-
-//   border: 0 solid #626262;
-//   background: #fff;
-// }
 
 input:focus {
   background: transparent;

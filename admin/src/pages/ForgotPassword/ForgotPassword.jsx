@@ -31,7 +31,6 @@ const ForgotPassword = () => {
       setLoading(false);
       setData({ ...data, error: "", success: res.data.message });
     } catch (error) {
-      console.log(error.message);
       setLoading(false);
       error.response.data.message &&
         setData({

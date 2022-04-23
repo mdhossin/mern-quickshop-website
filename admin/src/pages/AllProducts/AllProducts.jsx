@@ -6,7 +6,6 @@ import {
   deleteProduct,
   getAllProduct,
 } from "../../redux/actions/productActions";
-
 import { Spinner } from "react-bootstrap";
 
 const AllProducts = () => {

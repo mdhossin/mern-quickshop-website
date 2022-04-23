@@ -3,7 +3,6 @@ import axios from "axios";
 import { useToasts } from "react-toast-notifications";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-
 import { Spinner } from "react-bootstrap";
 import {
   createProduct,
@@ -129,7 +128,6 @@ const AddProduct = () => {
       // update prduct call here
       dispatch(updateProduct({ ...product, images }, _id, addToast));
     } else {
-      console.log(product, "all");
       // create product api call here
       dispatch(createProduct({ ...product, images }, navigate, addToast));
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { AiOutlineClose } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { images } from "../../constants";
 import sidebarNav from "../../configs/sidebarNav";
@@ -14,10 +14,6 @@ const Sidebar = () => {
 
   const user = useSelector((state) => state.userLogin);
   const { userInfo } = user;
-
-  const logoutUser = useSelector((state) => state.userLogout);
-  const { userLogout, error } = logoutUser;
-
   useEffect(() => {
     const curPath = window.location.pathname.split("/dashboard/")[1];
     const activeItem = sidebarNav.findIndex((item) => item.section === curPath);
@@ -44,7 +40,7 @@ const Sidebar = () => {
       <div className="sidebar__logo">
         <img src={images.logo} alt="" />
         <div className="sidebar-close" onClick={closeSidebar}>
-          <i className="bx bx-x"></i>
+          <AiOutlineClose />
         </div>
       </div>
       <div className="sidebar__menu">

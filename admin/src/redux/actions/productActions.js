@@ -16,7 +16,6 @@ import {
 export const createProduct =
   (product, navigate, addToast) => async (dispatch, getState) => {
     const token = getState().userLogin?.userInfo?.access_token;
-    console.log(product, "product action");
     try {
       dispatch({
         type: CREATE_PRODUCT_REQUEST,

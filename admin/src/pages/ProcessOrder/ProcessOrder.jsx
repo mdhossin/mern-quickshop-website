@@ -14,7 +14,6 @@ const ProcessOrder = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
   const [status, setStatus] = useState("");
-  console.log(order);
 
   const dispatch = useDispatch();
   const { id } = useParams();
