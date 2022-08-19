@@ -4,6 +4,7 @@ import { Spinner } from "react-bootstrap";
 import { useToasts } from "react-toast-notifications";
 import { isEmail } from "../../utils/validation";
 import { Helmet } from "react-helmet";
+import { BASE_URL } from "../../config";
 
 const ForgotPassword = () => {
   const [data, setData] = useState({
@@ -27,10 +28,9 @@ const ForgotPassword = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post(
-        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/user/forgot_password",
-        { email }
-      );
+      const res = await axios.post(`${BASE_URL}/api/user/forgot_password`, {
+        email,
+      });
       setLoading(false);
       setData({ ...data, error: "", success: res.data.message });
     } catch (error) {

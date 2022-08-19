@@ -7,6 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import Loading from "../../../common/Loading/Loading";
 import { isLength, isMatch } from "../../../../utils/validation";
 import { Helmet } from "react-helmet";
+import { BASE_URL } from "../../../../config";
 
 const Profile = () => {
   const [data, setData] = useState({
@@ -61,16 +62,12 @@ const Profile = () => {
       formData.append("file", file);
 
       setLoading(true);
-      const res = await axios.post(
-        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/upload_image",
-        formData,
-        {
-          headers: {
-            "content-type": "multipart/form-data",
-            Authorization: token,
-          },
-        }
-      );
+      const res = await axios.post(`${BASE_URL}/api/upload_image`, formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: token,
+        },
+      });
       setLoading(false);
       setAvatar(res.data.url);
       setData({ ...data, success: res.data.message, error: "" });
@@ -89,7 +86,7 @@ const Profile = () => {
   const updateInfor = () => {
     try {
       axios.patch(
-        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/user/update",
+        `${BASE_URL}/api/user/update`,
         {
           name: name ? name : user.name,
           avatar: avatar ? avatar : user.avatar,
@@ -129,7 +126,7 @@ const Profile = () => {
 
     try {
       axios.post(
-        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/user/reset",
+        `${BASE_URL}/api/user/reset`,
         { password },
         {
           headers: { Authorization: token },

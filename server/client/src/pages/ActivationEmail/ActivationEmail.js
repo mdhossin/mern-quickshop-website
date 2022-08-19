@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { Helmet } from "react-helmet";
+import { BASE_URL } from "../../config";
 
 const ActivationEmail = () => {
   const { activation_token } = useParams();
@@ -13,12 +14,9 @@ const ActivationEmail = () => {
     if (activation_token) {
       const activationEmail = async () => {
         try {
-          const res = await axios.post(
-            "https://mern-quickshop-app-ecommerce.herokuapp.com/api/active",
-            {
-              activation_token,
-            }
-          );
+          const res = await axios.post(`${BASE_URL}/api/active`, {
+            activation_token,
+          });
           setSuccess(res.data.message);
           setError("");
         } catch (error) {

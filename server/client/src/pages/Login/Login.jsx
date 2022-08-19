@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
+
+import { GoogleLogin } from "@react-oauth/google";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
@@ -35,8 +36,9 @@ const Login = () => {
   };
 
   const responseGoogle = async (response) => {
+    console.log(response, "goole response");
     try {
-      dispatch(googleLogin(response.tokenId));
+      dispatch(googleLogin(response.credential));
     } catch (error) {
       alert(error?.message);
     }
@@ -99,13 +101,11 @@ const Login = () => {
           <button className="login__form__submit" type="submit">
             {loading ? <Spinner animation="border" size="sm" /> : "login"}
           </button>
+
           <div className="login__form__social">
             <GoogleLogin
-              clientId="768253564136-6ntsta3ed6q04le02jrkr0520ii7psqh.apps.googleusercontent.com"
-              buttonText="Login with google"
               onSuccess={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-              theme="dark"
+              onError={() => console.log("Login Failed")}
             />
           </div>
 

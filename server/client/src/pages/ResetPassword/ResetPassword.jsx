@@ -7,6 +7,7 @@ import { checkPassword, isLength } from "../../utils/validation";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { BASE_URL } from "../../config";
 const ResetPassword = () => {
   const [data, setData] = useState({
     password: "",
@@ -46,7 +47,7 @@ const ResetPassword = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/user/reset",
+        `${BASE_URL}/api/user/reset`,
         { password },
         {
           headers: { Authorization: token },

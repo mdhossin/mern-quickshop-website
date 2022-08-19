@@ -11,6 +11,7 @@ import {
   ORDER_DETAILS_SUCCESS,
 } from "../constants/orderConstants";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 // Create Order action
 export const createOrder = (order, token) => async (dispatch) => {
@@ -24,7 +25,7 @@ export const createOrder = (order, token) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/order/new",
+      `${BASE_URL}/api/order/new`,
       order,
       config
     );
@@ -57,10 +58,7 @@ export const myOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/order/me",
-      config
-    );
+    const { data } = await axios.get(`${BASE_URL}/api/order/me`, config);
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data });
   } catch (error) {
@@ -88,10 +86,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      `https://mern-quickshop-app-ecommerce.herokuapp.com/api/order/${id}`,
-      config
-    );
+    const { data } = await axios.get(`${BASE_URL}/api/order/${id}`, config);
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {

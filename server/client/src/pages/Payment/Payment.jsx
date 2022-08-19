@@ -21,6 +21,7 @@ import { clearErrors, createOrder } from "../../redux/actions/orderActions";
 import { Helmet } from "react-helmet";
 
 import { Spinner } from "react-bootstrap";
+import { BASE_URL } from "../../config";
 
 const CheckoutForm = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -72,7 +73,7 @@ const CheckoutForm = () => {
         },
       };
       const { data } = await axios.post(
-        "https://mern-quickshop-app-ecommerce.herokuapp.com/api/payment/process",
+        `${BASE_URL}/api/payment/process`,
         paymentData,
         config
       );

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BASE_URL } from "../../config";
 import {
   ALL_PRODUCTS_FAIL,
   ALL_PRODUCTS_LOADING,
@@ -18,9 +19,7 @@ export const getProductById = (id) => async (dispatch) => {
       type: PRODUCT_BY_ID_REQUEST,
     });
 
-    const { data } = await axios.get(
-      `https://mern-quickshop-app-ecommerce.herokuapp.com/api/products/${id}`
-    );
+    const { data } = await axios.get(`${BASE_URL}/api/products/${id}`);
     dispatch({
       type: PRODUCT_BY_ID_SUCCESS,
       payload: data,
@@ -42,9 +41,7 @@ export const getAllProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTS_LOADING });
 
-    const { data } = await axios.get(
-      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/products"
-    );
+    const { data } = await axios.get(`${BASE_URL}/api/products`);
 
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,
@@ -70,7 +67,7 @@ export const fetchShopProducts =
         type: FETCH_SHOP_PRODUCTS_LOADING,
       });
       const { data } = await axios.get(
-        `https://mern-quickshop-app-ecommerce.herokuapp.com/api/shop/products?${category}&${sort}&name[regex]=${search}`
+        `${BASE_URL}/api/shop/products?${category}&${sort}&name[regex]=${search}`
       );
 
       dispatch({

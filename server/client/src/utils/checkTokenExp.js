@@ -2,6 +2,7 @@ import jwt_decode from "jwt-decode";
 
 import axios from "axios";
 import { USER_LOGIN_SUCCESS } from "../redux/constants/userConstants";
+import { BASE_URL } from "../config";
 
 export const checkTokenExp = async (token, dispatch) => {
   const decoded = jwt_decode(token);
@@ -13,10 +14,7 @@ export const checkTokenExp = async (token, dispatch) => {
     },
   };
 
-  const res = await axios.get(
-    "https://mern-quickshop-app-ecommerce.herokuapp.com/api/refresh_token",
-    config
-  );
+  const res = await axios.get(`${BASE_URL}/api/refresh_token`, config);
 
   dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
   return res.data.access_token;

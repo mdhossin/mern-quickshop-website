@@ -4,15 +4,14 @@ import {
   ALL_CATEGORIES_SUCCESS,
 } from "../constants/categoryConstants";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 // Get All categories
 export const getAllCategories = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_CATEGORIES_LOADING });
 
-    const { data } = await axios.get(
-      "https://mern-quickshop-app-ecommerce.herokuapp.com/api/category"
-    );
+    const { data } = await axios.get(`${BASE_URL}/api/category`);
 
     dispatch({
       type: ALL_CATEGORIES_SUCCESS,

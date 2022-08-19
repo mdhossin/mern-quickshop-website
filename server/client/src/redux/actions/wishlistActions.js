@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BASE_URL } from "../../config";
 import {
   ADD_TO_WISHLIST,
   REMOVE_WISHLIST_ITEM,
@@ -8,9 +9,7 @@ import {
 export const addItemsToWishlist =
   (id, quantity, addToast) => async (dispatch, getState) => {
     try {
-      const { data } = await axios.get(
-        `https://mern-quickshop-app-ecommerce.herokuapp.com/api/products/${id}`
-      );
+      const { data } = await axios.get(`${BASE_URL}/api/products/${id}`);
 
       dispatch({
         type: ADD_TO_WISHLIST,
