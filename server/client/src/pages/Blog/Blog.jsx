@@ -2,6 +2,7 @@ import { blogData } from "../../utils/fakedata";
 import { BsArrowRightShort } from "react-icons/bs";
 import { AppDownload, Footer, NewsLetter } from "../../components";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 const Blog = () => (
   <section className="blog-main">
     <Helmet>
@@ -9,7 +10,15 @@ const Blog = () => (
       <title>Blog</title>
     </Helmet>
     <div className="title">
-      <h2>Blog</h2>
+      <div>
+        <h2>Blog</h2>
+
+        <div className="breadcramp">
+          <Link to="/">Home</Link>
+          <span className="arrow">{">"}</span>
+          <span className="active-page">Blog</span>
+        </div>
+      </div>
     </div>
 
     <div className="blog container-div">

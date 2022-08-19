@@ -72,9 +72,9 @@ function App() {
             /> */}
             {/* <Route path="product/:productId" element={<ProductDetail />} /> */}
             <Route path="shop" element={<Shop />} />
-            {/* <Route path="about" element={<AboutUs />} />
+            <Route path="about" element={<AboutUs />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="contact" element={<Contact />} /> */}
+            <Route path="contact" element={<Contact />} />
             {/* <Route path="modal" element={<ProductDetailModal />} /> */}
 
             {/* <Route

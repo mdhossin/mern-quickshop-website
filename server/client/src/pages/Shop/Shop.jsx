@@ -6,6 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { fetchShopProducts } from "../../redux/actions/productActions";
 import ShopProduct from "./ShopProduct";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,15 @@ const Shop = () => {
         <title>Shop</title>
       </Helmet>
       <div className="title">
-        <h2>Shop</h2>
+        <div>
+          <h2>Shop</h2>
+
+          <div className="breadcramp">
+            <Link to="/">Home</Link>
+            <span className="arrow">{">"}</span>
+            <span className="active-page">Shop</span>
+          </div>
+        </div>
       </div>
       <div className="shop container-div">
         <div className="shop__filter grid">

@@ -3,6 +3,7 @@ import { GoLocation } from "react-icons/go";
 import { AiOutlineMail } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
 import { AppDownload, Footer, NewsLetter } from "../../components";
+import { Link } from "react-router-dom";
 
 const Contact = () => (
   <section className="contact-main">
@@ -11,7 +12,15 @@ const Contact = () => (
       <title>Contact</title>
     </Helmet>
     <div className="title">
-      <h2>Contact Us</h2>
+      <div>
+        <h2>Contact Us</h2>
+
+        <div className="breadcramp">
+          <Link to="/">Home</Link>
+          <span className="arrow">{">"}</span>
+          <span className="active-page">Blog</span>
+        </div>
+      </div>
     </div>
 
     <div className="contact grid container-div section">

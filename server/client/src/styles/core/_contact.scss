@@ -9,13 +9,40 @@
   }
 
   .title {
-    height: 130px;
+    height: 160px;
     background-color: rgb(243, 244, 246);
     @include flex(center, center);
+
+    > div {
+      text-align: center;
+    }
     h2 {
-      font-weight: 500;
+      font-weight: 600;
       color: #333;
-      font-size: 2rem;
+      font-size: 3rem;
+    }
+
+    .breadcramp {
+      margin-top: 0.7rem;
+      a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: rgb(116, 116, 116);
+        transition: 0.4s;
+
+        &:hover {
+          color: var(--theme-color);
+        }
+      }
+
+      .arrow {
+        margin: 0 0.5rem;
+      }
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
     }
   }
 }
