@@ -57,24 +57,30 @@ const MyOrders = () => {
               </h3>
             ) : (
               <>
-                {orders?.map(({ _id, orderStatus, totalPrice, orderItems }) => (
-                  <tr key={_id}>
-                    <td>{_id}</td>
-                    <td>{orderItems?.length}</td>
-                    <td>${totalPrice.toFixed(2)}</td>
-                    <td>
-                      <button>{orderStatus}</button>
-                    </td>
-                    <td title="Order Details">
-                      <Link
-                        className="order-detail"
-                        to={`/dashboard/order/${_id}`}
-                      >
-                        Details
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {orders?.length > 0 ? (
+                  orders?.map(
+                    ({ _id, orderStatus, totalPrice, orderItems }) => (
+                      <tr key={_id}>
+                        <td>{_id}</td>
+                        <td>{orderItems?.length}</td>
+                        <td>${totalPrice.toFixed(2)}</td>
+                        <td>
+                          <button>{orderStatus}</button>
+                        </td>
+                        <td title="Order Details">
+                          <Link
+                            className="order-detail"
+                            to={`/dashboard/order/${_id}`}
+                          >
+                            Details
+                          </Link>
+                        </td>
+                      </tr>
+                    )
+                  )
+                ) : (
+                  <h1>Order not found</h1>
+                )}
               </>
             )}
           </tbody>

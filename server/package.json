@@ -6,12 +6,12 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "cd client && yarn run start",
-    "server-install": "yarn install",
-    "client-install": "cd client && yarn install",
-    "install-all": "concurrently \"yarn run server-install\"  \"yarn run client-install\"",
-    "dev": "concurrently \"yarn run server\"  \"yarn run client\"",
-    "heroku-postbuild": "cd client && yarn install && yarn run build"
+    "client": "cd client && npm run start",
+    "server-install": "npm install",
+    "client-install": "cd client && npm install",
+    "install-all": "concurrently \"npm run server-install\"  \"npm run client-install\"",
+    "dev": "concurrently \"npm run server\"  \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -34,9 +34,5 @@
   "devDependencies": {
     "concurrently": "^7.1.0",
     "nodemon": "^2.0.15"
-  },
-  "engines": {
-    "node": "16.x",
-    "yarn": "1.x"
   }
 }

@@ -73,6 +73,11 @@
     }
 
     &__social {
+      > div {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: center;
+      }
       button {
         width: 100%;
         margin: 10px 0;
@@ -83,9 +88,6 @@
         border-radius: 25px !important;
         font-size: 15px;
 
-        > div {
-          background-color: transparent !important;
-        }
         > span {
           display: block;
           font-weight: 600;

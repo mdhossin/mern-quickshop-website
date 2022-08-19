@@ -15,7 +15,7 @@ const Home = () => (
   <div>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Quickshop - Ecommerce</title>
+      <title>Simbaa - Shop</title>
     </Helmet>
     <HeroSlide />
     <SupportArea />

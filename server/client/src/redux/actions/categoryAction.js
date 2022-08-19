@@ -10,7 +10,7 @@ import { BASE_URL } from "../../config";
 export const getAllCategories = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_CATEGORIES_LOADING });
-
+    // http://localhost:5000/api/category
     const { data } = await axios.get(`${BASE_URL}/api/category`);
 
     dispatch({

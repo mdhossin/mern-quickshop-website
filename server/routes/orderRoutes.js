@@ -16,4 +16,7 @@ router
   .put(auth, authAdmin, orderController.updateOrder)
   .delete(auth, authAdmin, orderController.deleteOrder);
 
+// when the payment is success send the email on user
+router.post("/user/success", auth, orderController.sendMailUserPaymentSuccess);
+
 module.exports = router;

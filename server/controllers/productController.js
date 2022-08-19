@@ -74,6 +74,7 @@ const productController = {
     }
   },
   async createProduct(req, res, next) {
+    console.log(req.body);
     try {
       const {
         name,

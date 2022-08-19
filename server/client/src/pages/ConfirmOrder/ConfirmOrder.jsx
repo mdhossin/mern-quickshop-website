@@ -14,9 +14,10 @@ const ConfirmOrder = () => {
 
   const shippingCharges = subtotal < 1000 ? 0 : 100;
 
-  const tax = subtotal * 0.18;
+  // const tax = subtotal;
+  // const tax = subtotal * 0.18;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const totalPrice = subtotal + shippingCharges;
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
@@ -24,7 +25,7 @@ const ConfirmOrder = () => {
     const data = {
       subtotal,
       shippingCharges,
-      tax,
+      // tax,
       totalPrice,
     };
 
@@ -101,10 +102,10 @@ const ConfirmOrder = () => {
               <p>Shipping Charges:</p>
               <span>${shippingCharges}</span>
             </div>
-            <div>
+            {/* <div>
               <p>GST:</p>
               <span>${tax.toFixed(2)}</span>
-            </div>
+            </div> */}
           </div>
 
           <hr />

@@ -101,7 +101,6 @@ const Login = () => {
           <button className="login__form__submit" type="submit">
             {loading ? <Spinner animation="border" size="sm" /> : "login"}
           </button>
-
           <div className="login__form__social">
             <GoogleLogin
               onSuccess={responseGoogle}
