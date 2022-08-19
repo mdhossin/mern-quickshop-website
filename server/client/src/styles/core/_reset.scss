@@ -11,7 +11,7 @@ html {
 }
 /* hide the scollbar when scrolling useing the mouse right side */
 ::-webkit-scrollbar {
-  width: 0.6rem;
+  width: 0.3rem;
   border-radius: 0.5rem;
   background-color: hsla(var(--second-hue), 8%, 38%);
 }

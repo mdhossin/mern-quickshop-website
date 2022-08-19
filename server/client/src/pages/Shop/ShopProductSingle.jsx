@@ -6,10 +6,12 @@ import { FiShoppingCart } from "react-icons/fi";
 import { addItemsToCart } from "../../redux/actions/cartActions";
 import { ProductRating } from "../../components";
 import { addItemsToWishlist } from "../../redux/actions/wishlistActions";
+import ProductModal from "../../components/common/ProductModal/ProductModal";
+import { useState } from "react";
 
 const ShopProductSingle = ({ product }) => {
   const { cartItems } = useSelector((state) => state.cart);
-
+  const [showmodal, setShowModal] = useState(false);
   const { addToast } = useToasts();
 
   const addOrNot = cartItems?.find((item) => item.product === product._id);
@@ -69,11 +71,9 @@ const ShopProductSingle = ({ product }) => {
               )}
             </div>
             <div className="pro-same-action pro-quickview">
-              <Link to={`/product/${product._id}`}>
-                <button title="Quick View">
-                  <AiOutlineEye />
-                </button>
-              </Link>
+              <button onClick={() => setShowModal(true)} title="Quick View">
+                <AiOutlineEye />
+              </button>
             </div>
           </div>
         </div>
@@ -90,6 +90,13 @@ const ShopProductSingle = ({ product }) => {
           </div>
         </div>
       </div>
+
+      {/* quick view modal */}
+      <ProductModal
+        product={product}
+        showmodal={showmodal}
+        setShowModal={setShowModal}
+      />
     </>
   );
 };

@@ -5,7 +5,8 @@
   @include flex(center, center);
 }
 .login {
-  width: 400px;
+  width: 100%;
+  max-width: 350px;
   padding-top: 8rem;
   padding-bottom: 5rem;
 
@@ -23,8 +24,8 @@
       left: 50%;
       transform: translateX(-50%);
       width: 20%;
-      transition: width 0.5s ease;
       height: 2px;
+      transition: width 0.5s ease;
       background-color: var(--theme-color);
     }
   }
@@ -45,15 +46,16 @@
       }
     }
     &__input {
+      height: 45px;
       width: 100%;
       font-weight: 600;
       font-size: 14px;
       letter-spacing: 1px;
-      padding: 10px 20px;
+      padding: 0px 20px;
       border-radius: 20px;
       background-color: #f7f7f7;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
 
       &:focus {
         border: 1px solid var(--theme-color);
@@ -73,8 +75,22 @@
     }
 
     &__social {
+      position: relative;
+
+      > div > div > div {
+        width: 350px;
+
+        @include breakpoints-down("small") {
+          width: 320px;
+        }
+        @include breakpoints-down("xm") {
+          width: 300px;
+        }
+      }
+
       > div {
-        margin: 1rem 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         display: flex;
         justify-content: center;
       }
@@ -114,7 +130,8 @@
       background: var(--theme-color);
       width: 100%;
       display: block;
-      padding: 15px 20px;
+      padding: 0px 20px;
+      height: 45px;
       font-size: 15px;
       font-weight: 500;
       box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);

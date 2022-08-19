@@ -103,6 +103,7 @@ const Login = () => {
           </button>
           <div className="login__form__social">
             <GoogleLogin
+              width="100%"
               onSuccess={responseGoogle}
               onError={() => console.log("Login Failed")}
             />

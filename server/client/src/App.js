@@ -30,7 +30,6 @@ import {
   Shop,
 } from "./pages";
 
-
 // home pages
 
 import { refreshToken } from "./redux/actions/userActions";
@@ -52,67 +51,67 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route
+            {/* <Route path="login" element={<Login />} /> */}
+            {/* <Route
               path="register"
               element={user?.access_token ? <Navigate to="/" /> : <Register />}
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="forgot"
               element={
                 user?.access_token ? <Navigate to="/" /> : <ForgotPassword />
               }
-            />
-            <Route path="user/reset/:token" element={<ResetPassword />} />
+            /> */}
+            {/* <Route path="user/reset/:token" element={<ResetPassword />} /> */}
 
-            <Route
+            {/* <Route
               path="active/:activation_token"
               element={
                 user?.access_token ? <Navigate to="/" /> : <ActivationEmail />
               }
-            />
-            <Route path="product/:productId" element={<ProductDetail />} />
+            /> */}
+            {/* <Route path="product/:productId" element={<ProductDetail />} /> */}
             <Route path="shop" element={<Shop />} />
-            <Route path="about" element={<AboutUs />} />
+            {/* <Route path="about" element={<AboutUs />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="contact" element={<Contact />} /> */}
             {/* <Route path="modal" element={<ProductDetailModal />} /> */}
 
-            <Route
+            {/* <Route
               path="shipping"
               element={
                 <ProtectedRoute>
                   <Shipping />
                 </ProtectedRoute>
               }
-            ></Route>
-            <Route
+            ></Route> */}
+            {/* <Route
               path="/order/confirm"
               element={
                 <ProtectedRoute>
                   <ConfirmOrder />
                 </ProtectedRoute>
               }
-            ></Route>
+            ></Route> */}
 
-            <Route
+            {/* <Route
               path="/process/payment"
               element={
                 <ProtectedRoute>
                   <Payment />
                 </ProtectedRoute>
               }
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="/success"
               element={
                 <ProtectedRoute>
                   <OrderSuccess />
                 </ProtectedRoute>
               }
-            />
+            /> */}
 
-            <Route
+            {/* <Route
               path="dashboard"
               element={
                 <ProtectedRoute>
@@ -123,7 +122,7 @@ function App() {
               <Route index element={<Profile />} />
               <Route path="myorders" element={<MyOrders />} />
               <Route path="order/:orderId" element={<OrderDetails />} />
-            </Route>
+            </Route> */}
 
             <Route path="*" element={<NotFound />} />
           </Routes>
