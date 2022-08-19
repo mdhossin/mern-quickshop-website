@@ -39,6 +39,9 @@
     }
 
     &__list {
+      .active {
+        color: var(--theme-color);
+      }
       li {
         padding: 5px 0;
         font-weight: 700;

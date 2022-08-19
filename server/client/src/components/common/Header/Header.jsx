@@ -16,11 +16,34 @@ import { logout } from "../../../redux/actions/userActions";
 import { USER_LOGOUT_RESET } from "../../../redux/constants/userConstants";
 
 const Header = () => {
+  const menus = [
+    {
+      item: "Home",
+      path: "/",
+    },
+    {
+      item: "Shop",
+      path: "/shop",
+    },
+    {
+      item: "About",
+      path: "/about",
+    },
+    {
+      item: "Blog",
+      path: "/blog",
+    },
+
+    {
+      item: "Contact",
+      path: "/contact",
+    },
+  ];
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { addToast } = useToasts();
-
+  const [currentLink, setCurrentLink] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
   const [isWishListOpen, setisWishListOpen] = useState(false);
@@ -70,52 +93,23 @@ const Header = () => {
 
         <div className={"nav__menu " + (menuOpen && "show-menu")}>
           <ul className="nav__list nav__menu__list">
-            <li className="nav__item">
-              <Link
-                to="/"
-                className="nav__link"
-                onClick={() => setMenuOpen(false)}
+            {menus.map((item, index) => (
+              <li
+                key={index}
+                className={
+                  currentLink === index ? "nav__item active" : "nav__item"
+                }
+                onClick={() => setCurrentLink(index)}
               >
-                Home
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link
-                to="/shop"
-                onClick={() => setMenuOpen(false)}
-                className="nav__link"
-              >
-                Shop
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link
-                to="/about"
-                onClick={() => setMenuOpen(false)}
-                className="nav__link"
-              >
-                About
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link
-                to="/blog"
-                onClick={() => setMenuOpen(false)}
-                className="nav__link"
-              >
-                Blog
-              </Link>
-            </li>
-
-            <li className="nav__item">
-              <Link
-                to="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="nav__link"
-              >
-                Contact
-              </Link>
-            </li>
+                <Link
+                  to={item.path}
+                  className="nav__link"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.item}
+                </Link>
+              </li>
+            ))}
           </ul>
 
           <div
