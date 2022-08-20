@@ -1,26 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 
 import { useToasts } from "react-toast-notifications";
 import {
   getAllProduct,
   getProductById,
+  newReview,
 } from "../../redux/actions/productActions";
 import { addItemsToCart } from "../../redux/actions/cartActions";
+import ReactStars from "react-rating-stars-component";
 
 import { Footer, ProductRating } from "../../components";
 import { FiShoppingCart } from "react-icons/fi";
 import SingleProduct from "../../components/common/Products/SingleProduct/SingleProduct";
 import { Helmet } from "react-helmet";
 import { addItemsToWishlist } from "../../redux/actions/wishlistActions";
+import { clearErrors } from "../../redux/actions/orderActions";
+import { NEW_REVIEW_RESET } from "../../redux/constants/productConstants";
 const ProductDetail = () => {
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+  const [open, setOpen] = useState(false);
+
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { product, loading, error } = useSelector((state) => state.productById);
 
+  const user = useSelector((state) => state.userLogin);
+  const { userInfo } = user;
   const { cartItems } = useSelector((state) => state.cart);
 
   const addOrNot = cartItems?.find((item) => item.product === product._id);
@@ -28,6 +38,14 @@ const ProductDetail = () => {
   const { addToast } = useToasts();
 
   const productsData = useSelector((state) => state.allProducts);
+
+  const {
+    success,
+    error: reviewError,
+    message,
+    loading: reviewLoading,
+  } = useSelector((state) => state.newReview);
+
   const {
     products,
     loading: productsLoading,
@@ -71,6 +89,41 @@ const ProductDetail = () => {
   const addToWishlistHandler = () => {
     dispatch(addItemsToWishlist(productId, 1, addToast));
   };
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(
+      newReview({ rating, comment, name: userInfo?.user?.name, productId })
+    );
+
+    e.target.reset();
+  };
+
+  useEffect(() => {
+    if (error) {
+      addToast(error, { appearance: "error", autoDismiss: true });
+      dispatch(clearErrors());
+    }
+
+    if (reviewError) {
+      addToast(reviewError, { appearance: "error", autoDismiss: true });
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      addToast(success, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      dispatch({ type: NEW_REVIEW_RESET });
+    }
+    dispatch(getProductById(productId));
+  }, [dispatch, productId, error, reviewError, success, addToast, message]);
 
   return (
     <>
@@ -172,6 +225,55 @@ const ProductDetail = () => {
             </div>
           </div>
         )}
+
+        <div className="product-review-containter">
+          <div className="product-review-left">
+            {product?.reviews && product.reviews[0] ? (
+              <div className="reviews">
+                {product?.reviews &&
+                  product.reviews.map((review) => <h1>review</h1>)}
+              </div>
+            ) : (
+              <p className="noReviews">No Reviews Yet</p>
+            )}
+          </div>
+          {userInfo?.user && (
+            <form className="product-review-right" onSubmit={handleSubmit}>
+              <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                isHalf={true}
+                fullIcon={<AiFillStar />}
+                activeColor="#ffd700"
+              />
+
+              <div>
+                <textarea
+                  onChange={(e) => setComment(e.target.value)}
+                  name="message"
+                  id=""
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+
+              <button type="submit">
+                {reviewLoading ? "Loading.." : "Submit Review"}
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* <ReactStars
+          count={5}
+          value={review?.ratingStar}
+          edit={false}
+          size={24}
+          isHalf={true}
+          fullIcon={<AiFillStar />}
+          activeColor="#ffd700"
+        /> */}
 
         <div className="related-products">
           <h2>Related Products</h2>

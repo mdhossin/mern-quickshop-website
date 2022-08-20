@@ -8,6 +8,7 @@ import {
   orderDetailsReducer,
 } from "./orderReducer";
 import {
+  newReviewReducer,
   productByIdReducer,
   productReducer,
   shopReducer,
@@ -32,4 +33,5 @@ export default combineReducers({
   myOrders: myOrdersReducer,
   orderDetails: orderDetailsReducer,
   wishlist: wishlistReducer,
+  newReview: newReviewReducer,
 });

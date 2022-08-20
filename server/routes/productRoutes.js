@@ -19,4 +19,6 @@ router
   .delete([auth, authAdmin], productController.deleteProducts)
   .put([auth, authAdmin], productController.updateProducts);
 
+router.put("/review", auth, productController.createProductReview);
+
 module.exports = router;

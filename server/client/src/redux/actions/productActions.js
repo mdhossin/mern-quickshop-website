@@ -7,6 +7,9 @@ import {
   FETCH_SHOP_PRODUCTS_FAIL,
   FETCH_SHOP_PRODUCTS_LOADING,
   FETCH_SHOP_PRODUCTS_SUCCESS,
+  NEW_REVIEW_FAIL,
+  NEW_REVIEW_REQUEST,
+  NEW_REVIEW_SUCCESS,
   PRODUCT_BY_ID_FAIL,
   PRODUCT_BY_ID_REQUEST,
   PRODUCT_BY_ID_SUCCESS,
@@ -85,3 +88,76 @@ export const fetchShopProducts =
       // console.log(error);
     }
   };
+
+// NEW REVIEW
+export const newReview = (reviewData) => async (dispatch, getState) => {
+  try {
+    const token = getState().userLogin?.userInfo?.access_token;
+    dispatch({ type: NEW_REVIEW_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    const { data } = await axios.put(
+      `${BASE_URL}/api/review`,
+      reviewData,
+      config
+    );
+
+    dispatch({
+      type: NEW_REVIEW_SUCCESS,
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: NEW_REVIEW_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// Get All Reviews of a Product
+// export const getAllReviews = (id) => async (dispatch) => {
+//   try {
+//     dispatch({ type: ALL_REVIEW_REQUEST });
+
+//     const { data } = await axios.get(`/api/v1/reviews?id=${id}`);
+
+//     dispatch({
+//       type: ALL_REVIEW_SUCCESS,
+//       payload: data.reviews,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: ALL_REVIEW_FAIL,
+//       payload: error.response.data.message,
+//     });
+//   }
+// };
+
+// Delete Review of a Product
+// export const deleteReviews = (reviewId, productId) => async (dispatch) => {
+//   try {
+//     dispatch({ type: DELETE_REVIEW_REQUEST });
+
+//     const { data } = await axios.delete(
+//       `/api/v1/reviews?id=${reviewId}&productId=${productId}`
+//     );
+
+//     dispatch({
+//       type: DELETE_REVIEW_SUCCESS,
+//       payload: data.success,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: DELETE_REVIEW_FAIL,
+//       payload: error.response.data.message,
+//     });
+//   }
+// };
