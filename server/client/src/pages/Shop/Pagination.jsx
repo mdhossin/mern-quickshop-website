@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Items from "./Items";
 
-export default function PaginatedItems({ itemsPerPage, items }) {
+export default function PaginatedItems({ itemsPerPage, items, gridView }) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -21,15 +21,15 @@ export default function PaginatedItems({ itemsPerPage, items }) {
 
   return (
     <>
-      <Items currentItems={currentItems} />
+      <Items gridView={gridView} currentItems={currentItems} />
       <div>
         <ReactPaginate
-          nextLabel="Next"
+          nextLabel=">>"
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           marginPagesDisplayed={2}
           pageCount={pageCount}
-          previousLabel="Previous"
+          previousLabel="<<"
           pageClassName="page-item"
           pageLinkClassName="page-link"
           previousClassName="page-item"

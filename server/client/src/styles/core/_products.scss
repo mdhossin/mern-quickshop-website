@@ -3,6 +3,10 @@
 .featured {
   padding-bottom: 4rem;
   font-family: "Rubik", sans-serif;
+
+  &__products-lineView {
+    gap: 1.5rem;
+  }
   &__products {
     gap: 1.5rem;
 

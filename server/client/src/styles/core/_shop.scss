@@ -57,10 +57,17 @@
     }
 
     @media screen and (min-width: 968px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr 1fr 90px;
+      gap: 2rem;
     }
     &__category {
       @include flex(center, space-between);
+
+      option {
+        font-weight: 500;
+        padding: 8px 0;
+        font-size: 0.9rem;
+      }
 
       p {
         margin-bottom: 0;
@@ -87,7 +94,7 @@
     }
     &__search {
       position: relative;
-      height: 42px;
+      height: 36px;
       width: 100%;
 
       input {
@@ -116,6 +123,33 @@
         left: 15px;
         font-size: 20px;
         transform: translateY(-50%);
+      }
+    }
+  }
+
+  .grid-view-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+
+    @include breakpoint-up("large") {
+      justify-content: flex-end;
+    }
+
+    .grid-active {
+      svg {
+        font-size: 20px;
+        color: var(--theme-color);
+        cursor: pointer;
+      }
+    }
+
+    .grid-icon {
+      svg {
+        font-size: 20px;
+        color: #444;
+        cursor: pointer;
       }
     }
   }

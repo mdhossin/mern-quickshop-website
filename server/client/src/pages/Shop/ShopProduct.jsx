@@ -3,14 +3,14 @@ import { Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import PaginatedItems from "./Pagination";
 
-const ShopProduct = () => {
+const ShopProduct = ({ gridView }) => {
   const { products, loading, error } = useSelector(
     (state) => state.shopProduct
   );
 
   return (
     // reuse css class
-    <section className="featured container-div">
+    <section className="featured">
       <div className="featured__container">
         <div className="featured__products">
           <>
@@ -36,7 +36,11 @@ const ShopProduct = () => {
             ) : (
               <>
                 {/* <Items loading={loading} error={error} /> */}
-                <PaginatedItems items={products?.products} itemsPerPage={8} />
+                <PaginatedItems
+                  gridView={gridView}
+                  items={products?.products}
+                  itemsPerPage={8}
+                />
               </>
             )}
 
