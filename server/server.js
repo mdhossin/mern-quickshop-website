@@ -13,6 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 const app = express();
 
@@ -45,6 +46,9 @@ app.use("/api", paymentRoutes);
 
 // order routes
 app.use("/api", orderRoutes);
+
+// message routes
+app.use("/api", messageRoutes);
 // Database connection
 connectDb();
 

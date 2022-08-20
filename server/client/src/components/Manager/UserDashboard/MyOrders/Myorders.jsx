@@ -14,7 +14,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (error) {
-      addToast(error, { appearance: "error", autoDismiss: true });
+      // addToast(error, { appearance: "error", autoDismiss: true });
       dispatch(clearErrors());
     }
     dispatch(myOrders());
@@ -57,7 +57,7 @@ const MyOrders = () => {
               </h3>
             ) : (
               <>
-                {orders?.length > 0 ? (
+                {orders?.length > 0 &&
                   orders?.map(
                     ({ _id, orderStatus, totalPrice, orderItems }) => (
                       <tr key={_id}>
@@ -77,10 +77,7 @@ const MyOrders = () => {
                         </td>
                       </tr>
                     )
-                  )
-                ) : (
-                  <h1>Order not found</h1>
-                )}
+                  )}
               </>
             )}
           </tbody>
