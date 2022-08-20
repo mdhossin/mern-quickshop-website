@@ -22,6 +22,15 @@ const Contact = () => (
         </div>
       </div>
     </div>
+    <div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44337.07194047137!2d-74.02297055858564!3d40.7648841925082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259ad18bdf7ab%3A0x74c598e39ea9002a!2sNew%20York%2C%20NY%2010018%2C%20USA!5e0!3m2!1sen!2sbd!4v1654160773420!5m2!1sen!2sbd"
+        width="100%"
+        height="600px"
+        allowFullScreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
 
     <div className="contact grid container-div section">
       <div className="contact__left">
@@ -36,19 +45,19 @@ const Contact = () => (
           <div>
             <GoLocation />
           </div>
-          <p>Dambo dika, USA, orad 123</p>
+          <p>Dhaka, Bangladesh</p>
         </div>
         <div className="contact__left__box">
           <div>
             <AiOutlineMail />
           </div>
-          <p>quickshop@gmail.com</p>
+          <p>mdsahadathossin778@gmail.com</p>
         </div>
         <div className="contact__left__box">
           <div>
             <IoCallOutline />
           </div>
-          <p>quickshop@gmail.com</p>
+          <p>(+88) 01836855666</p>
         </div>
       </div>
       <div className="contact__right">
