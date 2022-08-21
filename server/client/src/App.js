@@ -2,7 +2,14 @@ import { useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
-import { NotFound, ProtectedRoute } from "./pages";
+import {
+  ConfirmOrder,
+  NotFound,
+  OrderSuccess,
+  Payment,
+  ProtectedRoute,
+  Shipping,
+} from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import "./styles/styles.scss";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -26,19 +33,18 @@ const ActivationEmail = lazy(() =>
   import("./pages/ActivationEmail/ActivationEmail")
 );
 const Blog = lazy(() => import("./pages/Blog/Blog"));
-const ConfirmOrder = lazy(() => import("./pages/ConfirmOrder/ConfirmOrder"));
+
 const Contact = lazy(() => import("./pages/Contact/Contact"));
 const ForgotPassword = lazy(() =>
   import("./pages/ForgotPassword/ForgotPassword")
 );
 const Home = lazy(() => import("./pages/Home/Home"));
 const Login = lazy(() => import("./pages/Login/Login"));
-const OrderSuccess = lazy(() => import("./pages/OrderSuccess/OrderSuccess"));
-const Payment = lazy(() => import("./pages/Payment/Payment"));
+
 const ProductDetail = lazy(() => import("./pages/ProductDetail/ProductDetail"));
 const Register = lazy(() => import("./pages/Register/Register"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword/ResetPassword"));
-const Shipping = lazy(() => import("./pages/Shipping/Shipping"));
+
 const Shop = lazy(() => import("./pages/Shop/Shop"));
 
 // home pages

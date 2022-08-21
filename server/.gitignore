@@ -1,3 +1,5 @@
 # dependencies
 /node_modules
 .env
+/admin/server/node_modules
+/admin/server/client/node_modules
