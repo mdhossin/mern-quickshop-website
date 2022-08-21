@@ -116,6 +116,10 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (error) {
       addToast(error, { appearance: "error", autoDismiss: true });
       dispatch(clearErrors());

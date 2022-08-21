@@ -8,6 +8,7 @@
 - Shopping cart functionality and wishlist funtionality
 - Implemented stripe payment gateway
 - Searching, filtering, Sorting and Pagination on shop page
+- User can add review dynamically after login
 - User dashboard - user can see the all orders and update her profile also
 - Have different admin panel
 - Amin can manage all orders, update orders, delete any orders, add new product, update product, delete product, add new category, update category, delete category, manage all users, update user, delete user and can see total sales, all products much more

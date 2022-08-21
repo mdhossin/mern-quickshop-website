@@ -19,6 +19,10 @@ export default function PaginatedItems({ itemsPerPage, items, gridView }) {
     setItemOffset(newOffset);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Items gridView={gridView} currentItems={currentItems} />
