@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { useToasts } from "react-toast-notifications";
 import { Spinner } from "react-bootstrap";
+import { BASE_URL } from "../../config";
 
 const EditUser = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const EditUser = () => {
       if (num % 2 !== 0) {
         setLoading(true);
         const res = await axios.patch(
-          `/api/admin/update_role/${editUser._id}`,
+          `${BASE_URL}/api/admin/update_role/${editUser._id}`,
           {
             role: checkAdmin ? 1 : 0,
           },

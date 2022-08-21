@@ -19,6 +19,7 @@ router
   .delete([auth, authAdmin], productController.deleteProducts)
   .put([auth, authAdmin], productController.updateProducts);
 
-router.put("/review", auth, productController.createProductReview);
+router.get("/reviews", [auth, authAdmin], productController.getProductReviews);
+router.delete("/reviews", [auth, authAdmin], productController.deleteReview);
 
 module.exports = router;

@@ -2,6 +2,8 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiCube, BiReceipt } from "react-icons/bi";
 import { CgAddR } from "react-icons/cg";
 import { FiUsers } from "react-icons/fi";
+import { MdOutlineReviews } from "react-icons/md";
+
 const sidebarNav = [
   {
     link: "/dashboard/",
@@ -38,6 +40,12 @@ const sidebarNav = [
     section: "users",
     icon: <FiUsers />,
     text: "Users",
+  },
+  {
+    link: "/dashboard/reviews",
+    section: "users",
+    icon: <MdOutlineReviews />,
+    text: "Reviews",
   },
 ];
 

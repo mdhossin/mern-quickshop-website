@@ -7,6 +7,7 @@ import {
   getAllProduct,
 } from "../../redux/actions/productActions";
 import { Spinner } from "react-bootstrap";
+import { BASE_URL } from "../../config";
 
 const AllProducts = () => {
   const [callback, setCallback] = useState(false);
@@ -23,7 +24,7 @@ const AllProducts = () => {
     try {
       if (window.confirm("are you sure?")) {
         const destroyImg = axios.post(
-          "/api/destroy",
+          `${BASE_URL}/api/destroy`,
           { public_id },
           {
             headers: { Authorization: token },
@@ -71,6 +72,7 @@ const AllProducts = () => {
                     <h5>${product.price}</h5>
                     <p>Stock : {product.Stock}</p>
                   </div>
+                  <p>Id: {product?._id}</p>
                   <p>{product.description.slice(0, 30)}...</p>
                   <div className="allProducts__buttons">
                     <Link

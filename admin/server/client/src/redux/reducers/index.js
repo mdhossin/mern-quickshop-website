@@ -6,7 +6,12 @@ import {
   orderDetailsReducer,
   orderReducer,
 } from "./orderReducer";
-import { createProductReducer, productReducer } from "./productReducers";
+import {
+  createProductReducer,
+  deleteReviewReducer,
+  getAllProductReviewsReducer,
+  productReducer,
+} from "./productReducers";
 import {
   userListReducer,
   userLoginReducer,
@@ -25,4 +30,6 @@ export default combineReducers({
   // update order reducer
   order: orderReducer,
   orderDetails: orderDetailsReducer,
+  getAllProductReviews: getAllProductReviewsReducer,
+  deleteReview: deleteReviewReducer,
 });

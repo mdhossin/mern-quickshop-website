@@ -11,6 +11,7 @@ import {
 import { CREATE_PRODUCT_RESET } from "../../redux/constants/productConstants";
 
 import { getAllCategories } from "../../redux/actions/catetoryActions";
+import { BASE_URL } from "../../config";
 
 const initialstate = {
   name: "",
@@ -68,7 +69,7 @@ const AddProduct = () => {
       formData.append("file", file);
       setIsLoading(true);
       setUploadError("");
-      const res = await axios.post("/api/upload_image", formData, {
+      const res = await axios.post(`${BASE_URL}/api/upload_image`, formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: token,
@@ -94,7 +95,7 @@ const AddProduct = () => {
       setIsLoading(true);
       setUploadError("");
       const res = await axios.post(
-        "/api/destroy",
+        `${BASE_URL}/api/destroy`,
         { public_id: images.public_id },
         {
           headers: { Authorization: token },

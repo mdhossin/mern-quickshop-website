@@ -53,85 +53,88 @@ const OrderList = () => {
     <>
       <section className="myorders container-div">
         <h2>All Orders</h2>
-        <div>
-          <Table responsive="md" style={{ overflowX: "auto" }}>
-            <thead>
-              <tr className="myorders__header">
-                <th>Order Id</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th style={{ textAlign: "end" }}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {loading ? (
-                <tr>
-                  <td className="order-loading">
-                    <Spinner
-                      style={{ marginLeft: "50%", marginTop: "5%" }}
-                      animation="border"
-                      role="status"
-                    >
-                      <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                  </td>
+        {orders && (
+          <div>
+            <Table responsive="md" style={{ overflowX: "auto" }}>
+              <thead>
+                <tr className="myorders__header">
+                  <th>Order Id</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th style={{ textAlign: "end" }}>Actions</th>
                 </tr>
-              ) : error ? (
-                <h3>{error}</h3>
-              ) : (
-                <>
-                  {orders?.map(
-                    ({ _id, orderStatus, totalPrice, orderItems }) => (
-                      <tr key={_id}>
-                        <td>#{_id}</td>
-                        <td>{orderItems?.length}</td>
-                        <td>{totalPrice.toFixed(2)}</td>
-                        <td>
-                          <button
-                            className={
-                              orderStatus === "Delivered"
-                                ? "greenColor"
-                                : "redColor"
-                            }
-                          >
-                            {orderStatus}
-                          </button>
-                        </td>
-                        <td
-                          title="Update Order"
-                          style={{ textAlign: "center" }}
-                        >
-                          {" "}
-                          <Link to={`/dashboard/admin/order/${_id}`}>
-                            {" "}
-                            <BiEdit
-                              style={{
-                                color: "#333",
-                                cursor: "pointer",
-                                fontSize: "18px",
-                              }}
-                            />
-                          </Link>
-                        </td>
-                        <td title="Delete Order">
-                          <BsFillTrashFill
-                            onClick={() => deleteOrderHandler(_id)}
-                            style={{
-                              color: "#f1510a",
-                              fontSize: "18px",
-                              cursor: "pointer",
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    )
-                  )}
-                </>
-              )}
-            </tbody>
-          </Table>
-        </div>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td className="order-loading">
+                      <Spinner
+                        style={{ marginLeft: "50%", marginTop: "5%" }}
+                        animation="border"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Loading...</span>
+                      </Spinner>
+                    </td>
+                  </tr>
+                ) : error ? (
+                  <h3>{error}</h3>
+                ) : (
+                  <>
+                    {orders?.length > 0 &&
+                      orders?.map(
+                        ({ _id, orderStatus, totalPrice, orderItems }) => (
+                          <tr key={_id}>
+                            <td>#{_id}</td>
+                            <td>{orderItems?.length}</td>
+                            <td>{totalPrice.toFixed(2)}</td>
+                            <td>
+                              <button
+                                className={
+                                  orderStatus === "Delivered"
+                                    ? "greenColor"
+                                    : "redColor"
+                                }
+                              >
+                                {orderStatus}
+                              </button>
+                            </td>
+                            <td
+                              title="Update Order"
+                              style={{ textAlign: "center" }}
+                            >
+                              {" "}
+                              <Link to={`/dashboard/admin/order/${_id}`}>
+                                {" "}
+                                <BiEdit
+                                  style={{
+                                    color: "#333",
+                                    cursor: "pointer",
+                                    fontSize: "18px",
+                                  }}
+                                />
+                              </Link>
+                            </td>
+                            <td title="Delete Order">
+                              <BsFillTrashFill
+                                onClick={() => deleteOrderHandler(_id)}
+                                style={{
+                                  color: "#f1510a",
+                                  fontSize: "18px",
+                                  cursor: "pointer",
+                                }}
+                              />
+                            </td>
+                          </tr>
+                        )
+                      )}
+                  </>
+                )}
+              </tbody>
+            </Table>
+          </div>
+        )}
         <h2
           style={{
             marginTop: "2rem",

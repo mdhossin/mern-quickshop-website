@@ -202,115 +202,74 @@ const productController = {
     res.status(200).json(products);
   },
 
-  // Create New Review or Update the review
-  async createProductReview(req, res, next) {
+  // Get All Reviews of a product
+  async getProductReviews(req, res, next) {
     try {
-      const { rating, avatar, title, name, comment, productId } = req.body;
+      const product = await Products.findById(req.query.id);
 
-      const review = {
-        user: req.user._id,
-        name,
-        rating: Number(rating),
-        comment,
-        title,
-        avatar,
-      };
-
-      const product = await Products.findById(productId);
-
-      const isReviewed = product.reviews.find(
-        (prev) => prev.user.toString() === req.user._id.toString()
-      );
-
-      if (isReviewed) {
-        product.reviews.forEach((prev) => {
-          if (prev.user.toString() === req.user._id.toString())
-            (prev.rating = rating), (prev.comment = comment);
-        });
-      } else {
-        product.reviews.push(review);
-        product.numOfReviews = product.reviews.length;
+      if (!product) {
+        return next(CustomErrorHandler.notFound("Product not found"));
       }
 
-      let avg = 0;
-
-      product.reviews.forEach((prev) => {
-        avg += prev.rating;
-      });
-
-      product.ratings = avg / product.reviews.length;
-
-      await product.save({ validateBeforeSave: false });
-
       res.status(200).json({
-        message: "Your review submitted successfully.",
         success: true,
+        reviews: product.reviews,
       });
     } catch (error) {
       return next(error);
     }
   },
 
-  // Get All Reviews of a product
-  // exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
-  //   const product = await Product.findById(req.query.id);
-
-  //   if (!product) {
-  //     return next(new ErrorHander("Product not found", 404));
-  //   }
-
-  //   res.status(200).json({
-  //     success: true,
-  //     reviews: product.reviews,
-  //   });
-  // });
-
   // Delete Review
-  // exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
-  //   const product = await Product.findById(req.query.productId);
+  async deleteReview(req, res, next) {
+    try {
+      const product = await Products.findById(req.query.productId);
 
-  //   if (!product) {
-  //     return next(new ErrorHander("Product not found", 404));
-  //   }
+      if (!product) {
+        return next(CustomErrorHandler.notFound());
+      }
 
-  //   const reviews = product.reviews.filter(
-  //     (rev) => rev._id.toString() !== req.query.id.toString()
-  //   );
+      const reviews = product.reviews.filter(
+        (rev) => rev._id.toString() !== req.query.id.toString()
+      );
 
-  //   let avg = 0;
+      let avg = 0;
 
-  //   reviews.forEach((rev) => {
-  //     avg += rev.rating;
-  //   });
+      reviews.forEach((rev) => {
+        avg += rev.rating;
+      });
 
-  //   let ratings = 0;
+      let ratings = 0;
 
-  //   if (reviews.length === 0) {
-  //     ratings = 0;
-  //   } else {
-  //     ratings = avg / reviews.length;
-  //   }
+      if (reviews.length === 0) {
+        ratings = 0;
+      } else {
+        ratings = avg / reviews.length;
+      }
 
-  //   const numOfReviews = reviews.length;
+      const numOfReviews = reviews.length;
 
-  //   await Product.findByIdAndUpdate(
-  //     req.query.productId,
-  //     {
-  //       reviews,
-  //       ratings,
-  //       numOfReviews,
-  //     },
-  //     {
-  //       new: true,
-  //       runValidators: true,
-  //       useFindAndModify: false,
-  //     }
-  //   );
+      await Products.findByIdAndUpdate(
+        req.query.productId,
+        {
+          reviews,
+          ratings,
+          numOfReviews,
+        },
+        {
+          new: true,
+          runValidators: true,
+          useFindAndModify: false,
+        }
+      );
 
-  //   res.status(200).json({
-  //     success: true,
-  //   });
-  // });
+      res.status(200).json({
+        success: true,
+      });
+    } catch (error) {
+      return next(error);
+    }
+  },
 };
 
 module.exports = productController;

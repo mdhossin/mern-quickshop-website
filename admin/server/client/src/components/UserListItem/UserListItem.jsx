@@ -6,6 +6,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { BsTrashFill } from "react-icons/bs";
+import { BASE_URL } from "../../config";
 
 const UserListItem = ({ users, setCallback, callback }) => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,9 +20,12 @@ const UserListItem = ({ users, setCallback, callback }) => {
     try {
       if (auth?.user?._id !== id) {
         if (window.confirm("Are you sure you want to delete this account?")) {
-          const { data } = await axios.delete(`/api/admin/delete/${id}`, {
-            headers: { Authorization: token },
-          });
+          const { data } = await axios.delete(
+            `${BASE_URL}/api/admin/delete/${id}`,
+            {
+              headers: { Authorization: token },
+            }
+          );
 
           setCallback(!callback);
           setSuccess(data.message);

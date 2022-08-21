@@ -19,6 +19,7 @@ import { getAllOrders } from "../redux/actions/orderActions";
 import { getAllProduct } from "../redux/actions/productActions";
 import { userList } from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import { BASE_URL } from "../config";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ const Dashboard = () => {
             Authorization: access_token,
           },
         };
-        const res = await axios.get("/api/admin/stats", config);
+        const res = await axios.get(`${BASE_URL}/api/admin/stats`, config);
         res.data.map((item) =>
           setUserStats((prev) => [
             ...prev,

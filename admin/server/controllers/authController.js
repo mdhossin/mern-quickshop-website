@@ -12,98 +12,10 @@ const jwt = require("jsonwebtoken");
 const sendEmail = require("../config/sendMail");
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
-// const CLIENT_URL = `http://localhost:3000`;
-const CLIENT_URL = `https://mern-quickshop-app-ecommerce.herokuapp.com`;
+const CLIENT_URL = `http://localhost:3000`;
+// const CLIENT_URL = `https://mern-quickshop-app-ecommerce.herokuapp.com`;
 
 const authCtrl = {
-  async register(req, res, next) {
-    //  create schema useing joi for validation
-
-    const registerSchema = Joi.object({
-      name: Joi.string().min(3).max(30).required(),
-      email: Joi.string().email().required(),
-      password: Joi.string()
-        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-        .required(),
-      repeat_password: Joi.ref("password"),
-    });
-
-    const { error } = registerSchema.validate(req.body);
-    if (error) {
-      return next(error);
-    }
-
-    // check if user is in the database already
-    try {
-      // here useing the user model
-      const exist = await Users.exists({ email: req.body.email });
-
-      if (exist) {
-        // here need to custom error send to the client side
-        return next(
-          CustomErrorHandler.alreadyExist("This email is already taken")
-        );
-      }
-    } catch (err) {
-      return next(err);
-    }
-
-    try {
-      // destructuring object
-      const { name, email, password } = req.body;
-
-      if (password?.length < 6) {
-        return next(
-          CustomErrorHandler.badRequest(
-            "Password must be at least 6 charactor."
-          )
-        );
-      }
-      // hash password
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      // prepare the model to store user data on databse
-      const newUser = { name, email, password: hashedPassword };
-
-      const active_token = generateActiveToken({ newUser });
-
-      const url = `${CLIENT_URL}/active/${active_token}`;
-
-      if (validateEmail(email)) {
-        sendEmail(email, url, "Verify your email address");
-        return res.json({
-          message: "Success! Please check your email and verify.",
-        });
-      }
-    } catch (err) {
-      return next(err);
-    }
-  },
-  async activeAccount(req, res, next) {
-    try {
-      const { activation_token } = req.body;
-      const decoded = jwt.verify(
-        activation_token,
-        `${process.env.ACTIVE_TOKEN_SECRET}`
-      );
-      const { newUser } = decoded;
-
-      if (!newUser)
-        return next(CustomErrorHandler.badRequest("Invalid authentication."));
-
-      const user = await Users.findOne({ email: newUser.email });
-      if (user)
-        return next(CustomErrorHandler.alreadyExist("Account already exists."));
-
-      const new_user = new Users(newUser);
-
-      await new_user.save();
-
-      res.json({ message: "Account has been activated!" });
-    } catch (err) {
-      return next(err);
-    }
-  },
   async login(req, res, next) {
     try {
       const { email, password } = req.body;
@@ -179,40 +91,7 @@ const authCtrl = {
       return next(err);
     }
   },
-  async googleLogin(req, res, next) {
-    try {
-      const { Authorization } = req.body.headers;
-      const verify = await client.verifyIdToken({
-        idToken: Authorization,
-        audience: `${process.env.MAIL_CLIENT_ID}`,
-      });
 
-      const { email, email_verified, name, picture } = verify.getPayload();
-
-      if (!email_verified)
-        return res.status(500).json({ message: "Email verification failed." });
-
-      const password = email + process.env.GOOGLE_SECRET;
-      const passwordHash = await bcrypt.hash(password, 12);
-
-      const user = await Users.findOne({ email });
-
-      if (user) {
-        loginUser(user, password, res);
-      } else {
-        const user = {
-          name,
-          email,
-          password: passwordHash,
-          avatar: picture,
-          type: "google",
-        };
-        registerUser(user, res);
-      }
-    } catch (err) {
-      return next(err);
-    }
-  },
   // get all users  admin  routes start here
   async getAllUser(req, res, next) {
     try {
@@ -391,22 +270,6 @@ const loginUser = async (user, password, res) => {
     message: "Login Success!",
     access_token,
     user: { ...user._doc, password: "" },
-  });
-};
-
-const registerUser = async (user, res) => {
-  const newUser = new Users(user);
-
-  const access_token = generateAccessToken({ id: newUser._id });
-  const refresh_token = generateRefreshToken({ id: newUser._id }, res);
-
-  newUser.rf_token = refresh_token;
-  await newUser.save();
-
-  res.json({
-    message: "Login Success!",
-    access_token,
-    user: { ...newUser._doc, password: "" },
   });
 };
 

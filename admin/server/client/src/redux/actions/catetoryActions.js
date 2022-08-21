@@ -7,6 +7,7 @@ import {
   CREATE_CATEGORY_SUCCESS,
 } from "../constants/categoryConstants";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 // create category action
 export const createCategory = (category) => async (dispatch, getState) => {
@@ -24,7 +25,7 @@ export const createCategory = (category) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      "/api/category",
+      `${BASE_URL}/api/category`,
       { name: category },
       config
     );
@@ -59,7 +60,7 @@ export const updateCategory = (category, id) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/category/${id}`,
+      `${BASE_URL}/api/category/${id}`,
       { name: category },
       config
     );
@@ -84,7 +85,7 @@ export const getAllCategories = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_CATEGORIES_LOADING });
 
-    const { data } = await axios.get("/api/category");
+    const { data } = await axios.get(`${BASE_URL}/api/category`);
 
     dispatch({
       type: ALL_CATEGORIES_SUCCESS,

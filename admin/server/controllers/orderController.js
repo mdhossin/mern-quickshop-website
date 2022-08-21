@@ -146,30 +146,6 @@ const orderController = {
       return next(error);
     }
   },
-
-  // async deleteOrder(req, res, next){
-  //   try {
-  //     const order = await Order.findById(req.params.id);
-
-  //     if (!order) {
-  //       return next(
-  //         CustomErrorHandler.badRequest("Order not found with this Id,")
-  //       );
-  //     }
-
-  //     await order.remove();
-
-  //     res.status(200).json({
-  //       success: true,
-  //     });
-
-  //   } catch (error) {
-  //     return next(error)
-
-  //   }
-  // }
-  // search api
-  // fetch  product name search api
 };
 
 async function updateStock(id, quantity) {

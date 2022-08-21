@@ -7,6 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { isLength, isMatch } from "../../utils/validation";
 
 import { Spinner } from "react-bootstrap";
+import { BASE_URL } from "../../config";
 
 const Profile = () => {
   const [data, setData] = useState({
@@ -85,7 +86,7 @@ const Profile = () => {
   const updateInfor = () => {
     try {
       axios.patch(
-        "/api/user/update",
+        `${BASE_URL}/api/user/update`,
         {
           name: name ? name : user.name,
           avatar: avatar ? avatar : user.avatar,
@@ -125,7 +126,7 @@ const Profile = () => {
 
     try {
       axios.post(
-        "/api/user/reset",
+        `${BASE_URL}/api/user/reset`,
         { password },
         {
           headers: { Authorization: token },

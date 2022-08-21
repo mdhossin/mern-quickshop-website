@@ -11,6 +11,7 @@ import {
 } from "../constants/userConstants";
 import axios from "axios";
 import { checkTokenExp } from "../../utils/checkTokenExp";
+import { BASE_URL } from "../../config";
 
 // user login action
 export const login = (email, password) => async (dispatch) => {
@@ -26,7 +27,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/login",
+      `${BASE_URL}/api/login`,
       { email, password },
       config
     );
@@ -67,7 +68,7 @@ export const refreshToken = () => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/refresh_token", config);
+    const { data } = await axios.get(`${BASE_URL}/api/refresh_token`, config);
     // console.log(data, "refresh token action");
 
     dispatch({
@@ -105,7 +106,7 @@ export const logout = (token, navigate) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/logout", config);
+    const { data } = await axios.get(`${BASE_URL}/api/logout`, config);
     // console.log(data, access_token, "logout action");
 
     dispatch({
@@ -139,7 +140,7 @@ export const userList = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/admin/users`, config);
+    const { data } = await axios.get(`${BASE_URL}/api/admin/users`, config);
     dispatch({
       type: USER_LIST_SUCCESS,
       payload: data,

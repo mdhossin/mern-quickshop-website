@@ -6,6 +6,7 @@ import { useToasts } from "react-toast-notifications";
 import { checkPassword, isLength } from "../../utils/validation";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
+import { BASE_URL } from "../../config";
 const ResetPassword = () => {
   const [data, setData] = useState({
     password: "",
@@ -45,7 +46,7 @@ const ResetPassword = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "/api/user/reset",
+        `${BASE_URL}/api/user/reset`,
         { password },
         {
           headers: { Authorization: token },

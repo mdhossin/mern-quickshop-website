@@ -9,6 +9,7 @@ import {
   updateCategory,
 } from "../../redux/actions/catetoryActions";
 import { CREATE_CATEGORY_RESET } from "../../redux/constants/categoryConstants";
+import { BASE_URL } from "../../config";
 
 const AddCategory = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const AddCategory = () => {
   const deleteCategory = async (id) => {
     try {
       if (window.confirm("Are you sure want to delete?")) {
-        const res = await axios.delete(`/api/category/${id}`, {
+        const res = await axios.delete(`${BASE_URL}/api/category/${id}`, {
           headers: { Authorization: user?.access_token },
         });
         alert(res.data.message);
