@@ -205,13 +205,15 @@ const productController = {
   // Create New Review or Update the review
   async createProductReview(req, res, next) {
     try {
-      const { rating, name, comment, productId } = req.body;
+      const { rating, avatar, title, name, comment, productId } = req.body;
 
       const review = {
         user: req.user._id,
         name,
         rating: Number(rating),
         comment,
+        title,
+        avatar,
       };
 
       const product = await Products.findById(productId);

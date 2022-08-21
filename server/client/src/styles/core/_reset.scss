@@ -271,7 +271,7 @@ textarea {
 }
 
 textarea:focus {
-  border: rem(2) solid #4fc1f0;
+  border: 1px solid var(--theme-color);
   outline: none;
   background: transparent;
 }

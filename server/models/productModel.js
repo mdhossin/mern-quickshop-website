@@ -57,6 +57,10 @@ const productSchema = new Schema(
           type: String,
           required: true,
         },
+        title: {
+          type: String,
+          required: true,
+        },
         rating: {
           type: Number,
           required: true,
@@ -64,6 +68,14 @@ const productSchema = new Schema(
         comment: {
           type: String,
           required: true,
+        },
+        avatar: {
+          type: String,
+          required: true,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
         },
       },
     ],

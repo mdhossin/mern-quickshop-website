@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AiFillHeart, AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
+import moment from "moment";
 
 import { useToasts } from "react-toast-notifications";
 import {
@@ -23,11 +24,14 @@ import { NEW_REVIEW_RESET } from "../../redux/constants/productConstants";
 const ProductDetail = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
 
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { product, loading, error } = useSelector((state) => state.productById);
+
+  console.log(product);
 
   const user = useSelector((state) => state.userLogin);
   const { userInfo } = user;
@@ -98,7 +102,14 @@ const ProductDetail = () => {
     e.preventDefault();
 
     dispatch(
-      newReview({ rating, comment, name: userInfo?.user?.name, productId })
+      newReview({
+        rating,
+        comment,
+        title,
+        name: userInfo?.user?.name,
+        avatar: userInfo?.user?.avatar,
+        productId,
+      })
     );
 
     e.target.reset();
@@ -159,12 +170,12 @@ const ProductDetail = () => {
                 </span>
               </div>
               <div className="product__detail__info-rating">
-                <ProductRating ratingValue={product.ratings} />(
-                {product.ratings})
+                <ProductRating ratingValue={product.ratings} /> (
+                {product.numOfReviews} Reviews)
               </div>
 
               <div className="product__detail__info-stock">
-                <p>
+                <p style={{ fontWeight: "600" }}>
                   Status:{" "}
                   {product?.Stock && product?.Stock > 0
                     ? "In Stock"
@@ -230,50 +241,88 @@ const ProductDetail = () => {
           <div className="product-review-left">
             {product?.reviews && product.reviews[0] ? (
               <div className="reviews">
+                <h2>Ratings & Reviews</h2>
                 {product?.reviews &&
-                  product.reviews.map((review) => <h1>review</h1>)}
+                  product.reviews.map((review, index) => (
+                    <div className="review-card" key={index}>
+                      <div className="review-content">
+                        <div className="review-person">
+                          <img src={review?.avatar} alt="Person" />
+                        </div>
+                        <div className="review-description">
+                          <div className="left">
+                            <h4>{review.name}</h4>
+                            <p>
+                              {moment(review?.createdAt).format("MMMM Do YYYY")}
+                            </p>
+                            <p className="desc">{review.comment}</p>
+                          </div>
+                          <div className="right">
+                            <ReactStars
+                              count={5}
+                              value={Number(review?.rating)}
+                              edit={false}
+                              size={24}
+                              isHalf={true}
+                              fullIcon={<AiFillStar />}
+                              activeColor="#f3b632"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
               </div>
             ) : (
               <p className="noReviews">No Reviews Yet</p>
             )}
           </div>
-          {userInfo?.user && (
+          {userInfo?.user ? (
             <form className="product-review-right" onSubmit={handleSubmit}>
-              <ReactStars
-                count={5}
-                onChange={ratingChanged}
-                size={24}
-                isHalf={true}
-                fullIcon={<AiFillStar />}
-                activeColor="#ffd700"
-              />
+              <h2>Add Review</h2>
 
-              <div>
+              <div className="input-wrapper">
+                <label>Title</label>
+                <input
+                  type="text"
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Enter review title"
+                  required
+                />
+              </div>
+
+              <div className="input-wrapper">
+                <label>Comment</label>
                 <textarea
                   onChange={(e) => setComment(e.target.value)}
                   name="message"
-                  id=""
-                  cols="30"
-                  rows="10"
+                  cols="20"
+                  rows="7"
+                  placeholder="Write review"
+                  required
                 ></textarea>
               </div>
 
-              <button type="submit">
-                {reviewLoading ? "Loading.." : "Submit Review"}
+              <div className="input-wrapper">
+                <label>Rating</label>
+                <ReactStars
+                  count={5}
+                  onChange={ratingChanged}
+                  size={24}
+                  isHalf={true}
+                  fullIcon={<AiFillStar />}
+                  activeColor="#f3b632"
+                />
+              </div>
+
+              <button type="submit" className="button-primary review-btn">
+                {reviewLoading ? "Loading.." : "Public Review"}
               </button>
             </form>
+          ) : (
+            <div className="product-review-right"></div>
           )}
         </div>
-
-        {/* <ReactStars
-          count={5}
-          value={review?.ratingStar}
-          edit={false}
-          size={24}
-          isHalf={true}
-          fullIcon={<AiFillStar />}
-          activeColor="#ffd700"
-        /> */}
 
         <div className="related-products">
           <h2>Related Products</h2>
