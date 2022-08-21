@@ -42,10 +42,10 @@ const sendMailPaymentSuccess = async (to, txt) => {
     const mailOptions = {
       from: SENDER_MAIL,
       to: to,
-      subject: "Simbaa Shop",
+      subject: "Quickshop - Ecommerce",
       html: `
               <div style="max-width: 700px; margin:auto; padding: 50px 20px;">
-              <p>Congratulations! your payment is Succfully done. 
+              <p>Congratulations! your payment is Succfully done. You get your product shorly.
               </p>
               </div>
             `,
