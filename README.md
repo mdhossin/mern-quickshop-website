@@ -12,7 +12,7 @@
 - User dashboard - user can see the all orders and update her profile also
 - Have different admin panel
 - Amin can manage all orders, update orders, delete any orders, add new product, update product, delete product, add new category, update category, delete category, manage all users, update user, delete user and can see total sales, all products much more
-- Admin can update her profile
+- Admin can update her profile, admin can manage the user reviews
 - Responsive for all devices like mobile, tablet, laptop, desktop etc
 - Fronted: React js, Reudx, Sass, React-bootstrap, React-router-dom, recharts etc
 - Backend: Node js, Express js, Mongodb, JSON web token, Mongoose, Google OAuth, Nodemailer, Stripe, cloudinary etc

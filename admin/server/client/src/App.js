@@ -21,7 +21,7 @@ import {
   ResetPassword,
   UserList,
 } from "./pages";
-import Loader from "./components/Loader/Loader";
+
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Rings } from "react-loader-spinner";
 const MainLayout = lazy(() => import("./layout/MainLayout"));
