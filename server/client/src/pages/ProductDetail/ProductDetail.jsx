@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AiFillHeart, AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 import moment from "moment";
@@ -324,7 +324,26 @@ const ProductDetail = () => {
               </button>
             </form>
           ) : (
-            <div className="product-review-right"></div>
+            <div className="product-review-right">
+              <h2
+                style={{
+                  fontWeight: "400",
+                  fontSize: "16px",
+                }}
+              >
+                Please{" "}
+                <Link
+                  style={{
+                    color: "#f3b632",
+                    textDecoration: "underline",
+                  }}
+                  to="/login"
+                >
+                  Login
+                </Link>{" "}
+                to submit review.
+              </h2>
+            </div>
           )}
         </div>
 
