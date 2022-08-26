@@ -18,5 +18,10 @@ router
 
 // when the payment is success send the email on user
 router.post("/user/success", auth, orderController.sendMailUserPaymentSuccess);
+router.post(
+  "/user/delivered",
+  auth,
+  orderController.sendMailUserProductDeliverd
+);
 
 module.exports = router;

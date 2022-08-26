@@ -10,20 +10,38 @@ import {
   updateOrder,
 } from "../../redux/actions/orderActions";
 import { UPDATE_ORDER_RESET } from "../../redux/constants/orderConstants";
+import axios from "axios";
+import { BASE_URL } from "../../config";
 const ProcessOrder = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
+
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
   const [status, setStatus] = useState("");
+
+  const user = useSelector((state) => state?.userLogin?.userInfo);
 
   const dispatch = useDispatch();
   const { id } = useParams();
   const { addToast } = useToasts();
 
-  const updateOrderSubmitHandler = (e) => {
+  const updateOrderSubmitHandler = async (e) => {
     e.preventDefault();
     const myForm = new FormData();
     myForm.set("status", status);
+
     dispatch(updateOrder(id, myForm));
+
+    if (status === "Delivered") {
+      await axios.post(
+        `${BASE_URL}/api/user/delivered`,
+        {
+          email: order?.user?.email,
+        },
+        {
+          headers: { Authorization: user?.access_token },
+        }
+      );
+    }
   };
 
   useEffect(() => {

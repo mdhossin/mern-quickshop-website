@@ -117,15 +117,13 @@ const CheckoutForm = () => {
 
           // setErrorMessage
 
-          const { data } = await axios.post(
+          await axios.post(
             `${BASE_URL}/api/user/success`,
             {
               email: user.email,
             },
             config
           );
-
-          console.log(data, "send mail on user");
         } else {
           setIsLoading(false);
           setSuccessMesssage("");

@@ -1,4 +1,5 @@
 const sendMailPaymentSuccess = require("../config/sendMailPaymentSuccess");
+const sendMailProductDeliverd = require("../config/sendMailProductDeliverd");
 const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
 const CustomErrorHandler = require("../services/CustomErrorHandler");
@@ -140,6 +141,15 @@ const orderController = {
   async sendMailUserPaymentSuccess(req, res, next) {
     try {
       sendMailPaymentSuccess(req.body.email, "Payment successful.");
+
+      res.status(200).json("Send message on success the payment.");
+    } catch (error) {
+      return next(error);
+    }
+  },
+  async sendMailUserProductDeliverd(req, res, next) {
+    try {
+      sendMailProductDeliverd(req.body.email, "Payment successful.");
 
       res.status(200).json("Send message on success the payment.");
     } catch (error) {
