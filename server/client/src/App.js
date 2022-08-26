@@ -3,11 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 import {
+  ActivationEmail,
   ConfirmOrder,
+  ForgotPassword,
+  Login,
+  MyOrders,
   NotFound,
+  OrderDetails,
   OrderSuccess,
   Payment,
+  Profile,
   ProtectedRoute,
+  Register,
+  ResetPassword,
   Shipping,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
@@ -15,35 +23,19 @@ import "./styles/styles.scss";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Rings } from "react-loader-spinner";
 import { Header } from "./components";
-const MyOrders = lazy(() =>
-  import("./components/Manager/UserDashboard/MyOrders/Myorders")
-);
-const OrderDetails = lazy(() =>
-  import("./components/Manager/UserDashboard/OrderDetails/OrderDetails")
-);
-const Profile = lazy(() =>
-  import("./components/Manager/UserDashboard/Profile/Profile")
-);
+
 const UserDashboard = lazy(() =>
   import("./components/Manager/UserDashboard/UserDashboard")
 );
 const AboutUs = lazy(() => import("./pages/AboutUs/AboutUs"));
 
-const ActivationEmail = lazy(() =>
-  import("./pages/ActivationEmail/ActivationEmail")
-);
 const Blog = lazy(() => import("./pages/Blog/Blog"));
 
 const Contact = lazy(() => import("./pages/Contact/Contact"));
-const ForgotPassword = lazy(() =>
-  import("./pages/ForgotPassword/ForgotPassword")
-);
+
 const Home = lazy(() => import("./pages/Home/Home"));
-const Login = lazy(() => import("./pages/Login/Login"));
 
 const ProductDetail = lazy(() => import("./pages/ProductDetail/ProductDetail"));
-const Register = lazy(() => import("./pages/Register/Register"));
-const ResetPassword = lazy(() => import("./pages/ResetPassword/ResetPassword"));
 
 const Shop = lazy(() => import("./pages/Shop/Shop"));
 
