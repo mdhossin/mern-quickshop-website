@@ -61,7 +61,7 @@ const Reviews = () => {
         autoDismiss: true,
       });
 
-      navigate.push("/dashboard/reviews");
+      navigate("/dashboard/reviews");
       dispatch({ type: DELETE_REVIEW_RESET });
     }
   }, [dispatch, error, deleteError, navigate, isDeleted, productId, addToast]);

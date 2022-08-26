@@ -43,7 +43,7 @@ const sidebarNav = [
   },
   {
     link: "/dashboard/reviews",
-    section: "users",
+    section: "reviews",
     icon: <MdOutlineReviews />,
     text: "Reviews",
   },
