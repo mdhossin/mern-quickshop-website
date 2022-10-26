@@ -1,6 +1,6 @@
 # Mern-Quickshop-Ecommerce-website using React + Redux + Sass + Node js + express js + Mongodb, Stripe payment gateway etc.
 
-- Register, login with validation.
+- Register, login with validation
 - Quick login with Google
 - For authentication used google OAuth
 - Forgot password, reset password and register a new account by Email verification.
