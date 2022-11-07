@@ -17,9 +17,9 @@
 - Fronted: React js, Reudx, Sass, React-bootstrap, React-router-dom, recharts etc
 - Backend: Node js, Express js, Mongodb, JSON web token, Mongoose, Google OAuth, Nodemailer, Stripe, cloudinary etc
 
-# Here is the main Website Demo - (https://mern-quickshop-app-ecommerce.herokuapp.com/)
+# Here is the main Website Live link - (https://mern-quickshop-app-ecommerce.herokuapp.com/)
 
-# Here is the Admin Panel Demo - (https://mern-quickshop-admin-panel.herokuapp.com/)
+# Here is the Admin Panel Live Link - (https://mern-quickshop-admin-panel.herokuapp.com/)
 
 # Website Interface -
 
