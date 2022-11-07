@@ -19,7 +19,7 @@
 
 # Here is the main Website Live link - (https://mern-quickshop-app-ecommerce.herokuapp.com/)
 
-# Here is the Admin Panel Live Lin - (https://mern-quickshop-admin-panel.herokuapp.com/)
+# Here is the Admin Panel Live Link - (https://mern-quickshop-admin-panel.herokuapp.com/)
 
 # Website Interface -
 
