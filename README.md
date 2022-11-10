@@ -15,7 +15,7 @@
 - Admin can update her profile, admin can manage the user reviews
 - Responsive for all devices like mobile, tablet, laptop, desktop etc
 - Fronted: React js, Reudx, Sass, React-bootstrap, React-router-dom, recharts etc
-- Backend: Node js, Express js, Mongodb, JSON web token, Mongoose, Google OAuth, Nodemailer, Stripe, cloudinary etc
+- Backend: Node js, Express js, Mongodb, JSON web token, Mongoose, Google OAuth, Nodemailer, Stripe, cloudinary etc...
 
 # Here is the main Website Live link - (https://mern-quickshop-app-ecommerce.herokuapp.com/)
 
